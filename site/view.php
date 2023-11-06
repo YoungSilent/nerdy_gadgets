@@ -1,5 +1,6 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
+
 include __DIR__ . "/header.php";
 
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
@@ -170,4 +171,7 @@ if (isset($_POST["submit"])) {              // zelfafhandelend formulier
 
 </body>
 </html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3682efd97f3e1b4b01dc21d81bbb038bae6593f2
