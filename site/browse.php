@@ -183,6 +183,8 @@ if (isset($_GET['ColorFilter'])) {
 if ($CategoryID !== "") {
     if ($ColorFilterPage !== "" ) {
         $ColorFilterString = " AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')";
+        }else{
+            $ColorFilterString = "";
         }
     $Query = "
            SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
