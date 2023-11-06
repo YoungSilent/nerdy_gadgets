@@ -44,14 +44,21 @@ $databaseConnection = connectToDatabase();
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
+<<<<<<< HEAD
+=======
                 <li>
                     <a href="cart.php" src="./Public/ProductIMGHighRes/unnamed.png"><img src="./Public/ProductIMGHighRes/unnamed.png"></a>
                 </li>
+>>>>>>> 3682efd97f3e1b4b01dc21d81bbb038bae6593f2
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
 
         <ul id="ul-class-navigation">
+            <li>
+                <a href="cart.php" src="./Public/ProductIMGHighRes/winkelmandje.png">
+                    <img src="./Public/ProductIMGHighRes/winkelmandje.png" style="width:50px;height:50px;"></a>
+            </li>
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>

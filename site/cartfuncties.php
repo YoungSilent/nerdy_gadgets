@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD
+// altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+=======
 
                               // altijd hiermee starten als je gebruik wilt maken van sessiegegevens
+>>>>>>> 3682efd97f3e1b4b01dc21d81bbb038bae6593f2
 
 function getCart()
 {

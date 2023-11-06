@@ -21,4 +21,8 @@ print_r($cart);
 ?>
 <p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 3682efd97f3e1b4b01dc21d81bbb038bae6593f2
