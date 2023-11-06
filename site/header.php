@@ -45,7 +45,7 @@ $databaseConnection = connectToDatabase();
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
                 <li>
-                    <a href="shoppingcart.php" src="./Public/ProductIMGHighRes/unnamed.png"><img src="./Public/ProductIMGHighRes/unnamed.png"></a>
+                    <a href="cart.php" src="./Public/ProductIMGHighRes/unnamed.png"><img src="./Public/ProductIMGHighRes/unnamed.png"></a>
                 </li>
             </ul>
         </div>
