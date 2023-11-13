@@ -171,7 +171,3 @@ if (isset($_POST["submit"])) {              // zelfafhandelend formulier
 
 </body>
 </html>
-<<<<<<< HEAD
-
-=======
->>>>>>> 3682efd97f3e1b4b01dc21d81bbb038bae6593f2
