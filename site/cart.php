@@ -1,5 +1,6 @@
 <?php
-include "cartfuncties.php";
+include __DIR__ . "/header.php";
+include __DIR__ . "/cartfuncties.php"; 
 ?>
 <!DOCTYPE html>
 <html lang="nl">
