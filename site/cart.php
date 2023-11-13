@@ -1,5 +1,7 @@
 <?php
 include "cartfuncties.php";
+include "database.php";
+connectToDatabase();
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -9,11 +11,12 @@ include "cartfuncties.php";
 </head>
 
 <body>
-<h1>Inhoud Winkelwagen</h1>
+<h1>Winkelwagen :</h1>
 
 <?php
 $cart = getCart();
 print_r($cart);
+$StockItem = getStockItem($_GET['id'], $databaseConnection);
 //gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
 //totaal prijs berekenen
 //mooi weergeven in html
