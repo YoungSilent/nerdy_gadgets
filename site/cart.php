@@ -101,4 +101,5 @@ foreach($Result as $key => $value){
 ?>
 <p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
 </body>
+
 </html>
