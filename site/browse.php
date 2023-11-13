@@ -186,6 +186,7 @@ if ($CategoryID !== "") {
     }else{
         $ColorFilterString = "";
     }   
+
     $Query = "
            SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
            ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice,
