@@ -181,6 +181,11 @@ if (isset($_GET['ColorFilter'])) {
 //De Where and toegevoegd
 
 if ($CategoryID !== "") {
+    if ($ColorFilterPage !== "" ) {
+        $ColorFilterString = " AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')";
+    }else{
+        $ColorFilterString = "";
+    }   
     $Query = "
            SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
            ROUND(SI.TaxRate * SI.RecommendedRetailPrice / 100 + SI.RecommendedRetailPrice,2) as SellPrice,
@@ -191,7 +196,7 @@ if ($CategoryID !== "") {
            JOIN stockitemholdings SIH USING(stockitemid)
            JOIN stockitemstockgroups USING(StockItemID)
            JOIN stockgroups ON stockitemstockgroups.StockGroupID = stockgroups.StockGroupID
-           WHERE " . $queryBuildResult . " ? IN (SELECT StockGroupID from stockitemstockgroups WHERE StockItemID = SI.StockItemID) AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')
+           WHERE " . $queryBuildResult . " ? IN (SELECT StockGroupID from stockitemstockgroups WHERE StockItemID = SI.StockItemID)" . $ColorFilterString . " 
            GROUP BY StockItemID
            ORDER BY " . $Sort . "
            LIMIT ? OFFSET ?";
