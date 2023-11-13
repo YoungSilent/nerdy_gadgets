@@ -1,6 +1,6 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
-session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
 include "database.php";
 $databaseConnection = connectToDatabase();
 ?>
@@ -44,17 +44,16 @@ $databaseConnection = connectToDatabase();
                 <li>
                     <a href="categories.php" class="HrefDecoration">Alle categorieën</a>
                 </li>
-                
-
             </ul>
         </div>
 <!-- code voor US3: zoeken -->
 
         <ul id="ul-class-navigation">
             <li>
-                <a href="cart.php" src="./Public/ProductIMGHighRes/winkelmandje.png">
-                    <img src="./Public/ProductIMGHighRes/winkelmandje.png" style="width:50px;height:50px;"></a>
+                <a href="cart.php" class="HrefDecoration">
+                    <img src="./Public/ProductIMGHighRes/winkelmandje.png" style="width:50px; height:50px;"></a>
             </li>
+
             <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
             </li>
