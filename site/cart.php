@@ -7,6 +7,7 @@ include "cartfuncties.php";
     <meta charset="UTF-8">
     <title>Winkelwagen</title>
 </head>
+
 <body>
 <h1>Inhoud Winkelwagen</h1>
 
@@ -19,6 +20,7 @@ print_r($cart);
 //etc.
 
 ?>
-<p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
+<p><a href='view.php'>Naar artikelpagina</a></p>
+
 </body>
 </html>
