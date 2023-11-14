@@ -1,7 +1,6 @@
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -9,8 +8,9 @@ include __DIR__ . "/cartfuncties.php";
     <meta charset="UTF-8">
     <title>Winkelwagen</title>
 </head>
+
 <body>
-<h1>Inhoud Winkelwagen</h1>
+<h1>Winkelwagen :</h1>
 
 <?php
 $cart = getCart();
@@ -74,7 +74,7 @@ if(empty($cart) == FALSE ){
 
             
 ?>
-<p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
+<p><a href='view.php'>Naar artikelpagina</a></p>
 <?php
 include __DIR__ . "/footer.php";
 ?>
