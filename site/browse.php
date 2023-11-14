@@ -8,7 +8,8 @@ $Sort = "SellPrice";
 
 $AmountOfPages = 0;
 $queryBuildResult = "";
-
+$itemColors = array("(Black)","(Blue)","(Brown)","(Gray)","(Green)","(Light Brown)","(Pink)","(Red)","(White)","(Yellow)");
+$haakjes = array("(",")");
 
 if (isset($_GET['category_id'])) {
     $CategoryID = $_GET['category_id'];
@@ -286,42 +287,13 @@ if (isset($amount)) {
                     print "selected";
                 } ?>>
                 </option>
-                <option value="(Black)" <?php if ($_SESSION['ColorFilter'] == "(Black)") {
-                    print "selected";
-                } ?>>Black
-                </option>
-                <option value="(Blue)" <?php if ($_SESSION['ColorFilter'] == "(Blue)") {
-                    print "selected";
-                } ?>>Blue
-                </option>
-                <option value="(Gray)" <?php if ($_SESSION['ColorFilter'] == "(Gray)") {
-                    print "selected";
-                } ?>>Gray
-                </option>
-                <option value="(Green)" <?php if ($_SESSION['ColorFilter'] == "(Green)") {
-                    print "selected";
-                } ?>>Green
-                </option>
-                <option value="(Light Brown)" <?php if ($_SESSION['ColorFilter'] == "(Light Brown)") {
-                    print "selected";
-                } ?>>Light Brown
-                </option>
-                <option value="(Pink)" <?php if ($_SESSION['ColorFilter'] == "(Pink)") {
-                    print "selected";
-                } ?>>Pink
-                </option>
-                <option value="(Red)" <?php if ($_SESSION['ColorFilter'] == "(Red)") {
-                    print "selected";
-                } ?>>Red
-                </option>
-                <option value="(White)" <?php if ($_SESSION['ColorFilter'] == "(White)") {
-                    print "selected";
-                } ?>>White
-                </option>
-                <option value="(Yellow)" <?php if ($_SESSION['ColorFilter'] == "(Yellow)") {
-                    print "selected";
-                } ?>>Yellow
-                </option>
+                <?php
+                foreach($itemColors as $key => $value){?>
+                    <option value="<?php print($value); ?>" <?php if ($_SESSION['ColorFilter'] == $value) {
+                        print "selected";
+                    }
+                    ?>><?php print(str_replace($haakjes, "", $value)); ?></option>
+                <?php } ?>
             </select>
     </form>
 </div>

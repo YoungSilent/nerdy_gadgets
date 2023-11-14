@@ -95,3 +95,21 @@ function getStockItemImage($id, $databaseConnection) {
 
     return $R;
 }
+
+function getBackupStockItemImage($id, $databaseConnection) {
+
+    $Query = "
+                SELECT ImagePath 
+                FROM stockgroups
+                JOIN stockitemstockgroups USING(StockGroupID) 
+                WHERE StockItemID = ?
+                LIMIT 1";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $id);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+    return $R;
+}

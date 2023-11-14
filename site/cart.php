@@ -22,84 +22,59 @@ print("<br>");
 //etc.
 
 
+print_r($cart);
+if(empty($cart) == FALSE ){
+    $Query = "SELECT StockItemID, StockItemName, RecommendedRetailPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
-
-$Query = "SELECT StockItemID, StockItemName, RecommendedRetailPrice
-FROM stockitems SI 
-WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
-$Statement = mysqli_prepare($databaseConnection, $Query);
-mysqli_stmt_execute($Statement);
-$Result = mysqli_stmt_get_result($Statement);
-$Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-
-foreach($Result as $key => $value){
-        foreach($value as $key => $value){
-            if($key === "StockItemID"){
-                $StockItemImage = getStockItemImage($value, $databaseConnection);
-                if (isset($StockItemImage)) {
-
-                    
-                    // één plaatje laten zien
-                    if (count($StockItemImage) == 1) {
-                        ?>
-                        <div id="ImageFrame"
-                             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
-                        <?php
-                    } else if (count($StockItemImage) >= 2) { ?>
-                        <!-- meerdere plaatjes laten zien -->
-                        <div id="ImageFrame">
-                            <div id="ImageCarousel" class="carousel slide" data-interval="false">
-                                <!-- Indicators -->
-                                <ul class="carousel-indicators">
-                                    <?php for ($i = 0; $i < count($StockItemImage); $i++) {
-                                        ?>
-                                        <li data-target="#ImageCarousel"
-                                            data-slide-to="<?php print $i ?>" <?php print (($i == 0) ? 'class="active"' : ''); ?>></li>
-                                        <?php
-                                    } ?>
-                                </ul>
-    
-                                <!-- slideshow -->
-                                <div class="carousel-inner">
-                                    <?php for ($i = 0; $i < count($StockItemImage); $i++) {
-                                        ?>
-                                        <div class="carousel-item <?php print ($i == 0) ? 'active' : ''; ?>">
-                                            <img src="Public/StockItemIMG/<?php print $StockItemImage[$i]['ImagePath'] ?>">
-                                        </div>
-                                    <?php } ?>
-                                </div>
-    
-                                <!-- knoppen 'vorige' en 'volgende' -->
-                                <a class="carousel-control-prev" href="#ImageCarousel" data-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </a>
-                                <a class="carousel-control-next" href="#ImageCarousel" data-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </a>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                } else {
+    //Laat informatie zien over de producten in de winkelwagen
+    foreach($Result as $key => $value){
+            foreach($value as $key => $value){
+                if($key === "StockItemID"){
+                    $stockItemID = $value;
+                    $StockItemImage = getStockItemImage($value, $databaseConnection);
+                    $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
+                    if(empty($StockItemImage) == FALSE){
                     ?>
-                    <div id="ImageFrame"
-                         style="background-image: url('Public/StockGroupIMG/<?php print $StockItem['BackupImagePath']; ?>'); background-size: cover;"></div>
-                    <?php
+                        <div id="ImageFrame"
+                             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php }else{?>
+                        <div id="ImageFrame"
+                            style="background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php }
+                }else{                
+                    print($value . "<br>");
                 }
-
-            }else{
-
-            print($value . "<br>");
             }
-        }
-        }  
+            ?>
+            <form method="post">
+            <input type="number" name="stockItemID" value="<?php print($key) ?>" hidden>
+            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+            </form>
 
+            <?php
+            if (isset($_POST["submit"])) {              // zelfafhandelend formulier
+                removeProductFromCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+            }
+            
+
+            print("");
+
+            }  
+        }else{
+            print("Uw winkelwagen is leeg");
+        }
 
 
 
             
 ?>
 <p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
-</body>
-
-</html>
+<?php
+include __DIR__ . "/footer.php";
+?>
