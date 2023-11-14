@@ -13,6 +13,11 @@ include __DIR__ . "/cartfuncties.php";
 <h1>Inhoud Winkelwagen</h1>
 
 <?php
+foreach(getCart() as $key => $value){
+    if (isset($_POST[$key])) {              // zelfafhandelend formulier
+        removeProductFromCart($key);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    }   
+}
 $cart = getCart();
 //print_r($cart);
 print("<br>");
@@ -22,7 +27,7 @@ print("<br>");
 //etc.
 
 
-print_r($cart);
+
 if(empty($cart) == FALSE ){
     $Query = "SELECT StockItemID, StockItemName, RecommendedRetailPrice
     FROM stockitems SI 
@@ -52,22 +57,14 @@ if(empty($cart) == FALSE ){
                 }
             }
             ?>
-            <form method="post">
-            <input type="number" name="stockItemID" value="<?php print($key) ?>" hidden>
-            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+            <form method="post" action="cart.php">
+            <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje">
             </form>
 
             <?php
-            if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-                removeProductFromCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-            }
-            
-
-            print("");
-
             }  
         }else{
-            print("Uw winkelwagen is leeg");
+            print("Uw winkelmandje is leeg");
         }
 
 
