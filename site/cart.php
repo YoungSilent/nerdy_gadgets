@@ -81,6 +81,5 @@ if(empty($cart) == FALSE ){
         }else{
             print("Uw winkelmandje is leeg");
         }
-
 include __DIR__ . "/footer.php";
 ?>
