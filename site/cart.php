@@ -19,6 +19,7 @@ foreach(getCart() as $key => $value){
     }   
 }
 $cart = getCart();
+$totaalPrijs = NULL;
 //print_r($cart);
 //print("<br>");
 //gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
@@ -29,7 +30,7 @@ $cart = getCart();
 
 
 if(empty($cart) == FALSE ){
-    $Query = "SELECT StockItemID, StockItemName, RecommendedRetailPrice
+    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
     FROM stockitems SI 
     WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -38,8 +39,8 @@ if(empty($cart) == FALSE ){
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
     //Laat informatie zien over de producten in de winkelwagen
-    foreach($Result as $key => $value){
-            foreach($value as $key => $value){
+    foreach($Result as $ResultKey => $ResultValue){
+            foreach($ResultValue as $key => $value){
                 if($key === "StockItemID"){
                     $stockItemID = $value;
                     $StockItemImage = getStockItemImage($value, $databaseConnection);
@@ -52,8 +53,11 @@ if(empty($cart) == FALSE ){
                         <div id="ImageFrame"
                             style="background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
                     <?php }
-                }else{                
-                    print($value . "<br>");
+                }elseif($key === "SellPrice"){
+                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;                
+                    print("€" . number_format((float)$value, 2, ".", "") . "<br>");
+                }else{
+                    print($value . "<br>");  
                 }
             }
             print("Aantal: " . $cart[$stockItemID]);
@@ -64,16 +68,19 @@ if(empty($cart) == FALSE ){
             </form>
 
             <?php
-            }  
+            }
+            ?>
+            <p><a href='browse.php'>Naar artikelpagina</a></p>
+            <br><p>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?></p>
+            <form method="post" action="checkout.php">
+            <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
+            <input type="submit" name="" value="Afrekenen">
+            </form>
+            <?php
+            
         }else{
             print("Uw winkelmandje is leeg");
         }
 
-
-
-            
-?>
-<p><a href='view.php'>Naar artikelpagina</a></p>
-<?php
 include __DIR__ . "/footer.php";
 ?>
