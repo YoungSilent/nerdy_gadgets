@@ -20,7 +20,7 @@ foreach(getCart() as $key => $value){
 }
 $cart = getCart();
 //print_r($cart);
-print("<br>");
+//print("<br>");
 //gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
 //totaal prijs berekenen
 //mooi weergeven in html
@@ -56,6 +56,8 @@ if(empty($cart) == FALSE ){
                     print($value . "<br>");
                 }
             }
+            print("Aantal: " . $cart[$stockItemID]);
+
             ?>
             <form method="post" action="cart.php">
             <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje">
