@@ -54,7 +54,7 @@ if(empty($cart) == FALSE ){
             ?>
             <form method="post">
             <input type="number" name="stockItemID" value="<?php print($key) ?>" hidden>
-            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+            <input type="submit" name="submit" value="Delete-ey">
             </form>
 
             <?php
