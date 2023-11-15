@@ -74,7 +74,7 @@ if(empty($cart) == FALSE ){
 
             
 ?>
-<p><a href='view.php'>Naar artikelpagina</a></p>
+<p><a href='browse.php'>Naar artikelpagina</a></p>
 <?php
 include __DIR__ . "/footer.php";
 ?>
