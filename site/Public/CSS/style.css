@@ -96,6 +96,8 @@ ul#ul-class-navigation li {
     margin-left: 5px;
     margin-top: 10px;
     padding: 20px;
+    overflow: auto;
+    max-height: 70vh; 
 }
 #ResultsArea.Browse  {
     width: 78%;

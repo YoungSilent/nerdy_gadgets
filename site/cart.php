@@ -13,18 +13,24 @@ include __DIR__ . "/cartfuncties.php";
 <h1>Winkelwagen :</h1>
 
 <?php
+foreach(getCart() as $key => $value){
+    if (isset($_POST[$key])) {              // zelfafhandelend formulier
+        removeProductFromCart($key);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    }   
+}
 $cart = getCart();
+$totaalPrijs = NULL;
 //print_r($cart);
-print("<br>");
+//print("<br>");
 //gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
 //totaal prijs berekenen
 //mooi weergeven in html
 //etc.
 
 
-print_r($cart);
+
 if(empty($cart) == FALSE ){
-    $Query = "SELECT StockItemID, StockItemName, RecommendedRetailPrice
+    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
     FROM stockitems SI 
     WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -33,48 +39,39 @@ if(empty($cart) == FALSE ){
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
     //Laat informatie zien over de producten in de winkelwagen
-    foreach($Result as $key => $value){
-            foreach($value as $key => $value){
+    foreach($Result as $ResultKey => $ResultValue){
+            foreach($ResultValue as $key => $value){
                 if($key === "StockItemID"){
                     $stockItemID = $value;
-                    $StockItemImage = getStockItemImage($value, $databaseConnection);
-                    $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
-                    if(empty($StockItemImage) == FALSE){
                     ?>
-                        <div id="ImageFrame"
-                             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }else{?>
-                        <div id="ImageFrame"
-                            style="background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }
-                }else{                
-                    print($value . "<br>");
+                    <div id="ImageFrame"
+                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php
+                }elseif($key === "SellPrice"){               
+                    print("€" . number_format((float)$value, 2, ".", "") . "<br>");
+                }else{
+                    print($value . "<br>");  
                 }
             }
+            print("Aantal: " . $cart[$stockItemID]);
             ?>
-            <form method="post">
-            <input type="number" name="stockItemID" value="<?php print($key) ?>" hidden>
-            <input type="submit" name="submit" value="Delete-ey">
+            <form method="post" action="cart.php">
+            <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje">
             </form>
 
             <?php
-            if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-                removeProductFromCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
             }
+            saveCartPrice($totaalPrijs);
+            ?>
+            <p><a href='browse.php'>Naar artikelpagina</a></p>
+            <br><p>Totaal prijs: €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?></p>
+            <form method="post" action="checkout.php">
+            <input type="submit" name="" value="Afrekenen">
+            </form>
+            <?php
             
-
-            print("");
-
-            }  
         }else{
-            print("Uw winkelwagen is leeg");
+            print("Uw winkelmandje is leeg");
         }
-
-
-
-            
-?>
-<p><a href='browse.php'>Naar artikelpagina</a></p>
-<?php
 include __DIR__ . "/footer.php";
 ?>
