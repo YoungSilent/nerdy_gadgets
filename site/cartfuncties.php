@@ -44,9 +44,11 @@ function saveCartPrice($totaalprijs){
 
 function getCartPrice(){
     $databaseConnection = connectToDatabase();
-    $cart = getCart();    
+    $cart = getCart();
+    $cartPrice = NULL;
+
     $Query = "
-    SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+    SELECT StockItemID, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
     FROM stockitems SI 
     WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -54,15 +56,9 @@ function getCartPrice(){
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
-    foreach($cart as $value){
-
-    }
-
-
-    if(isset($_SESSION['cartPrice'])){               //controleren of winkelmandje (=cart) al bestaat
-        $cartPrice = $_SESSION['cartPrice'];                  //zo ja:  ophalen
-    } else{
-        $cartPrice = 0;                            //zo nee: dan een nieuwe (nog lege) array
+    foreach($Result as $ResultValue){
+        $cartPrice = $cartPrice + ($cart[$ResultValue["StockItemID"]] * number_format((float)$ResultValue["SellPrice"], 2, ".", ""));
+        $cartPrice = number_format((float)$cartPrice, 2, ".", "");
     }
     return $cartPrice;
 }
