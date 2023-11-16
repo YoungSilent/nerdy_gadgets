@@ -20,8 +20,10 @@ include __DIR__ . "/cartfuncties.php";
        <input type="submit" value="Verzenden">
 </form>
 <br><p>* Verplichte velden</p>
-
-
 <?php
+print(getCartPrice());
+
+
+
 include __DIR__ . "/footer.php";
 ?>

@@ -53,15 +53,13 @@ if(empty($cart) == FALSE ){
                         <div id="ImageFrame"
                             style="background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
                     <?php }
-                }elseif($key === "SellPrice"){
-                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;                
+                }elseif($key === "SellPrice"){               
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
                 }else{
                     print($value . "<br>");  
                 }
             }
             print("Aantal: " . $cart[$stockItemID]);
-
             ?>
             <form method="post" action="cart.php">
             <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje">
@@ -69,11 +67,11 @@ if(empty($cart) == FALSE ){
 
             <?php
             }
+            saveCartPrice($totaalPrijs);
             ?>
             <p><a href='browse.php'>Naar artikelpagina</a></p>
-            <br><p>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?></p>
+            <br><p>Totaal prijs: €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?></p>
             <form method="post" action="checkout.php">
-            <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
             <input type="submit" name="" value="Afrekenen">
             </form>
             <?php

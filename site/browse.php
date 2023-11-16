@@ -182,7 +182,7 @@ if (isset($_GET['ColorFilter'])) {
 //De Where and toegevoegd
 
 if ($CategoryID !== "") {
-    if ($ColorFilterPage !== "" ) {
+    if (in_array($ColorFilterPage, $itemColors)) {
         $ColorFilterString = " AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')";
     }else{
         $ColorFilterString = "";
