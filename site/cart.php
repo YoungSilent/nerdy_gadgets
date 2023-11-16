@@ -43,16 +43,10 @@ if(empty($cart) == FALSE ){
             foreach($ResultValue as $key => $value){
                 if($key === "StockItemID"){
                     $stockItemID = $value;
-                    $StockItemImage = getStockItemImage($value, $databaseConnection);
-                    $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
-                    if(empty($StockItemImage) == FALSE){
                     ?>
-                        <div id="ImageFrame"
-                             style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }else{?>
-                        <div id="ImageFrame"
-                            style="background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }
+                    <div id="ImageFrame"
+                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php
                 }elseif($key === "SellPrice"){               
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
                 }else{
