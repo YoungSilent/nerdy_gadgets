@@ -7,6 +7,15 @@ include __DIR__ . "/cartfuncties.php";
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 ?>
+<?php
+//?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
+if (isset($_GET["id"])) {
+    $stockItemID = $_GET["id"];
+} else {
+    $stockItemID = 0;
+}
+?>  
+
 <div id="CenteredContent">
     <?php
     if ($StockItem != null) {
@@ -88,6 +97,20 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                     <div class="CenterPriceLeftChild">
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
+                        <form method="post">
+                        <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
+                        <input style="font-size:15px" type="submit" name="submit" value="Voeg toe aan winkelmandje">
+                        </form>
+                        <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
+                        <div style="font-size:10px">
+                        <?php
+                        if (isset($_POST["submit"])) {              // zelfafhandelend formulier
+                            $stockItemID = $_POST["stockItemID"];
+                            addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+                            print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
+                        }
+                        ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,30 +162,6 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
-
-
-<?php
-//?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
-if (isset($_GET["id"])) {
-    $stockItemID = $_GET["id"];
-} else {
-    $stockItemID = 0;
-}
-?>  
-
-<!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
-<form method="post">
-    <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-    <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
-</form>
-
-<?php
-if (isset($_POST["submit"])) {              // zelfafhandelend formulier
-    $stockItemID = $_POST["stockItemID"];
-    addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-    print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
-}
-?>
 
 </body>
 </html>
