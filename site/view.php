@@ -148,6 +148,7 @@ if (isset($_GET["id"])) {
 } else {
     $stockItemID = 0;
 }
+
 ?>  
 
 <!-- formulier via POST en niet GET om te zorgen dat refresh van pagina niet het artikel onbedoeld toevoegt-->
