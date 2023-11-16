@@ -45,7 +45,7 @@ if(empty($cart) == FALSE ){
                     $stockItemID = $value;
                     ?>
                     <div id="ImageFrame"
-                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
+                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: <?php if(isBackupImage($stockItemID, $databaseConnection)){print("cover");}else{print("300px");} ?>; background-repeat: no-repeat; background-position: left;"></div>
                     <?php
                 }elseif($key === "SellPrice"){               
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
