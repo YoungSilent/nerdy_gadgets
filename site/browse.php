@@ -161,7 +161,7 @@ if ($CategoryID == "") {
 
 
 
-//Filteren op kleur van Jochem
+//Filteren op kleur van Jochum
 
 //Vraagt op wat het geselecteerde kleuren filter is
 
