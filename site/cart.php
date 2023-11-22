@@ -10,7 +10,13 @@ include __DIR__ . "/cartfuncties.php";
 </head>
 
 <body>
-<h1>Winkelwagen :</h1>
+<div>    
+<img src="Public/ProductIMGHighRes/winkelmandje.png"; alt= "Winkelmandje" 
+     style="display: block;
+            margin-left: auto;
+            margin-right: auto; 
+            width:200px; height:200px">
+</div>
 
 <?php
 foreach(getCart() as $key => $value){
@@ -43,31 +49,53 @@ if(empty($cart) == FALSE ){
             foreach($ResultValue as $key => $value){
                 if($key === "StockItemID"){
                     $stockItemID = $value;
+                    $StockItemImage = getStockItemImage($value, $databaseConnection);
+                    $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
+                    if(empty($StockItemImage) == FALSE){
                     ?>
-                    <div id="ImageFrame"
-                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: 230px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php
-                }elseif($key === "SellPrice"){               
+                        <div style="width: 175px;
+                                    height: 175px;
+                                    background-color: rgb(36, 41, 143);
+                                    float: left;
+                                    margin-right: 10px;
+                                    background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 175px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php }else{?>
+                        <div style="width: 175px;
+                                    height: 175px;
+                                    background-color: rgb(36, 41, 143);
+                                    float: left;
+                                    margin-right: 10px;
+                                    background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 175px; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php }
+                }elseif($key === "SellPrice"){
+                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;                
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
                 }else{
                     print($value . "<br>");  
                 }
             }
             print("Aantal: " . $cart[$stockItemID]);
+
             ?>
+
             <form method="post" action="cart.php">
-            <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje">
+            <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje"
+                   style="width:auto; position:relative; top:25px">
             </form>
+
+            <br><br><br>
 
             <?php
             }
-            saveCartPrice($totaalPrijs);
             ?>
-            <p><a href='browse.php'>Naar artikelpagina</a></p>
-            <br><p>Totaal prijs: €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?></p>
+            <p><a href='browse.php'>Terug naar artikelen</a></p>
+            <div style="position:absolute; bottom:10px; right:100px">
+            <br><p>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?></p>
             <form method="post" action="checkout.php">
-            <input type="submit" name="" value="Afrekenen">
+            <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
+            <input style="width:auto" type="submit" name="" value="Afrekenen">
             </form>
+            </div>
             <?php
             
         }else{
@@ -75,3 +103,4 @@ if(empty($cart) == FALSE ){
         }
 include __DIR__ . "/footer.php";
 ?>
+        
