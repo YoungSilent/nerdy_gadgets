@@ -37,3 +37,28 @@ function removeProductFromCart($stockItemID){
 
     saveCart($cart);
 }
+
+function saveCartPrice($totaalprijs){
+    $_SESSION["cartPrice"] = $totaalprijs;
+}
+
+function getCartPrice(){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    $cartPrice = NULL;
+
+    $Query = "
+    SELECT StockItemID, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    foreach($Result as $ResultValue){
+        $cartPrice = $cartPrice + ($cart[$ResultValue["StockItemID"]] * number_format((float)$ResultValue["SellPrice"], 2, ".", ""));
+        $cartPrice = number_format((float)$cartPrice, 2, ".", "");
+    }
+    return $cartPrice;
+}

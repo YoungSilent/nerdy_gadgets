@@ -113,3 +113,13 @@ function getBackupStockItemImage($id, $databaseConnection) {
 
     return $R;
 }
+
+function getBothStockImages($id, $databaseConnection) {
+    $StockItemImage = getStockItemImage($id, $databaseConnection);
+    $StockBackupItemImage = getBackupStockItemImage($id, $databaseConnection);
+    if(empty($StockItemImage) == FALSE){
+        return "StockItemIMG/" . $StockItemImage[0]['ImagePath']; 
+     }else{
+        return "StockGroupIMG/" . $StockBackupItemImage[0]['ImagePath'];
+     }
+}
