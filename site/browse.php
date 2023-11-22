@@ -161,7 +161,7 @@ if ($CategoryID == "") {
 
 
 
-//Filteren op kleur van Jochem
+//Filteren op kleur van Jochum
 
 //Vraagt op wat het geselecteerde kleuren filter is
 
@@ -183,7 +183,7 @@ if (isset($_GET['ColorFilter'])) {
 
 if ($CategoryID !== "") {
     if (in_array($ColorFilterPage, $itemColors)) {
-        $ColorFilterString = " AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')";
+        $ColorFilterString = " AND (SI.SearchDetails LIKE '%" . $ColorFilterPage . "%')";
     }else{
         $ColorFilterString = "";
     }   
