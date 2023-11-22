@@ -10,13 +10,13 @@ include __DIR__ . "/cartfuncties.php";
 </head>
 
 <body>
-<div>    
-<img src="Public/ProductIMGHighRes/winkelmandje.png"; alt= "Winkelmandje" 
-     style="display: block;
-            margin-left: auto;
-            margin-right: auto; 
-            width:200px; height:200px">
-</div>
+<!--<div>    -->
+<!--<img src="Public/ProductIMGHighRes/winkelmandje.png"; alt= "Winkelmandje" -->
+<!--     style="display: block;-->
+<!--            margin-left: auto;-->
+<!--            margin-right: auto; -->
+<!--            width:200px; height:200px">-->
+<!--</div>-->
 
 <?php
 foreach(getCart() as $key => $value){
