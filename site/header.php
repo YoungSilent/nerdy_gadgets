@@ -24,7 +24,7 @@ $databaseConnection = connectToDatabase();
 <body>
 <div class="Background">
     <div class="row" id="Header">
-        <div class="col-2"><a href="./" id="LogoA">
+        <div class="col-2"><a href="./" id="LogoImage">
                 <div id="LogoImage"></div>
             </a></div>
         <div class="col-8" id="CategoriesBar">
@@ -46,12 +46,12 @@ $databaseConnection = connectToDatabase();
                 </li>
             </ul>
         </div>
-<!-- code voor US3: zoeken -->
+<!-- code voor US3: zoeken en winkelwagen icon-->
 
         <ul id="ul-class-navigation">
             <li>
                 <a href="cart.php" class="HrefDecoration">
-                    <img src="./Public/ProductIMGHighRes/winkelmandje.png" style="width:50px; height:50px;"></a>
+                    <img src="./Public/ProductIMGHighRes/shoppingCartIcon.png" style="width:40px; height:40px;"></a>
             </li>
 
             <li>
@@ -59,7 +59,7 @@ $databaseConnection = connectToDatabase();
             </li>
         </ul>
 
-<!-- einde code voor US3 zoeken -->
+<!-- einde code voor US3 zoeken en winkelwagen icon-->
     </div>
     <div class="row" id="Content">
         <div class="col-12">
