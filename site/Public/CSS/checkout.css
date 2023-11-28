@@ -1,0 +1,18 @@
+#checkout{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+#form{
+    border-radius: 5px;
+    margin: auto;
+    /*display: flex;*/
+    position: static;
+    width: 50%;
+    /*background-color: #f2f2f2;*/
+    padding: 20px;
+}
