@@ -14,5 +14,8 @@
     position: static;
     width: 50%;
     /*background-color: #f2f2f2;*/
-    padding: 20px;
+    /*padding: 20px;*/
+}
+#submit{
+    border-radius: 20px;
 }

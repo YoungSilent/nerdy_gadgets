@@ -1,7 +1,7 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
 
-include __DIR__ . "/header.php";
+include __DIR__ . "/head    er.php";
 include __DIR__ . "/cartfuncties.php"; 
 
 $backupImage= FALSE;
