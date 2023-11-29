@@ -9,9 +9,8 @@
 }
 #form{
     border-radius: 5px;
-    margin: auto;
     /*display: flex;*/
-    position: static;
+    padding-left: 125px;
     width: 50%;
     /*background-color: #f2f2f2;*/
     /*padding: 20px;*/
