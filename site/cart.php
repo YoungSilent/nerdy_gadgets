@@ -53,22 +53,11 @@ if(empty($cart) == FALSE ){
                     $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
                     if(empty($StockItemImage) == FALSE){
                     ?>
-                        <div style="width: 175px;
-                                    height: 175px;
-                                    background-color: rgb(36, 41, 143);
-                                    float: left;
-                                    margin-right: 10px;
-                                    background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 175px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }else{?>
-                        <div style="width: 175px;
-                                    height: 175px;
-                                    background-color: rgb(36, 41, 143);
-                                    float: left;
-                                    margin-right: 10px;
-                                    background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); background-size: 175px; background-repeat: no-repeat; background-position: left;"></div>
-                    <?php }
-                }elseif($key === "SellPrice"){
-                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;                
+
+                    <div id="ImageFrame"
+                    style="background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); background-size: <?php if(isBackupImage($stockItemID, $databaseConnection)){print("cover");}else{print("300px");} ?>; background-repeat: no-repeat; background-position: left;"></div>
+                    <?php
+                }elseif($key === "SellPrice"){               
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
                 }else{
                     print($value . "<br>");  
