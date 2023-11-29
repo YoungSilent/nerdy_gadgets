@@ -17,6 +17,7 @@ foreach(getCart() as $key => $value){
         removeProductFromCart($key);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
     }   
 }
+
 $cart = getCart();
 $totaalPrijs = NULL;
 //print_r($cart);
@@ -25,7 +26,6 @@ $totaalPrijs = NULL;
 //totaal prijs berekenen
 //mooi weergeven in html
 //etc.
-
 
 if(empty($cart) == FALSE ){
     $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
@@ -36,6 +36,7 @@ if(empty($cart) == FALSE ){
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
+    ?> <div id="CartProducts"> <?php
     //Laat informatie zien over de producten in de winkelwagen
     foreach($Result as $ResultKey => $ResultValue){
             foreach($ResultValue as $key => $value){
@@ -70,10 +71,20 @@ if(empty($cart) == FALSE ){
                     print($value . "<br>");  
                 }
             }
-            print("Aantal: " . $cart[$stockItemID]);
-
             ?>
-           
+
+            <form method="post" action="cart.php">
+            <label for="aantal"></label>
+            <input type="number" id="aantal" name="aantal<?phpprint($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>")>
+            </form>
+
+            <?php
+            if (isset($_POST["aantal".$stockItemID])) {
+            $cart = getCart();
+            $cart[$stockItemID] = $_POST["aantal".$stockItemID];
+            saveCart($cart);
+            }
+            ?>
 
             <form method="post" action="cart.php">
             <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje"
@@ -81,12 +92,12 @@ if(empty($cart) == FALSE ){
             </form>
 
             <br><br><br>
-
             <?php
             }
             ?>
+    </div>
+            <div id="CartSummary">
             <p><a href='browse.php'>Terug naar artikelen</a></p>
-            <div style="position:relative; float:right; bottom:125px; right:10px">
             <br><p>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?></p>
             <form method="post" action="checkout.php">
             <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
@@ -98,7 +109,15 @@ if(empty($cart) == FALSE ){
         }else{
             print("Uw winkelmandje is leeg");
         }
+        ?> 
+        
+        <?php
 include __DIR__ . "/footer.php";
 ?>
 </div>
+</body>
+
+
+
+
         

@@ -487,4 +487,25 @@ ul#ul-class-price li {
     margin-left:200px;
     margin-right: 250px;
     padding:10px;
+    width:1000px;
+}
+#aantal {
+    width:80px;
+    height:auto;
+}
+
+#CartProducts {
+    display:inline-block;
+    width:500px;
+}
+
+#CartSummary {
+    display:inline-block;
+    float:right;
+    background-color:#787eff;
+    margin-top:100px;
+    padding:10px;
+    border-radius:20px;
+    width: 300px;
+    height: auto;
 }
