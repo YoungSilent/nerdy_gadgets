@@ -1,7 +1,10 @@
+#wrapper{
+    border: 100px;
+}
 #checkout{
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline;
+    /*display: inline;*/
     border: 1px solid #ccc;
     border-radius: 20px;
     box-sizing: border-box;
@@ -9,11 +12,44 @@
 }
 #form{
     border-radius: 5px;
-    /*display: flex;*/
     padding-left: 125px;
     width: 50%;
+    display: inline-block;
+    height:120px;
+    border: 1px;
+    /*display: flex;*/
     /*background-color: #f2f2f2;*/
     /*padding: 20px;*/
+}
+#prijs{
+    float: right;
+    display: inline-block;
+    width:160px;
+    height:160px;
+    border: 1px;
+    margin-right: 155px;
+}
+#naam{
+    float: left;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline;*/
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+#achternaam{
+    float: right;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline;*/
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 #submit{
     border-radius: 20px;
