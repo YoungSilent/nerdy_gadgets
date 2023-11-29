@@ -478,3 +478,11 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+#CartContent {
+    background-color:#676EFF;
+    border-radius:10px;
+    margin-top:50px;
+    margin-left:200px;
+    margin-right: 250px;
+    padding:10px;
+}
