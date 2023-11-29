@@ -1,11 +1,16 @@
 <!-- dit bestand bevat alle code voor de pagina die één product laat zien -->
 <?php
 
-include __DIR__ . "/header.php";
+include __DIR__ . "/head    er.php";
 include __DIR__ . "/cartfuncties.php"; 
 
+$backupImage= FALSE;
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+if(empty($StockItemImage)){
+ $StockItemImage = getBackupStockItemImage($_GET['id'], $databaseConnection);
+ $backupImage= TRUE;
+}
 ?>
 <?php
 //?id=1 handmatig meegeven via de URL (gebeurt normaal gesproken als je via overzicht op artikelpagina terechtkomt)
@@ -41,7 +46,7 @@ if (isset($_GET["id"])) {
                 if (count($StockItemImage) == 1) {
                     ?>
                     <div id="ImageFrame"
-                         style="background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); background-size: 300px; background-repeat: no-repeat; background-position: center;"></div>
+                         style="background-image: url('Public/<?php if($backupImage){print("StockGroupIMG/");}else{print("StockItemIMG/");} print $StockItemImage[0]['ImagePath']; ?>'); background-size: <?php if($backupImage){print("cover");}else{print("300px");} ?>; background-repeat: no-repeat; background-position: center;"></div>
                     <?php
                 } else if (count($StockItemImage) >= 2) { ?>
                     <!-- meerdere plaatjes laten zien -->
