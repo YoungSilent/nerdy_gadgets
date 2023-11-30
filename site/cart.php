@@ -87,7 +87,7 @@ if(empty($cart) == FALSE ){
 
             <br>
             <form method="post" action="cart.php">
-                <button type="submit" name="<?php echo $stockItemID; ?>" style="border: none; background: none; padding: 5px; margin 0px;">
+                <button onclick="verwijderenUitWinkelmandje(event)" type="submit" name="<?php echo $stockItemID; ?>" style="border: none; background: none; padding: 5px; margin 0px;">
                     <img src="Public\ProductIMGHighRes\prullenbak.png" alt="Remove from Cart" style="width: auto; height: 40px; /* adjust as needed */">
                 </button>
             </form>
