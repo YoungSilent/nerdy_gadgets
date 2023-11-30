@@ -43,9 +43,9 @@ if (empty($StockItemImage)) {
             print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . " X ");
             print($cart[$productName["StockItemID"]]);
             print(": " . "€" . getArtikelPrice($productName["StockItemID"]) . "<br>" );
+            print("<br>");
         }
         ?>
-        <br>
         <!--        laat de totaal prijs zien van het winkelmandje-->
         <div id="prijs">
             <?php
