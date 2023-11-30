@@ -85,24 +85,38 @@ if(empty($cart) == FALSE ){
             saveCart($cart);
             }
             ?>
-
+            <br>
             <form method="post" action="cart.php">
-            <input type="submit" name="<?php print($stockItemID); ?>" value="Verwijder uit winkelmandje"
-                   style="width:auto; position:relative; top:25px">
+                <button type="submit" name="<?php echo $stockItemID; ?>" style="border: none; background: none; padding: 5px; margin 0px;">
+                    <img src="Public\ProductIMGHighRes\prullenbak.png" alt="Remove from Cart" style="width: auto; height: 40px; /* adjust as needed */">
+                </button>
             </form>
 
-            <br><br><br>
+            <br><br>
             <?php
             }
             ?>
+            <p><a href='browse.php' style="color:white; text-decoration:underline;">Terug naar artikelen</a></p>
     </div>
             <div id="CartSummary">
-            <p><a href='browse.php'>Terug naar artikelen</a></p>
-            <br><p>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?></p>
+            <p> Aantal producten: <?php print(array_sum($cart));?>
+                    <br>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?>
+                    <br>Exclusief btw: €<?php print(number_format((float)($totaalPrijs/1.21), 2, ".", "")); ?>
+                    <br>Verzendkosten: €<?php
+                                        if($totaalPrijs>100) {
+                                            print("0.00");
+                                        }else{
+                                            print("10.00");
+                                        }?></p>
+            <a href="checkout.php">
+            <div id="NaarAfrekenen">
             <form method="post" action="checkout.php">
             <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
-            <input style="width:auto" type="submit" name="" value="Afrekenen">
+            <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
             </form>
+            <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
+            </div>
+            </a>
             </div>
             <?php
             
