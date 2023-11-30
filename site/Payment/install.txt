@@ -1,0 +1,37 @@
+########################################################################
+
+Installatie iDEAL betalingen
+
+Volg de onderstaande stappen om het script te installeren.
+Voor vragen of hulp kunt u contact met ons opnemen via help@finalwebsites.nl
+
+Copyright 2018 by finalwebsites.com
+
+########################################################################
+
+Voor de installatie van dit script heeft u toegang nodig tot FTP en moet de mogelijkheid bestaan om een database tabel aan te maken. Beschikt u niet over deze, dan raden wij u aan om dit met uw webmaster te bespreken. Heeft u vragen tijdens de installatie dan kunt u altijd contact met ons opnemen.
+Let op! Deze extra ondersteuning is helaas niet gratis.
+
+Systeemvereisten
+Om dit script te kunnen gebruiken, moeten de volgende functies en kenmerken beschikbaar zijn: PHP 5.6 of hoger, MySQL 5.x., mod_rewrite module
+
+Voorbereiding
+Daarnaast heeft u een account bij Sisow nodig, een SMTP account en voor de installatie een FTP account. De logingegevens voor uw MySQL database heeft u nodig voor de installatie van het tabel en het config.php bestand.
+
+Installatie
+1) Installeer het database bestand met de naam tabel.sql, dit kan eenvoudig via de database tool phpMyAdmin.
+2) Wijzig de variabelen in het bestand config.php (volg hierbij de hints in het bestand zelf).
+3) Belangrijk! Geef uw IP adressen op bij de array $whitelist. Hiermee beperkt u de toegang tot het formulier en het overzicht.
+4) Wijzig het e-mail template in de map "incl" zodat het aansluit op uw wensen en diensten.
+5) Vervang het logo bestand (logo.jpg) in de map "img"
+6) Upload de bestanden uit het .zip bestand naar u webhost. Let hierbij op dat u de indeling van de mappen en bestanden behoudt.
+7) Open het .htaccess bestand binnen de public_html (of httpdocs, public, ...) en plak de onderstaande code in het bestand (de map met de naam "ideal-betalingen" moet u wijzigen, wanneer u een andere map wil gebruiken).
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^sip\/([0-9a-z]{20,})$ /ideal-betalingen/ideal.php?pid=$1 [L]
+RewriteRule ^sip\/(bedankt|geannuleerd)\/$ /ideal-betalingen/bedankt.php [L,QSA]
+RewriteRule ^sip\/callback\/$ /ideal-betalingen/callback.php [L,QSA]
+</IfModule>
+
+Tip! Test het formulier goed met uw eigen e-mailadres voordat u het naar uw klanten verstuurt.
+

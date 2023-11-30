@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/ideal-betalingen/!svn/ver/3/trunk/incl
+END
+emailtemplate.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/ideal-betalingen/!svn/ver/6/trunk/incl/emailtemplate.tpl
+END
+jquery.iframe-transport.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/ideal-betalingen/!svn/ver/3/trunk/incl/jquery.iframe-transport.js
+END
+sendemail.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/ideal-betalingen/!svn/ver/8/trunk/incl/sendemail.php
+END
+ie10-viewport-bug-workaround.js
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ideal-betalingen/!svn/ver/3/trunk/incl/ie10-viewport-bug-workaround.js
+END
+jquery.fileupload.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/ideal-betalingen/!svn/ver/3/trunk/incl/jquery.fileupload.js
+END
