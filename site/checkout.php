@@ -62,9 +62,12 @@ if (empty($StockItemImage)) {
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->
         <br>
+
         <form method="post" action="payment.php">
         <input id="submit" type="submit" value="Doorgaan">
         </form><?php
+
+
         include __DIR__ . "/footer.php";
         ?>
     </div>
