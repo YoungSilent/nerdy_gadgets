@@ -123,3 +123,11 @@ function getBothStockImages($id, $databaseConnection) {
         return "StockGroupIMG/" . $StockBackupItemImage[0]['ImagePath'];
      }
 }
+
+function isBackupImage($id, $databaseConnection) {
+    if(empty(getStockItemImage($id, $databaseConnection))){
+        return TRUE; 
+     }else{
+        return FALSE;
+     }
+}
