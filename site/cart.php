@@ -91,10 +91,10 @@ if(empty($cart) == FALSE ){
                     <br>Verzendkosten: €<?php
                                         if(getCartPrice()>100) {
                                             $verzendkosten = 0.00;
-                                            print($verzendkosten);
+                                            print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }else{
                                             $verzendkosten = 10.00;
-                                            print($verzendkosten);
+                                            print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }?></p>
                     Totaal prijs: €<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?>
             <a href="checkout.php">
