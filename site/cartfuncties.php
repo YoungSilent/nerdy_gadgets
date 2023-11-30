@@ -26,7 +26,23 @@ function addProductToCart($stockItemID){
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
 
+function adjustCartProductQuantity($stockItemID, $aantal){
+    $cart = getCart();
+    if(array_key_exists($stockItemID, $cart)) {
+        $cart[$stockItemID] = $aantal;
+    }
+
+    saveCart($cart);
+}
+
 function removeProductFromCart($stockItemID){
+    $cart = getCart();
+    unset($cart[$stockItemID]);
+
+    saveCart($cart);
+}
+
+function remove1ProductFromCart($stockItemID){
     $cart = getCart();                          // eerst de huidige cart ophalen
 
     if($cart[$stockItemID] != 1){
