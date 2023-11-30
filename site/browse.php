@@ -229,11 +229,11 @@ if (isset($_GET['ColorFilter'])) {
 //De Where and toegevoegd
 
 if ($CategoryID !== "") {
-    if (in_array($ColorFilterPage, $itemColors)) {
-        $ColorFilterString = " AND (SI.SearchDetails LIKE '%" . $ColorFilterPage . "%')";
-    }else{
-        $ColorFilterString = "";
-    }   
+    //if (in_array($ColorFilterPage, $itemColors)) {
+    //    $ColorFilterString = " AND (SI.SearchDetails LIKE '%" . $ColorFilterPage . "%')";
+    //}else{
+   //     $ColorFilterString = "";
+    //}   
 
     $Query = "
            SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice,
