@@ -103,7 +103,7 @@ if (isset($_GET["id"])) {
                         <p class="StockItemPriceText"><b><?php print sprintf("€ %.2f", $StockItem['SellPrice']); ?></b></p>
                         <h6> Inclusief BTW </h6>
                         <form method="post">
-                        <input type="number" name="aantal" style="width:80px; background-color:rgba(103,110,255, 1); border:0px; margin-bottom:4px; border-radius:10px; color:white; font-weight:bold;" value="1">
+                        <input type="number" name="aantal" min="1" max="<?php echo str_replace("Voorraad: ","",$StockItem['QuantityOnHand'] ) ?>" style="width:80px; background-color:rgba(103,110,255, 1); border:0px; margin-bottom:4px; border-radius:10px; color:white; font-weight:bold;" value="1">
                         <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
                         <input style="font-size:14px; background-color:rgba(103,110,255, 1); border:0px; margin-bottom:4px; border-radius:10px; color:white; font-weight:bold;" type="submit" name="submit" value="Voeg toe aan winkelmandje">
                         </form>
