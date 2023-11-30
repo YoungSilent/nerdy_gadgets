@@ -49,35 +49,22 @@ if(empty($cart) == FALSE ){
             foreach($ResultValue as $key => $value){
                 if($key === "StockItemID"){
                     $stockItemID = $value;
-                    $StockItemImage = getStockItemImage($value, $databaseConnection);
-                    $StockBackupItemImage = getBackupStockItemImage($value, $databaseConnection);
-                    if(empty($StockItemImage) == FALSE){
                     ?>
-                        <div style="width: 175px;
-                                    height: 175px;
-                                    background-color: rgb(36, 41, 143);
-                                    float: left;
-                                    margin-right: 10px;
-                                    background-image: url('Public/StockItemIMG/<?php print $StockItemImage[0]['ImagePath']; ?>'); 
-                                    background-size: 175px; 
-                                    background-repeat: no-repeat;"></div>
-                    <?php }else{?>
-                        <div style="width: 175px;
-                                    height: 175px;
-                                    background-color: rgb(36, 41, 143);
-                                    float: left;
-                                    margin-right: 10px;
-                                    background-image: url('Public/StockGroupIMG/<?php print $StockBackupItemImage[0]['ImagePath']; ?>'); 
-                                    background-size: 175px; 
-                                    background-repeat: no-repeat;"></div>
-                    <?php }
-                }elseif($key === "SellPrice"){
-                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;
-                    print("€" . number_format((float)$value, 2, ".", "") . "<br>");
-                }else{
-                    print($value . "<br>");  
+                    <div id="ImageFrame"
+                    style="width: 175px;
+                            height: 175px;
+                            background-color: rgb(36, 41, 143);
+                            float: left;
+                            margin-right: 10px;
+                            background-image: url('Public/<?php print(getBothStockImages($stockItemID, $databaseConnection)); ?>'); 
+                            background-size: <?php if(isBackupImage($stockItemID, $databaseConnection)){print("cover");}else{print("175px");} ?>; 
+                            background-repeat: no-repeat; 
+                            background-position: left;"></div>
+                    <?php 
                 }
             }
+            print($ResultValue['StockItemName'] . "<br>"); 
+            print sprintf("€ %.2f", number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>")); 
             ?>
 
             <form method="post" action="cart.php">
@@ -100,20 +87,20 @@ if(empty($cart) == FALSE ){
     </div>
             <div id="CartSummary">
             <p> Aantal producten: <?php print(array_sum($cart));?>
-                    <br>Subtotaal: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?> (Incl. BTW)
+                    <br>Subtotaal: €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?> (Incl. BTW)
                     <br>Verzendkosten: €<?php
-                                        if($totaalPrijs>100) {
+                                        if(getCartPrice()>100) {
                                             $verzendkosten = 0.00;
                                             print($verzendkosten);
                                         }else{
                                             $verzendkosten = 10.00;
                                             print($verzendkosten);
                                         }?></p>
-                    Totaal prijs: €<?php print($totaalPrijs+$verzendkosten);?>
+                    Totaal prijs: €<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?>
             <a href="checkout.php">
             <div id="NaarAfrekenen">
             <form method="post" action="checkout.php">
-            <input type="hidden" name="totaalprijs" value="<?php print($totaalPrijs); ?>">
+            <input type="hidden" name="totaalprijs" value="<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?>">
             <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
             </form>
             <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
