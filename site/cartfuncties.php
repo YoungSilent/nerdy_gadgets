@@ -78,3 +78,23 @@ function getCartPrice(){
     }
     return $cartPrice;
 }
+
+function getCartTotalPrice($verzendkosten){
+    return getCartPrice() + $verzendkosten;
+}
+
+function getArtikelPrice($stockItemID){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    
+    $Query = "SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID = (" . $stockItemID . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    $price = $cart[$stockItemID] * number_format((float)$Result[0]['SellPrice'], 2, ".", "") ;
+    return number_format((float)$price, 2, ".", "");
+}
