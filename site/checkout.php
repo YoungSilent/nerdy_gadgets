@@ -41,8 +41,7 @@ if (empty($StockItemImage)) {
         foreach ($ProductInfo as $productName) {
             print($productName["StockItemName"] . "<br>");
             print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . "<br>");
-            $totaalPrijs = (number_format((float)$ProductInfo["SellPrice"], 2, ".", "") * $cart["StockItemID"]) + $totaalPrijs;
-            print("€" . number_format((float)$ProductInfo, 2, ".", "") . "<br>");
+            print($ProductInfo["getArtikelPrice"]);
         }
         ?>
         <br>
