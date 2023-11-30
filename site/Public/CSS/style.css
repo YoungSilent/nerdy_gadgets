@@ -514,6 +514,7 @@ ul#ul-class-price li {
 #NaarAfrekenen {
     display:flex;
     text-align:center;
+    margin-top:20px;
 }
 
 #AfrekenIcon {
