@@ -2,13 +2,18 @@
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
 include __DIR__ . "/stockidname.php";
-$backupImage = FALSE;
-$StockItem = getStockItem($_GET['id'], $databaseConnection);
-$StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
-if (empty($StockItemImage)) {
-    $StockItemImage = getBackupStockItemImage($_GET['id'], $databaseConnection);
-    $backupImage = TRUE;
+if(getCartPrice()>100) {
+    $verzendkosten = 0.00;
+}else{
+    $verzendkosten = 10.00;
 }
+// $backupImage = FALSE;
+// $StockItem = getStockItem($_GET['id'], $databaseConnection);
+// $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+// if (empty($StockItemImage)) {
+//     $StockItemImage = getBackupStockItemImage($_GET['id'], $databaseConnection);
+//     $backupImage = TRUE;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -20,11 +25,14 @@ if (empty($StockItemImage)) {
 <body>
 <div id="wrapper">
     <div id="form">
-        <form method="post" action="checkout.php">
+        <form method="post" action="payment.php" id="form1">
             E-mail* <input id="checkout" type="text" name="Email" value="" required>
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" required>
+            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="">
             Achternaam* <input id="checkout" type="text" name="Achternaam" value="" required>
             Postcode* <input id="checkout" type="text" name="Postcode" value="" required>
+            Land* <input id="checkout" type="text" name="Land" value="" required>
+            Straat* <input id="checkout" type="text" name="Straat" value="" required>
             Huisnummer* <input id="checkout" type="text" name="Huisnummer" value="" required>
             Telefoonnummer <input id="checkout" type="text" name="Telefoonnummer" value="">
             <br>
@@ -49,18 +57,23 @@ if (empty($StockItemImage)) {
         <!--        laat de totaal prijs zien van het winkelmandje-->
         <div id="prijs">
             <?php
-            print("Subtotaal(incl btw): ");
+            print("Subtotaal(incl btw): €");
             print(getCartPrice());
             print("<br>");
-            print("Verzend kosten: ");
+            print("Verzend kosten: €" . number_format((float)$verzendkosten, 2, ".", ""));
             print("<br>");
-            print("Totaalprijs (incl btw): ");
+            print("Totaalprijs (incl btw): €" . number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));
             ?>
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->
         <br>
-        <input id="submit" type="submit" value="Doorgaan">
+
+        <form method="post" action="payment.php" onsubmit="return validateForm1AndSubmit();" id="form2">
+            <input id="submit" type="submit" value="Doorgaan">
+        </form>
         <?php
+
+
         include __DIR__ . "/footer.php";
         ?>
     </div>
