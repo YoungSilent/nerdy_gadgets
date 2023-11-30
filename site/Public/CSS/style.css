@@ -238,8 +238,8 @@ ul#ul-class-navigation li {
     position: absolute;
 }
 #LogoImage {
-    background-image: url("../ProductIMGHighRes/NerdyGadgetsLogo.png");
-    width: 250px;
+    background-image: url("../ProductIMGHighRes/NerdyGadgetsLogo.png"); background-repeat: no-repeat;
+    width: 255px;
     height: 90px;
     margin: 34px 55px 55px 10%;
 }
@@ -479,4 +479,48 @@ ul#ul-class-price li {
     background: rgb(36, 41, 143);
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
+}
+#CartContent {
+    background-color:#676EFF;
+    border-radius:10px;
+    margin-top:50px;
+    margin-left:200px;
+    margin-right: 250px;
+    padding:10px;
+    width:1000px;
+}
+#aantal {
+    width:80px;
+    height:auto;
+}
+
+#CartProducts {
+    display:inline-block;
+    width:500px;
+}
+
+#CartSummary {
+    display:inline-block;
+    float:right;
+    background-color:#787eff;
+    margin-top:30px;
+    margin-right:30px;
+    padding:10px;
+    border-radius:20px;
+    width: 300px;
+    height: auto;
+}
+
+#NaarAfrekenen {
+    display:flex;
+    text-align:center;
+}
+
+#AfrekenIcon {
+    display:inline-block;
+    width:50px;
+    height:50px;
+    float:right;
+    margin-bottom:5px;
+    margin-left:10px;
 }
