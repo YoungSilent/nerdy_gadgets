@@ -28,7 +28,7 @@ if(getCartPrice()>100) {
         <form method="post" action="payment.php" id="form1">
             E-mail* <input id="checkout" type="text" name="Email" value="" required>
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" required>
-            Tussenvoegsels* <input id="checkout" type="text" name="Tussenvoegsel" value="" required>
+            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="">
             Achternaam* <input id="checkout" type="text" name="Achternaam" value="" required>
             Postcode* <input id="checkout" type="text" name="Postcode" value="" required>
             Land* <input id="checkout" type="text" name="Land" value="" required>
