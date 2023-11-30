@@ -37,20 +37,28 @@ if (empty($StockItemImage)) {
     <div id="divPrijsEnBetaalKnop">
         <?php
         $ProductInfo = getStockItemInfo();
+        $cart = getCart();
         foreach ($ProductInfo as $productName) {
             print($productName["StockItemName"] . "<br>");
+            print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . "<br>");
+            $totaalPrijs = (number_format((float)$ProductInfo["SellPrice"], 2, ".", "") * $cart["StockItemID"]) + $totaalPrijs;
+            print("€" . number_format((float)$ProductInfo, 2, ".", "") . "<br>");
         }
         ?>
-
-
         <br>
         <!--        laat de totaal prijs zien van het winkelmandje-->
         <div id="prijs">
             <?php
+            print("Subtotaal(incl btw): ");
             print(getCartPrice());
+            print("<br>");
+            print("Verzend kosten: ");
+            print("<br>");
+            print("Totaalprijs (incl btw): ");
             ?>
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->
+        <br>
         <input id="submit" type="submit" value="Doorgaan">
         <?php
         include __DIR__ . "/footer.php";

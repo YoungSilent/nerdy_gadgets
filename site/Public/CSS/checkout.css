@@ -28,7 +28,7 @@
     float: right;
     display: inline-block;
     width:360px;
-    height:160px;
+    height: auto;
     border: 1px;
     margin-right: 155px;
     background-color: #5C6EFF;
