@@ -15,8 +15,15 @@ include __DIR__ . "/cartfuncties.php";
 foreach(getCart() as $key => $value){
     if (isset($_POST[$key])) {              // zelfafhandelend formulier
         removeProductFromCart($key);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-    }   
+    }
+    if (isset($_POST["aantal" . $key])) {
+        adjustCartProductQuantity($key, $_POST["aantal" . $key]);
+    }
 }
+
+
+
+
 
 $cart = getCart();
 $totaalPrijs = NULL;
@@ -65,7 +72,7 @@ if(empty($cart) == FALSE ){
                                     background-repeat: no-repeat;"></div>
                     <?php }
                 }elseif($key === "SellPrice"){
-                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;                
+                    $totaalPrijs = (number_format((float)$value, 2, ".", "") * $cart[$stockItemID])+ $totaalPrijs;
                     print("€" . number_format((float)$value, 2, ".", "") . "<br>");
                 }else{
                     print($value . "<br>");  
@@ -75,16 +82,9 @@ if(empty($cart) == FALSE ){
 
             <form method="post" action="cart.php">
             <label for="aantal"></label>
-            <input type="number" id="aantal" name="aantal<?phpprint($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>")>
+            <input type="number" id="aantal" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>")>
             </form>
 
-            <?php
-            if (isset($_POST["aantal".$stockItemID])) {
-            $cart = getCart();
-            $cart[$stockItemID] = $_POST["aantal".$stockItemID];
-            saveCart($cart);
-            }
-            ?>
             <br>
             <form method="post" action="cart.php">
                 <button type="submit" name="<?php echo $stockItemID; ?>" style="border: none; background: none; padding: 5px; margin 0px;">
@@ -100,14 +100,16 @@ if(empty($cart) == FALSE ){
     </div>
             <div id="CartSummary">
             <p> Aantal producten: <?php print(array_sum($cart));?>
-                    <br>Totaal prijs: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?>
-                    <br>Exclusief btw: €<?php print(number_format((float)($totaalPrijs/1.21), 2, ".", "")); ?>
+                    <br>Subtotaal: €<?php print(number_format((float)$totaalPrijs, 2, ".", "")); ?> (Incl. BTW)
                     <br>Verzendkosten: €<?php
                                         if($totaalPrijs>100) {
-                                            print("0.00");
+                                            $verzendkosten = 0.00;
+                                            print($verzendkosten);
                                         }else{
-                                            print("10.00");
+                                            $verzendkosten = 10.00;
+                                            print($verzendkosten);
                                         }?></p>
+                    Totaal prijs: €<?php print($totaalPrijs+$verzendkosten);?>
             <a href="checkout.php">
             <div id="NaarAfrekenen">
             <form method="post" action="checkout.php">
@@ -123,7 +125,8 @@ if(empty($cart) == FALSE ){
         }else{
             print("Uw winkelmandje is leeg");
         }
-        ?> 
+        ?>
+
         
         <?php
 include __DIR__ . "/footer.php";
