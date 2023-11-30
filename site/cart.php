@@ -69,7 +69,7 @@ if(empty($cart) == FALSE ){
 
             <form method="post" action="cart.php">
             <label for="aantal"></label>
-            <input type="number" id="aantal" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>")>
+            <input type="number" id="aantal" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>">
             </form>
 
             <br>
@@ -83,7 +83,7 @@ if(empty($cart) == FALSE ){
             <?php
             }
             ?>
-            <p><a href='browse.php' style="color:white; text-decoration:underline;">Terug naar artikelen</a></p>
+            <p><a href='categories.php' style="color:white; text-decoration:underline;">Terug naar artikelen</a></p>
     </div>
             <div id="CartSummary">
             <p> Aantal producten: <?php print(array_sum($cart));?>
