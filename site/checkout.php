@@ -23,9 +23,11 @@ if (empty($StockItemImage)) {
         <form method="post" action="payment.php">
             E-mail* <input id="checkout" type="text" name="Email" value="" required>
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" required>
-            Tussenvoegsels* <input id="checkout" type="text" name="Voornaam" value="" required>
+            Tussenvoegsels* <input id="checkout" type="text" name="Tussenvoegsel" value="" required>
             Achternaam* <input id="checkout" type="text" name="Achternaam" value="" required>
             Postcode* <input id="checkout" type="text" name="Postcode" value="" required>
+            Land* <input id="checkout" type="text" name="Land" value="" required>
+            Straat* <input id="checkout" type="text" name="Straat" value="" required>
             Huisnummer* <input id="checkout" type="text" name="Huisnummer" value="" required>
             Telefoonnummer <input id="checkout" type="text" name="Telefoonnummer" value="">
             <br>
@@ -44,9 +46,9 @@ if (empty($StockItemImage)) {
             print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . " X ");
             print($cart[$productName["StockItemID"]]);
             print(": " . "€" . getArtikelPrice($productName["StockItemID"]) . "<br>" );
+            print("<br>");
         }
         ?>
-        <br>
         <!--        laat de totaal prijs zien van het winkelmandje-->
         <div id="prijs">
             <?php
@@ -60,10 +62,12 @@ if (empty($StockItemImage)) {
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->
         <br>
-        <form action="">
-            <input id="submit" type="submit" value="Doorgaan">
-        </form>
-        <?php
+
+        <form method="post" action="payment.php">
+        <input id="submit" type="submit" value="Doorgaan">
+        </form><?php
+
+
         include __DIR__ . "/footer.php";
         ?>
     </div>
