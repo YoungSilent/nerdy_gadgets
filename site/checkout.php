@@ -20,7 +20,7 @@ if (empty($StockItemImage)) {
 <body>
 <div id="wrapper">
     <div id="form">
-        <form method="post" action="checkout.php">
+        <form method="post" action="payment.php">
             E-mail* <input id="checkout" type="text" name="Email" value="" required>
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" required>
             Achternaam* <input id="checkout" type="text" name="Achternaam" value="" required>
