@@ -40,8 +40,9 @@ if (empty($StockItemImage)) {
         $cart = getCart();
         foreach ($ProductInfo as $productName) {
             print($productName["StockItemName"] . "<br>");
-            print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . "<br>");
-            print($ProductInfo["getArtikelPrice"]);
+            print("€" . number_format((float)$productName["SellPrice"], 2, ".", "") . " X ");
+            print($cart[$productName["StockItemID"]]);
+            print(": " . "€" . getArtikelPrice($productName["StockItemID"]) . "<br>" );
         }
         ?>
         <br>
