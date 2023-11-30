@@ -480,3 +480,48 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+#CartContent {
+    background-color:#676EFF;
+    border-radius:10px;
+    margin-top:50px;
+    margin-left:200px;
+    margin-right: 250px;
+    padding:10px;
+    width:auto;
+}
+#aantal {
+    width:80px;
+    height:auto;
+}
+
+#CartProducts {
+    display:inline-block;
+    width:500px;
+}
+
+#CartSummary {
+    display:inline-block;
+    float:right;
+    background-color:#787eff;
+    margin-top:30px;
+    margin-right:30px;
+    padding:10px;
+    border-radius:20px;
+    width: 300px;
+    height: auto;
+}
+
+#NaarAfrekenen {
+    display:flex;
+    text-align:center;
+    margin-top:20px;
+}
+
+#AfrekenIcon {
+    display:inline-block;
+    width:50px;
+    height:50px;
+    float:right;
+    margin-bottom:5px;
+    margin-left:10px;
+}
