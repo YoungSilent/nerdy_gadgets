@@ -15,6 +15,7 @@ $databaseConnection = connectToDatabase();
     <script src="Public/JS/bootstrap.min.js"></script>
     <script src="Public/JS/popper.min.js"></script>
     <script src="Public/JS/resizer.js"></script>
+    <script src="Public/JS/alerts.js"></script>
 
     <!-- Style sheets-->
     <link rel="stylesheet" href="Public/CSS/style.css" type="text/css">
@@ -51,7 +52,7 @@ $databaseConnection = connectToDatabase();
         <ul id="ul-class-navigation">
             <li>
                 <a href="cart.php" class="HrefDecoration">
-                    <img src="./Public/ProductIMGHighRes/shoppingCartIcon.png" style="width:40px; height:40px;"></a>
+                    <img src="./Public/ProductIMGHighRes/shoppingCartIcon.png" style="width:40px; height:40px; margin-right:10px;"></a>
             </li>
 
             <li>
