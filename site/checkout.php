@@ -26,15 +26,15 @@ if(getCartPrice()>100) {
 <div id="wrapper">
     <div id="form">
         <form method="post" action="payment.php" id="form1">
-            E-mail* <input id="checkout" type="text" name="Email" value="" required>
-            Voornaam* <input id="checkout" type="text" name="Voornaam" value="" required>
-            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="">
-            Achternaam* <input id="checkout" type="text" name="Achternaam" value="" required>
-            Postcode* <input id="checkout" type="text" name="Postcode" value="" required>
-            Land* <input id="checkout" type="text" name="Land" value="" required>
-            Straat* <input id="checkout" type="text" name="Straat" value="" required>
-            Huisnummer* <input id="checkout" type="text" name="Huisnummer" value="" required>
-            Telefoonnummer <input id="checkout" type="text" name="Telefoonnummer" value="">
+            Voornaam* <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$">
+            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.]+$">
+            Achternaam* <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z]+$">
+            E-mail* <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required>
+            Postcode* <input id="checkout" type="text" name="Postcode" value="" placeholder="1111AA" required pattern="^[0-9]{4}[A-Z]{2}+$">
+            Straat* <input id="checkout" type="text" name="Straat" value="" placeholder="Zonnebloemlaan" required pattern="^[a-zA-Z]+$">
+            Huisnummer* <input id="checkout" type="text" name="Huisnummer" value="" placeholder="112a" required pattern="^[0-9]{1,5}[a-zA-Z]{0,1}$">
+            Land* <input id="checkout" type="text" name="Land" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$">
+            Telefoonnummer <input id="checkout" type="tel" name="Telefoonnummer" value="" placeholder="0612345678" pattern="^[0-9]+$" minlength="7" maxlength="15">
             <br>
             <p>* Verplicht veld</p>
 
