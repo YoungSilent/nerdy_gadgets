@@ -21,9 +21,6 @@
     /*background-color: #f2f2f2;*/
     /*padding: 20px;*/
 }
-#artikel{
-    float: right;
-}
 #divPrijsEnBetaalKnop{
     float: right;
     display: inline-block;
@@ -33,9 +30,14 @@
     margin-right: 155px;
     background-color: #5C6EFF;
     border-radius: 15px;
+    /*overflow: scroll; height: 400px;*/
+}
+#artikelen{
+    overflow: scroll; height: 400px;
 }
 #prijs{
-
+    
+    box-shadow: 0 -1px 0 #FFFFFF;
 }
 #naam{
     float: left;
