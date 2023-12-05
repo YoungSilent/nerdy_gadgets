@@ -30,10 +30,14 @@
     margin-right: 155px;
     background-color: #5C6EFF;
     border-radius: 15px;
+    overflow: hidden;
+    padding: 5px;
     /*overflow: scroll; height: 400px;*/
 }
 #artikelen{
+    margin-left: 10px;
     overflow: scroll; height: 400px;
+
 }
 #prijs{
     
