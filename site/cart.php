@@ -35,7 +35,7 @@ $totaalPrijs = NULL;
 //etc.
 
 if(empty($cart) == FALSE ){
-    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice    
     FROM stockitems SI 
     WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -87,7 +87,7 @@ if(empty($cart) == FALSE ){
     </div>
             <div id="CartSummary">
             <p> Aantal producten: <?php print(array_sum($cart));?>
-                    <br>Subtotaal: €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?> (Incl. BTW)
+                    <br>Subtotaal (Incl. BTW): €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?>
                     <br>Verzendkosten: €<?php
                                         if(getCartPrice()>100) {
                                             $verzendkosten = 0.00;
@@ -96,7 +96,7 @@ if(empty($cart) == FALSE ){
                                             $verzendkosten = 10.00;
                                             print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }?></p>
-                    Totaal prijs: €<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?>
+                    Totaal prijs (Incl. BTW): €<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?>
             <a href="checkout.php">
             <div id="NaarAfrekenen">
             <form method="post" action="checkout.php">
