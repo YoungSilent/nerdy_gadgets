@@ -35,7 +35,7 @@ $totaalPrijs = NULL;
 //etc.
 
 if(empty($cart) == FALSE ){
-    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice    
+    $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, RecommendedRetailPrice    
     FROM stockitems SI 
     WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -64,13 +64,12 @@ if(empty($cart) == FALSE ){
                 }
             }
             print($ResultValue['StockItemName'] . "<br>"); 
-            print sprintf("€ %.2f", number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>")); 
-            ?>
-
+            print sprintf("€ %.2f", number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>")); ?>  
             <form method="post" action="cart.php">
             <label for="aantal"></label>
             <input type="number" id="aantal" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>">
             </form>
+            <span>€ <?php print(number_format((float)$cart[$stockItemID] * number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>"), 2, ".", "" . "<br>")); ?></span>
 
             <br>
             <form method="post" action="cart.php">
@@ -87,16 +86,19 @@ if(empty($cart) == FALSE ){
     </div>
             <div id="CartSummary">
             <p> Aantal producten: <?php print(array_sum($cart));?>
-                    <br>Subtotaal (Incl. BTW): €<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?>
-                    <br>Verzendkosten: €<?php
+                    <br>Subtotaal (Excl. BTW): <span style="float: right;">€ <?php print(number_format((float)getCartPriceZonderBTW(), 2, ".", "")); ?> </span>
+                    <br>BTW: <span style="float: right;">€ <?php print(number_format((float)number_format((float)getCartPrice(), 2, ".", "") - number_format((float)getCartPriceZonderBTW(), 2, ".", ""), 2, ".", "")); ?> </span>
+                    <br>Verzendkosten: <span style="float: right;">€ <?php
                                         if(getCartPrice()>100) {
                                             $verzendkosten = 0.00;
                                             print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }else{
                                             $verzendkosten = 10.00;
                                             print(number_format((float)$verzendkosten, 2, ".", ""));
-                                        }?></p>
-                    Totaal prijs (Incl. BTW): €<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?>
+                                        }?></p></span>
+                    <div style="box-shadow: 0 -1px 0 #FFFFFF;">
+                        Totaal prijs (Incl. BTW): <span style="float: right;">€<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?></span>
+                    </div>
             <a href="checkout.php">
             <div id="NaarAfrekenen">
             <form method="post" action="checkout.php">
