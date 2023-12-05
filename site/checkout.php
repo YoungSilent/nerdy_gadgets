@@ -27,10 +27,11 @@ if(getCartPrice()>100) {
     <div id="form">
         <form method="post" action="payment.php" id="form1">
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$">
-            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.]+$">
-            Achternaam* <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z]+$">
+            Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.' ]+$">
+            Achternaam* <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z']+$">
             E-mail* <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required>
-            Postcode* <input id="checkout" type="text" name="Postcode" value="" placeholder="1111AA" required pattern="^[0-9]{4}[A-Z]{2}+$">
+            Postcode Nummers* <input id="checkout" type="text" name="PostcodeNummers(deze remained)" value="" placeholder="1111" required pattern="^[0-9]{4}+$">
+            Postcode Letters* <input id="checkout" type="text" name="PostcodeLetters" value="" placeholder="AA" required pattern="^[A-Z]{2}+$">
             Straat* <input id="checkout" type="text" name="Straat" value="" placeholder="Zonnebloemlaan" required pattern="^[a-zA-Z]+$">
             Huisnummer* <input id="checkout" type="text" name="Huisnummer" value="" placeholder="112a" required pattern="^[0-9]{1,5}[a-zA-Z]{0,1}$">
             Land* <input id="checkout" type="text" name="Land" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$">
