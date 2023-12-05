@@ -8,8 +8,6 @@ $Sort = "SellPrice";
 
 $AmountOfPages = 0;
 $queryBuildResult = "";
-$itemColors = array("(Black)","(Blue)","(Brown)","(Gray)","(Green)","(Light Brown)","(Pink)","(Red)","(White)","(Yellow)");
-$haakjes = array("(",")");
 
 if (isset($_GET['category_id'])) {
     $CategoryID = $_GET['category_id'];
@@ -104,6 +102,55 @@ if ($CategoryID != "") {
     }
 }
 
+//Filteren op kleur van Jochem
+//Vraagt op wat het geselecteerde kleuren filter is
+//Nu een weggehaalde functie door vele bugs 
+
+$itemColors = array("(Black)","(Blue)","(Brown)","(Gray)","(Green)","(Light Brown)","(Pink)","(Red)","(White)","(Yellow)");
+$haakjes = array("(",")");
+
+$ColorFilter = "";
+if (isset($_GET['ColorFilter'])) {
+    $ColorFilterPage = $_GET['ColorFilter'];
+    $_SESSION["ColorFilter"] = $_GET['ColorFilter'];
+} else if (isset($_SESSION["ColorFilter"])) {
+    $ColorFilterPage = $_SESSION["ColorFilter"];
+} else {
+    $ColorFilterPage = "";
+    $_SESSION["ColorFilter"] = "";
+}
+
+// if($ColorFilterPage != "" OR $ColorFilterPage != NULL){
+//     $Query = "SELECT SI.StockItemID
+//     FROM stockitems SI
+//     WHERE SI.SearchDetails LIKE '%" . $ColorFilterPage . "%'";
+//     $Statement = mysqli_prepare($databaseConnection, $Query);
+//     mysqli_stmt_execute($Statement);
+//     $ColorFilterResult = mysqli_stmt_get_result($Statement);
+//     $ColorFilterResult = mysqli_fetch_all($ColorFilterResult, MYSQLI_ASSOC);
+// }
+
+
+//Tussen elke ? > zit een spatie
+
+// <h4 class="FilterTopMargin"><i class="fas fa-filter"></i> Filteren op kleur</h4>
+// <select name="ColorFilter" id="ColorFilter" onchange="this.form.submit()">>
+//     <option value="" <?php if ($_SESSION['ColorFilter'] == "") {
+//         print "selected";
+//     } ? >>
+//     </option>
+//     <?php
+//     foreach($itemColors as $key => $value){? >
+//         <option value="<?php print($value); ? >" <?php if ($_SESSION['ColorFilter'] == $value) {
+//             print "selected";
+//         }
+//         ? >><?php print(str_replace($haakjes, "", $value)); ? ></option>
+//     <?php } ? >
+// </select>
+
+
+
+
 // code deel 2 van User story: Zoeken producten
 // <voeg hier de code in waarin het zoekresultaat opgehaald wordt uit de database>
 
@@ -111,6 +158,11 @@ if ($CategoryID == "") {
     if ($queryBuildResult != "") {
         $queryBuildResult = "WHERE " . $queryBuildResult;
     }
+        if (in_array($ColorFilterPage, $itemColors)) {
+        $ColorFilterString = " AND (SI.SearchDetails LIKE '%" . $ColorFilterPage . "%')";
+    }else{
+        $ColorFilterString = "";
+    }   
 
     $Query = "
                 SELECT SI.StockItemID, SI.StockItemName, SI.MarketingComments, TaxRate, RecommendedRetailPrice, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice,
@@ -121,7 +173,7 @@ if ($CategoryID == "") {
                 (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath
                 FROM stockitems SI
                 JOIN stockitemholdings SIH USING(stockitemid)
-                " . $queryBuildResult . "
+                " . $queryBuildResult . $ColorFilterString . "
                 GROUP BY StockItemID
                 ORDER BY " . $Sort . "
                 LIMIT ?  OFFSET ?";
@@ -165,16 +217,6 @@ if ($CategoryID == "") {
 
 //Vraagt op wat het geselecteerde kleuren filter is
 
-$ColorFilter = "";
-if (isset($_GET['ColorFilter'])) {
-    $ColorFilterPage = $_GET['ColorFilter'];
-    $_SESSION["ColorFilter"] = $_GET['ColorFilter'];
-} else if (isset($_SESSION["ColorFilter"])) {
-    $ColorFilterPage = $_SESSION["ColorFilter"];
-} else {
-    $ColorFilterPage = "";
-    $_SESSION["ColorFilter"] = "";
-}
 
 
 
@@ -198,7 +240,7 @@ if ($CategoryID !== "") {
            JOIN stockitemholdings SIH USING(stockitemid)
            JOIN stockitemstockgroups USING(StockItemID)
            JOIN stockgroups ON stockitemstockgroups.StockGroupID = stockgroups.StockGroupID
-           WHERE " . $queryBuildResult . " ? IN (SELECT StockGroupID from stockitemstockgroups WHERE StockItemID = SI.StockItemID)" . $ColorFilterString . " 
+           WHERE " . $queryBuildResult . " ? IN (SELECT StockGroupID from stockitemstockgroups WHERE StockItemID = SI.StockItemID) " . $ColorFilterString . " 
            GROUP BY StockItemID
            ORDER BY " . $Sort . "
            LIMIT ? OFFSET ?";
@@ -212,7 +254,7 @@ if ($CategoryID !== "") {
     $Query = "
                 SELECT count(*)
                 FROM stockitems SI
-                WHERE " . $queryBuildResult . " ? IN (SELECT SS.StockGroupID from stockitemstockgroups SS WHERE SS.StockItemID = SI.StockItemID) AND (SI.SearchDetails LIKE '% " . $ColorFilterPage . " %')";
+                WHERE " . $queryBuildResult . " ? IN (SELECT SS.StockGroupID from stockitemstockgroups SS WHERE SS.StockItemID = SI.StockItemID)  " . $ColorFilterString;
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_bind_param($Statement, "i", $CategoryID);
     mysqli_stmt_execute($Statement);
@@ -245,7 +287,6 @@ if (isset($amount)) {
                    value="<?php print (isset($_GET['search_string'])) ? $_GET['search_string'] : ""; ?>"
                    class="form-submit">
             <h4 class="FilterTopMargin"><i class="fas fa-list-ol"></i> Aantal producten op pagina</h4>
-
             <input type="hidden" name="category_id" id="category_id"
                    value="<?php print (isset($_GET['category_id'])) ? $_GET['category_id'] : ""; ?>">
             <select name="products_on_page" id="products_on_page" onchange="this.form.submit()">>
@@ -282,19 +323,19 @@ if (isset($amount)) {
                 </option>
             </select>
             <h4 class="FilterTopMargin"><i class="fas fa-filter"></i> Filteren op kleur</h4>
-            <select name="ColorFilter" id="ColorFilter" onchange="this.form.submit()">>
-                <option value="" <?php if ($_SESSION['ColorFilter'] == "") {
-                    print "selected";
-                } ?>>
-                </option>
-                <?php
-                foreach($itemColors as $key => $value){?>
-                    <option value="<?php print($value); ?>" <?php if ($_SESSION['ColorFilter'] == $value) {
-                        print "selected";
-                    }
-                    ?>><?php print(str_replace($haakjes, "", $value)); ?></option>
-                <?php } ?>
-            </select>
+<select name="ColorFilter" id="ColorFilter" onchange="this.form.submit()">>
+    <option value="" <?php if ($_SESSION['ColorFilter'] == "") {
+        print "selected";
+    } ?>>
+    </option>
+    <?php
+    foreach($itemColors as $key => $value){?>
+        <option value="<?php print($value); ?>" <?php if ($_SESSION['ColorFilter'] == $value) {
+            print "selected";
+        }
+        ?>><?php print(str_replace($haakjes, "", $value)); ?></option>
+    <?php } ?>
+</select>
     </form>
 </div>
 </div>

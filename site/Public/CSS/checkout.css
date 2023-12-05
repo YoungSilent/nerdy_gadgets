@@ -21,13 +21,21 @@
     /*background-color: #f2f2f2;*/
     /*padding: 20px;*/
 }
-#prijs{
+#artikel{
+    float: right;
+}
+#divPrijsEnBetaalKnop{
     float: right;
     display: inline-block;
-    width:160px;
-    height:160px;
+    width:360px;
+    height: auto;
     border: 1px;
     margin-right: 155px;
+    background-color: #5C6EFF;
+    border-radius: 15px;
+}
+#prijs{
+
 }
 #naam{
     float: left;
@@ -53,4 +61,6 @@
 }
 #submit{
     border-radius: 20px;
+    width: 360px;
+    float: bottom;
 }
