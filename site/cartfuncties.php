@@ -98,3 +98,24 @@ function getArtikelPrice($stockItemID){
     $price = $cart[$stockItemID] * number_format((float)$Result[0]['SellPrice'], 2, ".", "") ;
     return number_format((float)$price, 2, ".", "");
 }
+
+function getCartPriceZonderBTW(){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    $cartPrice = NULL;
+
+    $Query = "
+    SELECT StockItemID, RecommendedRetailPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    foreach($Result as $ResultValue){
+        $cartPrice = $cartPrice + ($cart[$ResultValue["StockItemID"]] * number_format((float)$ResultValue["RecommendedRetailPrice"], 2, ".", ""));
+        $cartPrice = number_format((float)$cartPrice, 2, ".", "");
+    }
+    return $cartPrice;
+}
