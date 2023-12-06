@@ -29,7 +29,8 @@ if(getCartPrice()>100) {
             Voornaam* <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$">
             Tussenvoegsels <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.' ]+$">
             Achternaam* <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z']+$">
-            E-mail* <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required>
+            E-mail* <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required
+                           pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$">
             Postcode Nummers* <input id="checkout" type="text" name="PostcodeNummers(deze remained)" value="" placeholder="1111" required pattern="^[0-9]{4}+$">
             Postcode Letters* <input id="checkout" type="text" name="PostcodeLetters" value="" placeholder="AA" required pattern="^[A-Z]{2}+$">
             Straat* <input id="checkout" type="text" name="Straat" value="" placeholder="Zonnebloemlaan" required pattern="^[a-zA-Z]+$">

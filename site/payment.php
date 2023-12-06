@@ -67,7 +67,7 @@ $payment = $mollie->payments->create([
         "currency" => "EUR",
         "value" => $totalValue
     ],
-    "description" => "My first API payment",
+    "description" => "NerdyGadgets Bestelling🐄",
     "redirectUrl" => $trimmedUrl . "/paymentstatus.php?order=1234",
     "cancelUrl" => $trimmedUrl . "/paymentstatus.php?order=1235",
     "method"      => \Mollie\Api\Types\PaymentMethod::IDEAL,
