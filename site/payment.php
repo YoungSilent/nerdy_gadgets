@@ -71,7 +71,6 @@ $payment = $mollie->payments->create([
     "redirectUrl" => $trimmedUrl . "/paymentstatus.php?order=1234",
     "cancelUrl" => $trimmedUrl . "/paymentstatus.php?order=1235",
     "method"      => \Mollie\Api\Types\PaymentMethod::IDEAL,
-    "issuer"      => $selectedIssuerId, // e.g. "ideal_INGBNL2A"
 ]);
 
 header("Location: " . $payment->getCheckoutUrl(), true, 303);
