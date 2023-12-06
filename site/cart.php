@@ -82,6 +82,7 @@ if(empty($cart) == FALSE ){
             <?php
             }
             ?>
+        <br>
             <p><a href='categories.php' style="color:white; text-decoration:underline;">Terug naar artikelen</a></p>
     </div>
             <div id="CartSummary">
