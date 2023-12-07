@@ -11,15 +11,11 @@
     position: relative;
 }
 #form{
-    border-radius: 5px;
-    padding-left: 125px;
-    width: 50%;
+    margin-left: 125px;
     display: inline-block;
-    height:120px;
-    border: 1px;
-    /*display: flex;*/
-    /*background-color: #f2f2f2;*/
-    /*padding: 20px;*/
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+    padding: 10px;
 }
 #divPrijsEnBetaalKnop{
     float: right;
@@ -69,4 +65,12 @@
     border-radius: 20px;
     width: 360px;
     float: bottom;
+}
+
+.formLabel {
+    display:block;
+}
+
+.formName {
+    display:inline-block;
 }

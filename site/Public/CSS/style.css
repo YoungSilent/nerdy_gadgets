@@ -525,3 +525,11 @@ ul#ul-class-price li {
     margin-bottom:5px;
     margin-left:10px;
 }
+
+.formLabel {
+    display:block;
+}
+
+.formName {
+    display:inline-block;
+}
