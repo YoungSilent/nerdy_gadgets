@@ -14,19 +14,35 @@ function saveCart($cart){
     $_SESSION["cart"] = $cart;                  // werk de "gedeelde" $_SESSION["cart"] bij met de meegestuurde gegevens
 }
 
-function addProductToCart($stockItemID){
+function addProductToCart($stockItemID, $stockItemAantal){
     $cart = getCart();                          // eerst de huidige cart ophalen
 
     if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-        $cart[$stockItemID] += 1;                   //zo ja:  aantal met 1 verhogen
+        $cart[$stockItemID] += $stockItemAantal;                   //zo ja:  aantal met 1 verhogen
     }else{
-        $cart[$stockItemID] = 1;                    //zo nee: key toevoegen en aantal op 1 zetten.
+        $cart[$stockItemID] = $stockItemAantal;                    //zo nee: key toevoegen en aantal op 1 zetten.
     }
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
 
+function adjustCartProductQuantity($stockItemID, $aantal){
+    $cart = getCart();
+    if(array_key_exists($stockItemID, $cart)) {
+        $cart[$stockItemID] = $aantal;
+    }
+
+    saveCart($cart);
+}
+
 function removeProductFromCart($stockItemID){
+    $cart = getCart();
+    unset($cart[$stockItemID]);
+
+    saveCart($cart);
+}
+
+function remove1ProductFromCart($stockItemID){
     $cart = getCart();                          // eerst de huidige cart ophalen
 
     if($cart[$stockItemID] != 1){
@@ -58,6 +74,47 @@ function getCartPrice(){
 
     foreach($Result as $ResultValue){
         $cartPrice = $cartPrice + ($cart[$ResultValue["StockItemID"]] * number_format((float)$ResultValue["SellPrice"], 2, ".", ""));
+        $cartPrice = number_format((float)$cartPrice, 2, ".", "");
+    }
+    return $cartPrice;
+}
+
+function getCartTotalPrice($verzendkosten){
+    return getCartPrice() + $verzendkosten;
+}
+
+function getArtikelPrice($stockItemID){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    
+    $Query = "SELECT (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID = (" . $stockItemID . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    $price = $cart[$stockItemID] * number_format((float)$Result[0]['SellPrice'], 2, ".", "") ;
+    return number_format((float)$price, 2, ".", "");
+}
+
+function getCartPriceZonderBTW(){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    $cartPrice = NULL;
+
+    $Query = "
+    SELECT StockItemID, RecommendedRetailPrice
+    FROM stockitems SI 
+    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+    foreach($Result as $ResultValue){
+        $cartPrice = $cartPrice + ($cart[$ResultValue["StockItemID"]] * number_format((float)$ResultValue["RecommendedRetailPrice"], 2, ".", ""));
         $cartPrice = number_format((float)$cartPrice, 2, ".", "");
     }
     return $cartPrice;
