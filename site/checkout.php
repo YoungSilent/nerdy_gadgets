@@ -70,9 +70,8 @@ if(getCartPrice()>100) {
 
         </form>
     </div>
-    <div id="artikel">
-    </div>
     <div id="divPrijsEnBetaalKnop">
+    <div id="artikelen">
         <?php
         $ProductInfo = getStockItemInfo();
         $cart = getCart();
@@ -85,6 +84,7 @@ if(getCartPrice()>100) {
         }
         ?>
         <!--        laat de totaal prijs zien van het winkelmandje-->
+    </div>
         <div id="prijs">
             <?php
             print("Subtotaal(incl btw): €");
@@ -101,10 +101,8 @@ if(getCartPrice()>100) {
         <form method="post" action="payment.php" onsubmit="return validateForm1AndSubmit();" id="form2">
             <input id="submit" type="submit" value="Doorgaan">
         </form>
-        <?php
-
-
-        include __DIR__ . "/footer.php";
-        ?>
     </div>
 </div>
+<?php
+include __DIR__ . "/footer.php";
+?>
