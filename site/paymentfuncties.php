@@ -1,16 +1,16 @@
 <?php
-function getCartPrice2(){
+function getOrderSummary($id){
     $databaseConnection = connectToDatabase();
-    $cart = getCart();
-
     $Query = "
-    SELECT * 
+    SELECT  StockItemName, OL.UnitPrice, OL.Quantity
     FROM orders AS ORD
     JOIN orderlines AS OL ON OL.OrderID = ORD.OrderID
-    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    JOIN stockitems AS SI on SI.StockItemID = OL.StockItemID
+    WHERE ORD.OrderID = ?";
     $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $id);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-
+    return $Result;
 }
