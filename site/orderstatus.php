@@ -3,6 +3,15 @@ include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
 include __DIR__ . "/paymentfuncties.php";
 
+$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+if (!isset($_GET['order'])){
+    $url = $url . "?order=" . $id;
+?>
+<meta http-equiv="Refresh" content="0; url='<?php echo $url ?>'" />
+<?php
+exit();
+}
 if (isset($_GET['order'])) {
     $order = $_GET['order'];
 } else {
