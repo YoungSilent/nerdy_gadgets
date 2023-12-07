@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
+include __DIR__ . "/paymentfuncties.php";
 
 ?>
 <h1>Uw bestelling wordt verwerkt</h1>

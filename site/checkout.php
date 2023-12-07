@@ -2,6 +2,7 @@
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
 include __DIR__ . "/stockidname.php";
+include __DIR__ . "/paymentfuncties.php";
 if(getCartPrice()>100) {
     $verzendkosten = 0.00;
 }else{
