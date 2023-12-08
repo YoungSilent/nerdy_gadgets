@@ -1,6 +1,7 @@
 <?php
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
+include __DIR__ . "/paymentfuncties.php";
 
 ?>
 <h1>Uw bestelling wordt verwerkt</h1>
@@ -68,8 +69,8 @@ $payment = $mollie->payments->create([
         "value" => $totalValue
     ],
     "description" => "My first API payment",
-    "redirectUrl" => $trimmedUrl . "/paymentstatus.php?order=1234",
-    "cancelUrl" => $trimmedUrl . "/paymentstatus.php?order=1235",
+    "redirectUrl" => $trimmedUrl . "/orderstatus.php?order=1234",
+    "cancelUrl" => $trimmedUrl . "/paymentstatus.php?status=cancelled",
     "method"      => \Mollie\Api\Types\PaymentMethod::IDEAL,
 ]);
 

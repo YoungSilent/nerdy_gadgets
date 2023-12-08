@@ -2,6 +2,7 @@
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
 include __DIR__ . "/stockidname.php";
+include __DIR__ . "/paymentfuncties.php";
 if(getCartPrice()>100) {
     $verzendkosten = 0.00;
 }else{
@@ -29,40 +30,40 @@ if(getCartPrice()>100) {
         <div>
             <div class="formName">
                 <label class="formLabel">Voornaam*</label>    
-                <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px">
+                <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px" maxlength="50">
             </div>
             <div class="formName">
                 <label class="formLabel">Tussenvoegsel(s)</label>
-                <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.' ]+$" style="width:150px">
+                <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.' ]+$" style="width:150px" maxlength="20">
             </div>
             <div class="formName">
                 <label class="formLabel">Achternaam*</label>
-                <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z']+$" style="width:175px">
+                <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z']+$" style="width:175px" maxlength="50">
             </div>
         </div>
             <label class="formLabel">E-mail*</label>
-            <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required style="width:510px">
+            <input id="checkout" type="email" name="Email" value="" placeholder="John@gmail.com" required style="width:510px" maxlength="100">
         <label class="formLabel">Postcode*</label>
         <div>
             <div class="formName">
-                <input id="checkout" type="text" name="PostcodeNummers(deze remained)" value="" placeholder="1111" required pattern="^[0-9]{4}+$" style="width:80px">
+                <input id="checkout" type="text" name="PostcodeNummers" value="" placeholder="1111" required pattern="^[0-9]{4}+$" style="width:80px" minlength="4" maxlength="4">
             </div>
             <div class="formName">
-                <input id="checkout" type="text" name="PostcodeLetters" value="" placeholder="AA" required pattern="^[A-Z]{2}+$" style="width:65px">
+                <input id="checkout" type="text" name="PostcodeLetters" value="" placeholder="AA" required pattern="^[A-Z]{2}+$" style="width:65px" minlength= "2" maxlength="2">
             </div>
         </div>
         <div>
             <div class="formName">
                 <label class="formLabel">Straat*</label>
-                <input id="checkout" type="text" name="Straat" value="" placeholder="Zonnebloemlaan" required pattern="^[a-zA-Z]+$">
+                <input id="checkout" type="text" name="Straat" value="" placeholder="Zonnebloemlaan" required pattern="^[a-zA-Z]+$" style="width:405px" maxlength="200">
             </div>
             <div class="formName">
                 <label class="formLabel">Huisnummer*</label>
-                <input id="checkout" type="text" name="Huisnummer" value="" placeholder="112a" required pattern="^[0-9]{1,5}[a-zA-Z]{0,1}$" style="width:100px">
+                <input id="checkout" type="text" name="Huisnummer" value="" placeholder="112a" required pattern="^[0-9]{1,5}[a-zA-Z]{0,1}$" style="width:100px" maxlength="6">
             </div>
         </div>
             <label class="formLabel">Land*</label>
-            <input id="checkout" type="text" name="Land" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$" style="width:510px">
+            <input id="checkout" type="text" name="Land" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$" style="width:510px" maxlength="200">
             <label class="formLabel">Telefoonnummer</label>
             <input id="checkout" type="tel" name="Telefoonnummer" value="" placeholder="0612345678" pattern="^[0-9]+$" minlength="7" maxlength="15" style="width:auto">
             <br>
