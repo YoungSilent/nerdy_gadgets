@@ -86,14 +86,20 @@ if(getCartPrice()>100) {
         <!--        laat de totaal prijs zien van het winkelmandje-->
     </div>
         <div id="prijs">
-            <?php
-            print("Subtotaal(incl btw): €");
-            print(getCartPrice());
-            print("<br>");
-            print("Verzend kosten: €" . number_format((float)$verzendkosten, 2, ".", ""));
-            print("<br>");
-            print("Totaalprijs (incl btw): €" . number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));
-            ?>
+            Subtotaal (Excl. BTW): <span style="float: right;">€ <?php print(number_format((float)getCartPriceZonderBTW(), 2, ".", "")); ?> </span>
+            <br>BTW: <span style="float: right;">€ <?php print(number_format((float)number_format((float)getCartPrice(), 2, ".", "") - number_format((float)getCartPriceZonderBTW(), 2, ".", ""), 2, ".", "")); ?> </span>
+            <br>Verzendkosten: <span style="float: right;">€ <?php
+                                        if(getCartPrice()>100) {
+                                            $verzendkosten = 0.00;
+                                            print(number_format((float)$verzendkosten, 2, ".", ""));
+                                        }else{
+                                            $verzendkosten = 10.00;
+                                            print(number_format((float)$verzendkosten, 2, ".", ""));
+                                        }?></p></span>                            
+            <div id="totaalPrijs">
+            <br>    
+            Totaal prijs (Incl. BTW): <span style="float: right;">€<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?></span>
+            </div>
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->
         <br>
