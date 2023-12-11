@@ -2,6 +2,7 @@
 <?php
 if(session_status() === PHP_SESSION_NONE) session_start();
 include "database.php";
+include "customerfuncties.php";
 $databaseConnection = connectToDatabase();
 
 
