@@ -15,21 +15,26 @@ function getOrderSummary($id){
     return $Result;
 }
 
-function insertOrder(){
-    //mysqli_query($databaseConnection, "INSERT INTO mytable (1, 2, 3, 'blah')");
-
+function createOrder($customerID){
     $databaseConnection = connectToDatabase();
-    $cart = getCart();
+    $currentDate = date("Y-m-d");
+    $currentDateTime = date("Y-m-d H:i:s");
+    $deliverydate = date("Y-m-d", strtotime("tomorrow"));
+    $ContactPersonID = getRandomContactID();
 
-    $Query = "
-    SELECT StockItemID, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice
-    FROM stockitems SI 
-    WHERE SI.StockItemID IN (" . implode(',' , array_keys($cart)) . ")";
+    $Query = "INSERT INTO orders (CustomerID, SalespersonPersonID, ContactPersonID, OrderDate, ExpectedDeliveryDate, IsUndersupplyBackordered, LastEditedBy, LastEditedWhen)
+    VALUES (?, 1, ?, ?, ?, 1, 1, ?)";
     $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "iisss", $customerID, $ContactPersonID, $currentDate, $deliverydate, $currentDateTime);
     mysqli_stmt_execute($Statement);
-    $Result = mysqli_stmt_get_result($Statement);
-    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
 
     $id = mysqli_insert_id($databaseConnection);
     return $id;
+}
+
+function getRandomContactID(){
+    //(SELECT PersonID FROM people 
+    //WHERE IsEmployee = 1 AND 
+    //ORDER BY RAND() LIMIT 1), 
+    return 1;
 }
