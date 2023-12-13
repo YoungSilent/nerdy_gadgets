@@ -38,3 +38,7 @@ function getRandomContactID(){
     //ORDER BY RAND() LIMIT 1), 
     return 1;
 }
+
+function removeCartFromStock(){
+
+}
