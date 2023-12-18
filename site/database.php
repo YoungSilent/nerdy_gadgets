@@ -131,3 +131,23 @@ function isBackupImage($id, $databaseConnection) {
         return FALSE;
      }
 }
+
+function getPopularItems() {
+    $databaseConnection = connectToDatabase();
+    $Query = "SELECT StockItemID, count(*) 
+    FROM orderlines AS OLS
+    JOIN orders AS ORD ON ORD.OrderID = OLS.OrderID
+    WHERE orderdate > DATE_SUB(CURDATE(), INTERVAL 8 YEAR)
+    GROUP BY StockItemID
+    ORDER BY count(*) DESC
+    /*
+    kijken of er voorraad is
+    sorteren op voorraad hoog naar laag
+    sorteren op artikelnummer laag naar hoog
+    */  
+    LIMIT 5;";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+}

@@ -23,6 +23,9 @@ if ($lastSlashPos !== false) {
 }
 
 
+$_SESSION['customerID'] = 10;
+$customerID = $_SESSION['customerID'];
+$orderID = createOrder($customerID);
 
 //https://github.com/mollie/mollie-api-php
 
@@ -35,7 +38,7 @@ $payment = $mollie->payments->create([
         "value" => $totalValue
     ],
     "description" => "My first API payment",
-    "redirectUrl" => $trimmedUrl . "/orderstatus.php",
+    "redirectUrl" => $trimmedUrl . "/orderstatus.php?order=" . $orderID,
     "cancelUrl" => $trimmedUrl . "/paymentstatus.php?status=cancelled",
     "method"      => \Mollie\Api\Types\PaymentMethod::IDEAL,
 ]);
