@@ -134,20 +134,18 @@ function isBackupImage($id, $databaseConnection) {
 
 function getPopularItems() {
     $databaseConnection = connectToDatabase();
-    $Query = "SELECT StockItemID, count(*) 
+    $Query = "SELECT StockItemID 
     FROM orderlines AS OLS
     JOIN orders AS ORD ON ORD.OrderID = OLS.OrderID
+    JOIN stockitemholdings SIH USING(stockitemid)
     WHERE orderdate > DATE_SUB(CURDATE(), INTERVAL 8 YEAR)
+    AND QuantityOnHand > 1
     GROUP BY StockItemID
-    ORDER BY count(*) DESC
-    /*
-    kijken of er voorraad is
-    sorteren op voorraad hoog naar laag
-    sorteren op artikelnummer laag naar hoog
-    */  
+    ORDER BY count(*) DESC, QuantityOnHand DESC, StockItemID ASC
     LIMIT 5;";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return $Result;
 }
