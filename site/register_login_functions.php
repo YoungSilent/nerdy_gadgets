@@ -1,13 +1,26 @@
 <?php
-function getCustomer($CustomerID){
-    $databaseConnection = connectToDatabase();
-    $Query = "
-    SELECT  CustomerID
-    FROM customers AS cus";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $CustomerID);
-    mysqli_stmt_execute($Statement);
-    $Result = mysqli_stmt_get_result($Statement);
-    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-    return $Result;
+
+function getUserData($userId) {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "nerdygadgets";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM people WHERE PersonID = ?";
+    $statement = $conn->prepare($sql);
+    $statement->bind_param("i", $userId);
+    $statement->execute();
+    $result = $statement->get_result();
+    $userData = $result->fetch_assoc();
+
+    $conn->close();
+
+    return $userData;
 }
+?>
