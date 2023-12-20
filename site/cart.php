@@ -68,7 +68,7 @@ if(empty($cart) == FALSE ){
             ?>Artikelprijs: <span style="float:right;"><?php print sprintf("€ %.2f", number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>")); ?> </span> 
             <form method="post" action="cart.php">
                 <label for="aantal"></label>Aantal: 
-                    <input type="number" id="aantal" style="text-align: right" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>  max="<?php echo str_replace("Voorraad: ","",$ResultValue['QuantityOnHand'] ) ?>">
+                    <input type="number" id="aantal" style="text-align: right" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>"  max="<?php echo str_replace("Voorraad: ","",$ResultValue['QuantityOnHand'] ) ?>">
             </form>
             Totaal artikelprijs: <span style="float:right; box-shadow: 0 -1px 0 #FFFFFF;">€ <?php print(number_format((float)$cart[$stockItemID] * number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>"), 2, ".", "" . "<br>")); ?></span>
 
