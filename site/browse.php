@@ -106,8 +106,10 @@ if ($CategoryID != "") {
 //Vraagt op wat het geselecteerde kleuren filter is
 //Nu een weggehaalde functie door vele bugs 
 
-$itemColors = array("(Black)","(Blue)","(Brown)","(Gray)","(Green)","(Light Brown)","(Pink)","(Red)","(White)","(Yellow)");
+$itemColors = array("Black","Blue","Brown","Gray","Green","Light Brown","Pink","Red","White","Yellow");
 $haakjes = array("(",")");
+if (isset($_get['ColorFilter']))
+//Color values aan de colors koppelen
 
 $ColorFilter = "";
 if (isset($_GET['ColorFilter'])) {
@@ -419,7 +421,7 @@ if (isset($amount)) {
     } else {
         ?>
         <h2 id="NoSearchResults">
-            Yarr, er zijn geen resultaten gevonden.
+            Er zijn geen resultaten gevonden met deze specificaties.
         </h2>
         <?php
     }
