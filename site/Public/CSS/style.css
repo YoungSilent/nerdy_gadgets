@@ -500,7 +500,7 @@ ul#ul-class-price li {
 }
 
 #CartSummary {
-    display:inline-block;
+    /*display:inline-block;*/
     float:right;
     background-color:#787eff;
     margin-top:30px;
@@ -518,7 +518,7 @@ ul#ul-class-price li {
 }
 
 #AfrekenIcon {
-    display:inline-block;
+    /*display:inline-block;*/
     width:50px;
     height:50px;
     float:right;
@@ -533,3 +533,81 @@ ul#ul-class-price li {
 .formName {
     display:inline-block;
 }
+
+#slideshow {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Aangepaste stijling voor de tekst naast de afbeelding */
+.text-content {
+    border: 1px solid black; /* Rand toegevoegd rond de tekst */
+    padding: 10px; /* Ruimte binnen de rand */
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 600px;
+    max-width: 600px; /* Stel een maximale breedte in voor de tekst */
+}
+
+/* Aangepaste stijling voor de slide */
+.slide {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Volledige containment block voor afbeelding en titel */
+.slide-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* Begin aan de start van de flex container */
+    padding: 20px 0; /* Padding aan de boven- en onderkant */
+    color:white;
+}
+
+/* Afbeelding frame */
+.ImgFrame {
+    /* Stel een minimale breedte in */
+    min-width: 230px; /* Dit dient overeen te komen met de breedste afbeelding */
+    /* Of stel een vaste hoogte in */
+    min-height: 230px; /* Dit zorgt ervoor dat alle afbeeldingen dezelfde hoogte hebben */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    flex-shrink: 0; /* Voorkom dat de afbeelding krimpt */
+}
+
+/* Stijling voor de tab rij */
+.tab-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Spacing between slides and tabs */
+}
+
+.tab {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: rgb(36, 41, 143);
+    padding: 10px 20px;
+    margin: 0 5px; /* Spacing between tabs */
+    user-select: none;
+    border-radius: 13px;
+}
+
+.tab.active {
+    background-color: rgba(103,110,255, 1);
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
