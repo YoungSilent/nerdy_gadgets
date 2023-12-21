@@ -8,6 +8,8 @@ if(getCartPrice()>100) {
 }else{
     $verzendkosten = 10.00;
 }
+
+$FullName = $_SESSION['FullName'];
 // $backupImage = FALSE;
 // $StockItem = getStockItem($_GET['id'], $databaseConnection);
 // $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
@@ -30,7 +32,7 @@ if(getCartPrice()>100) {
         <div>
             <div class="formName">
                 <label class="formLabel">Voornaam*</label>    
-                <input id="checkout" type="text" name="Voornaam" value="" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px" maxlength="50">
+                <input id="checkout" type="text" name="Voornaam" value="<?php echo htmlspecialchars($FullName); ?>" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px" maxlength="50">
             </div>
             <div class="formName">
                 <label class="formLabel">Tussenvoegsel(s)</label>
