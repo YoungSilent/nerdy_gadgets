@@ -10,7 +10,6 @@ if (!isset($_SESSION['PersonID'])) {
 // Get the user data
 $userId = $_SESSION['PersonID'];
 $userData = getUserData($userId);
-
 ?>
 
 <!DOCTYPE html>
