@@ -19,6 +19,7 @@ function connectToDatabase() {
     return $Connection;
 }
 
+
 function getHeaderStockGroups($databaseConnection) {
     $Query = "
                 SELECT StockGroupID, StockGroupName, ImagePath
