@@ -24,7 +24,6 @@ foreach(getCart() as $key => $value){
 
 
 
-
 $cart = getCart();
 $totaalPrijs = NULL;
 //print_r($cart);
@@ -109,7 +108,26 @@ if(empty($cart) == FALSE ){
             <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
             </div>
             </a>
+            <?php
+                $Query = "SELECT *
+                          FROM globalCoupons;";
+                $Statement = mysqli_prepare($databaseConnection, $Query);
+                mysqli_stmt_execute($Statement);
+                $Result = mysqli_stmt_get_result($Statement);
+                $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+            ?>
+
+            <div id="KortingsCode">
+                <label style="font-size:14.5px">Voer hier uw kortingscode in. (Niet verplicht*)</label>
+                <form method="post" action="cart.php" id="kortingsCodeInput" name="kortingsCodeInput">
+                    <input type="text" name="Voornaam" value="" style="width:175px; height:25px; font-size:14.5px;">
+                </form>
+                <?php
+                foreach($Result as $ResultKey => $ResultValue)
+                ?>
             </div>
+            </div>
+
             <?php
             
         }else{
