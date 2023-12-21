@@ -21,20 +21,18 @@ if (isset($_POST['submit'])) {
     }
 
     // Get values from the form
-    $username = $_POST['fullName'];
+    $FullName = $_POST['FullName'];
     $HashedPassword = $_POST['HashedPassword'];
 
-    // ... repeat for other form fields ...
-
-    // SQL query to insert data into the people table
+    // SQL query to get data from the people table
     $sql = "SELECT CASE
-            WHEN fullName = ? THEN PreferredName
-            WHEN fullName = ? THEN FullName
-            WHEN fullName = ? THEN EmailAddress
+            WHEN FullName = ? THEN PreferredName
+            WHEN FullName = ? THEN FullName
+            WHEN FullName = ? THEN EmailAddress
          END AS SelectedField,
          HashedPassword
          FROM people
-         WHERE fullName = ? OR fullName = ? OR fullName = ?";
+         WHERE FullName = ? OR FullName = ? OR FullName = ?";
 
 
     $statement = mysqli_prepare($conn, $sql);
@@ -56,15 +54,18 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registreer Pagina</title>
+    <title>Login Pagina</title>
 </head>
 <body>
-<h2>Registreer Pagina</h2>
+<h2 style="margin-left: 500px">Login Pagina</h2>
 <form method="post" action="ingelogd.php" onSubmit="return validate();"
 "">
-Volledige naam: <input type="text" name="fullName"><br>
-Wachtwoord: <input id="password" type="password" name="HashedPassword"><br>
-<input name="submit" type="submit" value="Submit">
+<label class="formLabel" style="margin-left: 500px">Email:</label>
+<input type="text" name="FullName" style="width: 500px; margin-left: 500px;"><br>
+<label class="formLabel" style="margin-left: 500px">Wachtwoord:</label>
+<input id="password" type="password" name="HashedPassword" style="width: 500px; margin-left: 500px;"><br>
+<input name="submit" type="submit" value="Inloggen" style="width: 125px; margin-left: 675px; margin-top: 10px">
+<h5 style="text-align: center;">Nog geen account klik <a href="register.php">hier</a></h5>
 </form>
 </body>
 </html>

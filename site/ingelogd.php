@@ -19,16 +19,17 @@ if (isset($_POST['submit'])) {
     }
 
     // Get values from the form
-    $fullName = $_POST['fullName'];
+    $FullName = $_POST['FullName'];
+    $PreferredName = $_POST['FullName'];
     $passwordInput = $_POST['HashedPassword'];
 
     // SQL query to check if the username or email and hashed password match
-    $sql = "SELECT * FROM people WHERE (fullName = ? OR EmailAddress = ?) AND HashedPassword = ?";
+    $sql = "SELECT * FROM people WHERE (FullName = ? OR EmailAddress = ?) AND HashedPassword = ?";
 
     $statement = mysqli_prepare($conn, $sql);
 
     // Assuming $username and $passwordInput are the values you want to check
-    mysqli_stmt_bind_param($statement, "sss", $fullName, $fullName, $passwordInput);
+    mysqli_stmt_bind_param($statement, "sss", $FullName, $PreferredName, $passwordInput);
 
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
@@ -55,7 +56,9 @@ if (isset($_POST['submit'])) {
 ?>
 
 <!-- Your HTML content for the logged-in page -->
-<h2 style="text-align: center;">U Bent Ingelogd</h2>
-<h3 style="text-align: center">Welkom <?php echo isset($_SESSION['FullName']) ? ucwords($_SESSION['FullName']) : ''; ?></h3>
-<h3 style="text-align: center">Email: <?php echo isset($_SESSION['EmailAddress']) ? $_SESSION['EmailAddress'] : ''; ?></h3>
-<h3 style="text-align: center">personID: <?php echo isset($_SESSION['PersonID']) ? $_SESSION['PersonID'] : ''; ?></h3>
+<h2 style="text-align: center;"><?php echo !isset($_SESSION['PersonID']) ? "U Bent Niet Ingelogd" : ''; ?></h2>
+<h2 style="text-align: center;"><?php echo isset($_SESSION['PersonID']) ? "U Bent Ingelogd" : ''; ?></h2>
+<h3 style="text-align: center"><?php echo isset($_SESSION['FullName']) ? "Welkom" . " " . ucwords($_SESSION['FullName']) : ''; ?></h3>
+
+<!--<h3 style="text-align: center">--><?php //echo isset($_SESSION['EmailAddress']) ? "Email: " . " " . $_SESSION['EmailAddress'] : ''; ?><!--</h3>-->
+<!--<h3 style="text-align: center">personID: --><?php //echo isset($_SESSION['PersonID']) ? $_SESSION['PersonID'] : ''; ?><!--</h3>-->

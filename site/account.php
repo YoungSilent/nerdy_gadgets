@@ -20,9 +20,9 @@ $userData = getUserData($userId);
     <title>Jou Profiel</title>
 </head>
 <body>
-<h2>Jou Profiel</h2>
-<h3>Gebruikersnaam <?php echo isset($userData['PreferredName']) ? ucwords($userData['PreferredName']) : ''; ?></h3>
-<h3>Email: <?php echo isset($userData['EmailAddress']) ? $userData['EmailAddress'] : ''; ?></h3>
-<h4>Uitloggen klik <a href="uitloggen.php">hier</a></h4>
+<h2 style="text-align: center;">Jou Profiel</h2>
+<h3 style="text-align: center;">Gebruikersnaam: <?php echo isset($userData['PreferredName']) ? ucwords($userData['PreferredName']) : ''; ?></h3>
+<h3 style="text-align: center;">Email: <?php echo isset($userData['EmailAddress']) ? $userData['EmailAddress'] : ''; ?></h3>
+<h4 style="text-align: center;">Uitloggen klik <a href="uitloggen.php">hier</a></h4>
 </body>
 </html>

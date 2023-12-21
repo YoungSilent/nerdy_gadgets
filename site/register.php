@@ -70,9 +70,8 @@ if (isset($_POST['submit'])) {
     <title>Registreer Pagina</title>
 </head>
 <body>
-<h2>Registreer Pagina</h2>
-<form method="post" action="geregistreerd.php" onSubmit="return validate();"
-"">
+<h2 style="margin-left: 500px; margin-bottom: 25px">Registreer Pagina</h2>
+<form method="post" action="geregistreerd.php" onSubmit="return validate();" style="margin-left: 500px">
 <div>
     <div class="formName">
         <label class="formLabel">Voornaam*</label>
@@ -126,10 +125,13 @@ if (isset($_POST['submit'])) {
 <input id="checkout" type="tel" name="PhoneNumber" value="" placeholder="0612345678" pattern="^[0-9]+$" minlength="7"
        maxlength="15" style="width:auto">
 <br>
-Wachtwoord: <input id="password"  type="password" name="HashedPassword"><br>
-Wachtwoord: <input id="confirm_password" type="password" name="HashedPassword"><br>
 
-
+<label class="formLabel">Wachtwoord</label>
+<input id="password" type="password" name="HashedPassword" value="" required style="width:510px"
+       minlength="8">
+<label class="formLabel">Bevestig Wachtwoord</label>
+<input id="confirm_password" type="password" name="HashedPassword" value="" required style="width:510px"
+       minlength="8">
 
 <p>* Verplicht veld</p>
 <script>
@@ -143,8 +145,7 @@ Wachtwoord: <input id="confirm_password" type="password" name="HashedPassword"><
         }
     }
 </script>
-
-<input name="submit" type="submit" value="Submit">
+    <input name="submit" type="submit" value="Registreren" style="width: 125px; margin-left: 475px; margin-top: 10px">
 </form>
 </body>
 </html>

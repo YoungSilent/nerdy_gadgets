@@ -1,9 +1,9 @@
 <?php
-$_SESSION = array();
+session_start();
+
+// Destroy the session
 session_destroy();
 
-if (!isset($_SESSION['PersonID'])) {
-    // If the user is not logged in, redirect to login.php
-    header("Location: login.php");
-    exit();
-}
+// Redirect to the login page
+header("Location: index.php");
+exit();
