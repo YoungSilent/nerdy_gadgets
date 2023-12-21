@@ -2,7 +2,7 @@
 <?php
 
 include __DIR__ . "/header.php";
-include __DIR__ . "/cartfuncties.php"; 
+include __DIR__ . "/cartfuncties.php";
 
 $backupImage= FALSE;
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
@@ -165,8 +165,10 @@ if (isset($_GET["id"])) {
             }
             ?>
         </div>
-        <table>
 
+
+<H3>Zie ook deze producten!</H3>
+        <table id="AanbevelingenOpmaak">
 <?php /*Luukie's code uu*/
 
         $StockItemID = $_GET["id"];
@@ -181,36 +183,53 @@ if (isset($_GET["id"])) {
 
         ?>
 
-            <td>
-                <form method="get" action="view.php?">
+            <td style="text-align: left;">
+                <form method="get" action="view.php?" style="
                     <input type="hidden" name="id" value="<?php print($StockItemID)?>">
-                    <input type="hidden" name="groep" value="<?php print($huidigeGroep - 1) % $totalAantalGroepen; ?>">
-                    <input type="submit" value="<- Effetjes terug">
+                    <input type="hidden" name="groep" value="<?php print(($huidigeGroep - 1 + $totalAantalGroepen) % $totalAantalGroepen); ?>">
+                    <input type="submit" value="<- Effetjes terug" id="AanbevelingenKnop">
                 </form>
             </td>
 
 
             <?php  // Display items in groepjes
-        for ($i = $huidigeGroep * $itemsPerGroep; $i < min(($huidigeGroep + 1) * $itemsPerGroep, $totalAanbevelingen); $i++) {
-            ?> <td> <?php
-            print(json_encode($allAanbevelingen[$i], JSON_PRETTY_PRINT));
-            print("<br>");
-            ?> </td> <?php
-        }
-        ?>
-<td>
+            for ($i = $huidigeGroep * $itemsPerGroep; $i < min(($huidigeGroep + 1) * $itemsPerGroep, $totalAanbevelingen); $i++) {
+                ?>
+                <td>
+                    <?php
+                    // Maakt de output van de array net wat mooier
+                    print($allAanbevelingen[$i]['StockItemName'].'<br>');
+                    print("ID: " . $allAanbevelingen[$i]['StockItemID'] . "<br>");
+                    print("€ " . number_format($allAanbevelingen[$i]['SellPrice'], 2) . "<br>");
+
+                    $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
+                    if(empty($StockItemImage)){
+                    $StockItemImage = getBackupStockItemImage($_GET['id'], $databaseConnection);
+                    $backupImage= TRUE;}
+            if (isset($StockItemImage)) {
+                if (count($StockItemImage) == 1) {
+                   ?> <div id="ImageFrame"
+                         style="background-image: url('Public/<?php if($backupImage){print("StockGroupIMG/");}else{print("StockItemIMG/");}
+                         print $StockItemImage[0]['ImagePath']; ?>');
+                                 background-size: <?php if($backupImage){print("cover");} else{print("300px");} ?>;
+                                 background-repeat: no-repeat;
+                                 background-position: center;"></div>
+                </td>
+                <?php
+            }  ?>
+<td style="text-align: right;">
         <form method="get" action="view.php?">
             <input type="hidden" name="id" value="<?php print($StockItemID)?>">
             <input type="hidden" name="groep" value="<?php print($huidigeGroep + 1) % $totalAantalGroepen; ?>">
-            <input type="submit" value="Volgende artikelen->">
+            <input type="submit" value="Volgende artikelen ->" id="AanbevelingenKnop">
         </form>
 </td>
         </table>
-    <?php
-    }
+    <?php }
+
     else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
-    } ?>
+    }}} ?>
 </div>
 
 </body>

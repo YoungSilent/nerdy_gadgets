@@ -176,7 +176,7 @@ function printAanbevelingen ($aanbevelingGroepIDs) {
 Foreach ($aanbevelingGroepIDs as $aanbevelingsCategorie) {
 if ($aanbevelingsCategorie != '' and $aanbevelingsCategorie != null){
     $Query = " 
-           select StockItemName, RecommendedRetailPrice, StockItemID
+           select StockItemName, ROUND(TaxRate * RecommendedRetailPrice / 100 + RecommendedRetailPrice,2) as SellPrice, StockItemID
             from stockitems
             where GroepID = $aanbevelingsCategorie";
     $Statement = mysqli_prepare($databaseConnection, $Query);
