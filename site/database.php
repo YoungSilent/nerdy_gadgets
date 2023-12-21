@@ -1,6 +1,5 @@
 <!-- dit bestand bevat alle code die verbinding maakt met de database -->
 <?php
-
 function connectToDatabase() {
     $Connection = null;
 
@@ -148,4 +147,44 @@ function getPopularItems() {
     $Result = mysqli_stmt_get_result($Statement);
     $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
     return $Result;
+}
+
+/*Luuk: Vraagt op basis van het meegegeven ItemID van het weergegeven item, de bijpassende aanbevelingen op.*/
+function getAanbevelingIDs($id) {
+    $databaseConnection = connectToDatabase();
+    $Result = null;
+
+    $Query = "
+select A.AanbevolenGroep1, A.AanbevolenGroep2, A.AanbevolenGroep3, A.AanbevolenGroep4
+from stockitems S
+left join Aanbevelingen A on S.GroepID=A.GroepID 
+where StockItemID = $id";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+        return $Result;
+}}
+
+function printAanbevelingen ($aanbevelingGroepIDs) {
+    $databaseConnection = connectToDatabase();
+    $Result = null;
+    $allResults = array();
+
+Foreach ($aanbevelingGroepIDs as $aanbevelingsCategorie) {
+if ($aanbevelingsCategorie != '' and $aanbevelingsCategorie != null){
+    $Query = " 
+           select StockItemID, StockItemName, RecommendedRetailPrice
+            from stockitems
+            where GroepID = $aanbevelingsCategorie";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC);
+    $allResults = $allResults + $Result;
+    }
+}
+    Return $allResults;
 }

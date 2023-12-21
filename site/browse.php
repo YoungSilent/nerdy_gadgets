@@ -418,7 +418,8 @@ if (isset($amount)) {
             ?>
         </form>
         <?php
-    } else {
+    }
+    else {
         ?>
         <h2 id="NoSearchResults">
             Er zijn geen resultaten gevonden met deze specificaties.

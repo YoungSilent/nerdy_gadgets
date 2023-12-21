@@ -156,8 +156,9 @@ if (isset($_GET["id"])) {
                         </td>
                     </tr>
                 <?php } ?>
-                </table><?php
-            } else { ?>
+                </table>
+            <?php }
+            else { ?>
 
                 <p><?php print $StockItem['CustomFields']; ?>.</p>
                 <?php
@@ -165,7 +166,35 @@ if (isset($_GET["id"])) {
             ?>
         </div>
         <?php
-    } else {
+
+        /*Luukie's code uu*/
+
+$StockItemID = $_GET["id"];
+        $allAanbevelingen = printAanbevelingen(getAanbevelingIDs($_GET['id']));
+        $itemsPerGroep = 3;
+
+// Aanbevelingsgroepen
+        $huidigeGroep = isset($_GET['groep']) ? intval($_GET['groep']) : 0;
+
+        $totalAanbevelingen = count($allAanbevelingen);
+        $totalAantalGroepen = ceil($totalAanbevelingen / $itemsPerGroep);
+
+// Display items in groups of 3
+        for ($i = $huidigeGroep * $itemsPerGroep; $i < min(($huidigeGroep + 1) * $itemsPerGroep, $totalAanbevelingen); $i++) {
+            print_r($allAanbevelingen[$i]);
+            echo "<br>";
+        }
+        ?>
+
+        <form method="get" action="view.php?">
+            <input type="hidden" name="id" value="<?php print($StockItemID)?>">
+            <input type="hidden" name="groep" value="<?php print($huidigeGroep + 1) % $totalAantalGroepen; ?>">
+            <input type="submit" value="Next Group">
+        </form>
+
+    <?php
+    }
+    else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
     } ?>
 </div>
