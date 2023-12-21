@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <!-- Your HTML content for the logged-in page -->
-<h2 style="text-align: center;"><?php echo !isset($_SESSION['PersonID']) ? "U Bent Niet Ingelogd" : ''; ?></h2>
+<h2 style="text-align: center;"><?php echo !isset($_SESSION['PersonID']) ? "Uw wachtwoord of email was onjuist" : ''; ?></h2>
 <h2 style="text-align: center;"><?php echo isset($_SESSION['PersonID']) ? "U Bent Ingelogd" : ''; ?></h2>
 <h3 style="text-align: center"><?php echo isset($_SESSION['FullName']) ? "Welkom" . " " . ucwords($_SESSION['FullName']) : ''; ?></h3>
 
