@@ -11,12 +11,11 @@ if (isset($_GET['order'])) {
 
 
 if (!checkIfOrderLinesExist($orderID)){
-    //createOrderLines($orderID);
-    ?>
-    <meta http-equiv="Refresh" content="0" />
-    <?php
+    createOrderLines($orderID);
+    unset($_SESSION["cart"]);
+    print('<meta http-equiv="Refresh" content="0" />');
+    exit();
 }else{
-
     ?> 
     <h1>Uw bestelling is voltooid.</h1>
     We hopen het zo snel mogelijk bij u te leveren.<br><br><br>
