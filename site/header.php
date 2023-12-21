@@ -1,8 +1,8 @@
 <!-- de inhoud van dit bestand wordt bovenaan elke pagina geplaatst -->
 <?php
 if(session_status() === PHP_SESSION_NONE) session_start();
-include "database.php";
-include "customerfuncties.php";
+require_once "database.php";
+require_once "customerfuncties.php";
 $databaseConnection = connectToDatabase();
 
 
@@ -74,6 +74,10 @@ $mollie->setApiKey("test_rGnM6JAEuHQ3pAG8pwtPtH4J9FhacU");
 <!-- code voor US3: zoeken en winkelwagen icon-->
 
         <ul id="ul-class-navigation">
+            <li>
+                <a href="account.php" class="HrefDecoration">
+                    <img src="./Public/ProductIMGHighRes/account.png" style="width:40px; height:40px; margin-right:10px;"></a>
+            </li>
             <li>
                 <a href="cart.php" class="HrefDecoration">
                     <img src="./Public/ProductIMGHighRes/shoppingCartIcon.png" style="width:40px; height:40px; margin-right:10px;"></a>
