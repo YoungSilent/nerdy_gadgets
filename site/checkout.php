@@ -10,6 +10,11 @@ if(getCartPrice()>100) {
 }
 
 $FullName = $_SESSION['FullName'];
+$nameParts = explode(' ', $FullName, 3);
+
+$firstName = isset($nameParts[0]) ? $nameParts[0] : '';
+$extra = isset($nameParts[1]) ? $nameParts[1] : '';
+$lastName = isset($nameParts[2]) ? $nameParts[2] : '';
 // $backupImage = FALSE;
 // $StockItem = getStockItem($_GET['id'], $databaseConnection);
 // $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
@@ -30,17 +35,23 @@ $FullName = $_SESSION['FullName'];
     <div id="form">
         <form method="post" action="payment.php" id="form1">
         <div>
+            <?php
+            print_r($nameParts);
+            echo ($extra);
+            echo ($firstName);
+            echo ($lastName);
+            ?>
             <div class="formName">
                 <label class="formLabel">Voornaam*</label>    
-                <input id="checkout" type="text" name="Voornaam" value="<?php echo htmlspecialchars($FullName); ?>" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px" maxlength="50">
+                <input id="checkout" type="text" name="Voornaam" value="<?php echo htmlspecialchars($firstName); ?>" placeholder="John" required pattern="^[a-zA-Z]+$" style="width:175px" maxlength="50">
             </div>
             <div class="formName">
                 <label class="formLabel">Tussenvoegsel(s)</label>
-                <input id="checkout" type="text" name="Tussenvoegsel" value="" placeholder="" pattern="^[a-zA-Z.' ]+$" style="width:150px" maxlength="20">
+                <input id="checkout" type="text" name="Tussenvoegsel" value="<?php echo htmlspecialchars($extra); ?>" placeholder="" pattern="^[a-zA-Z.' ]+$" style="width:150px" maxlength="20">
             </div>
             <div class="formName">
                 <label class="formLabel">Achternaam*</label>
-                <input id="checkout" type="text" name="Achternaam" value="" placeholder="Smith" required pattern="^[a-zA-Z']+$" style="width:175px" maxlength="50">
+                <input id="checkout" type="text" name="Achternaam" value="<?php echo htmlspecialchars($lastName); ?>" placeholder="Smith" required pattern="^[a-zA-Z']+$" style="width:175px" maxlength="50">
             </div>
         </div>
             <label class="formLabel">E-mail*</label>
