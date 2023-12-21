@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 
     // Insert data into customers table
     $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`, `PrimaryContactPersonID`, `DeliveryMethodID`, `DeliveryCityID`, `PostalCityID`, `AccountOpenedDate`, `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, `PaymentDays`, `PhoneNumber`, `FaxNumber`, `WebsiteURL`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, `DeliveryPostalCode`, `PostalAddressLine1`, `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`) 
-                 VALUES ($lastPersonId, '$preferredName', '1', '1', '1', '1', '1', '1', '$AccountOpenedDate', '1', '1', '1', '1', '$PhoneNumber', '1', 'http://www.tailspintoys.com/Avenal', '$street', $houseNumber, '$postcode', '$volledigAdres', '$postcodeNumbers $postcodeLetters', '1', '$ValidFrom', '$ValidTo')";
+                 VALUES ($lastPersonId, '$preferredName', '1', '1', '1', '1', '1', '1', '$AccountOpenedDate', '1', '1', '1', '1', '$PhoneNumber', '1', 'http://www.tailspintoys.com/Avenal', '$street', '$houseNumber', '$postcode', '$volledigAdres', '$postcodeNumbers $postcodeLetters', '1', '$ValidFrom', '$ValidTo')";
 
     // Execute the query
     $conn->query($sqlCustomers);
