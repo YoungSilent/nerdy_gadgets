@@ -639,7 +639,8 @@ padding: 10px 20px;
     font-weight:bold;
 }
 #AanbevelingImageFrame{
-    width: min-content;
-    height: min-content;
-
+    width: 75px;
+    height: 75px;
+    background-color: rgb(36, 41, 143);
+    float: right;
 }
