@@ -176,7 +176,7 @@ function printAanbevelingen ($aanbevelingGroepIDs) {
 Foreach ($aanbevelingGroepIDs as $aanbevelingsCategorie) {
 if ($aanbevelingsCategorie != '' and $aanbevelingsCategorie != null){
     $Query = " 
-           select StockItemID, StockItemName, RecommendedRetailPrice
+           select StockItemName, RecommendedRetailPrice, StockItemID
             from stockitems
             where GroepID = $aanbevelingsCategorie";
     $Statement = mysqli_prepare($databaseConnection, $Query);

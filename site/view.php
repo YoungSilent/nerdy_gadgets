@@ -165,33 +165,47 @@ if (isset($_GET["id"])) {
             }
             ?>
         </div>
-        <?php
+        <table>
 
-        /*Luukie's code uu*/
+<?php /*Luukie's code uu*/
 
-$StockItemID = $_GET["id"];
+        $StockItemID = $_GET["id"];
         $allAanbevelingen = printAanbevelingen(getAanbevelingIDs($_GET['id']));
         $itemsPerGroep = 3;
 
-// Aanbevelingsgroepen
+// Aanmaak van Aanbevelingsgroepjes
         $huidigeGroep = isset($_GET['groep']) ? intval($_GET['groep']) : 0;
 
         $totalAanbevelingen = count($allAanbevelingen);
         $totalAantalGroepen = ceil($totalAanbevelingen / $itemsPerGroep);
 
-// Display items in groups of 3
-        for ($i = $huidigeGroep * $itemsPerGroep; $i < min(($huidigeGroep + 1) * $itemsPerGroep, $totalAanbevelingen); $i++) {
-            print_r($allAanbevelingen[$i]);
-            echo "<br>";
-        }
         ?>
 
+            <td>
+                <form method="get" action="view.php?">
+                    <input type="hidden" name="id" value="<?php print($StockItemID)?>">
+                    <input type="hidden" name="groep" value="<?php print($huidigeGroep - 1) % $totalAantalGroepen; ?>">
+                    <input type="submit" value="<- Effetjes terug">
+                </form>
+            </td>
+
+
+            <?php  // Display items in groepjes
+        for ($i = $huidigeGroep * $itemsPerGroep; $i < min(($huidigeGroep + 1) * $itemsPerGroep, $totalAanbevelingen); $i++) {
+            ?> <td> <?php
+            print(json_encode($allAanbevelingen[$i], JSON_PRETTY_PRINT));
+            print("<br>");
+            ?> </td> <?php
+        }
+        ?>
+<td>
         <form method="get" action="view.php?">
             <input type="hidden" name="id" value="<?php print($StockItemID)?>">
             <input type="hidden" name="groep" value="<?php print($huidigeGroep + 1) % $totalAantalGroepen; ?>">
-            <input type="submit" value="Next Group">
+            <input type="submit" value="Volgende artikelen->">
         </form>
-
+</td>
+        </table>
     <?php
     }
     else {
