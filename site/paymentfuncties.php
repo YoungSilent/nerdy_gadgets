@@ -35,15 +35,15 @@ function createOrder($customerID){
 function createOrderLines($orderID){
     $cart = getCart();
     $databaseConnection = connectToDatabase();
-    foreach($cart as $stockItemID => $Quantity){
+    foreach($cart as $stockItemID => $quantity){
         $stockItem = getStockItemForOrderLines($stockItemID, $databaseConnection);
         $Query = "INSERT INTO orderlines (OrderID, StockItemID, Description, PackageTypeID, Quantity, UnitPrice, TaxRate, PickedQuantity, LastEditedBy, LastEditedWhen)
         VALUES (?, ?, ?, ?, ?, ?, ?, 0, 1, CURDATE())";
         $Statement = mysqli_prepare($databaseConnection, $Query);
-        mysqli_stmt_bind_param($Statement, "iisiidd", $orderID, $stockItemID, $stockItem['SearchDetails'], $stockItem['OuterPackageID'], $Quantity, $stockItem['UnitPrice'], $stockItem['TaxRate']);
+        mysqli_stmt_bind_param($Statement, "iisiidd", $orderID, $stockItemID, $stockItem['SearchDetails'], $stockItem['OuterPackageID'], $quantity, $stockItem['UnitPrice'], $stockItem['TaxRate']);
         mysqli_stmt_execute($Statement);
     }
-    //removeCartFromStock();
+    removeCartFromStock();
 }
 
 function getRandomContactID(){
