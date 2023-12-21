@@ -42,6 +42,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['FullName'] = $row['FullName'];
         $_SESSION['EmailAddress'] = $row['EmailAddress'];
         $_SESSION['PhoneNumber'] = $row['PhoneNumber'];
+        $_SESSION['PostalAddressLine2'] = $row['PostalAddressLine2'];
 
         // Redirect to a logged-in page
         header("Location: ingelogd.php");

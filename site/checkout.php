@@ -10,18 +10,22 @@ if (getCartPrice() > 100) {
     $verzendkosten = 10.00;
 }
 
-$userData = getUserData($_SESSION['PersonID']);
-$streetData = getStreetData($_SESSION['PersonID']);
 
 if (isset($_SESSION['PersonID'])) {
-        $FullName = $_SESSION['FullName'];
+    $userData = getUserData($_SESSION['PersonID']);
+    $streetData = getStreetData($_SESSION['PersonID']);
+    $FullName = $_SESSION['FullName'];
         $PhoneNumber = $_SESSION['PhoneNumber'];
         $EmailAddress = $_SESSION['EmailAddress'];
-        $Straat = $_SESSION['PostalAddressLine2'];
-        print_r($streetData);
-        
+        $Straat = $streetData['PostalAddressLine1'];
+        $PostCodeTotaal = $streetData['PostalPostalCode'];
+        $Land = $streetData['PostalAddressLine2'];
+
 // Split full name into an array
     $nameParts = explode(' ', $FullName);
+    $PostCodeDelen = explode(' ', $PostCodeTotaal);
+    $straatsplitten = explode(' ', $Straat);
+
 
 // Extract first and last names
     $firstName = isset($nameParts[0]) ? $nameParts[0] : '';
@@ -30,6 +34,10 @@ if (isset($_SESSION['PersonID'])) {
     unset($nameParts[0]); // Remove the first name
     array_pop($nameParts); // Remove the last name
     $extra = implode(' ', $nameParts);
+    $huisnummer = end($straatsplitten);
+    $straatnaam = ($straatsplitten[0]);
+    $PostCodeCijfers = isset($PostCodeDelen[0]) ? $PostCodeDelen[0] : '';
+    $PostCodeLetters = isset($PostCodeDelen[1]) ? $PostCodeDelen[1] : '';
 }
 ?>
     <!DOCTYPE html>
@@ -68,23 +76,23 @@ if (isset($_SESSION['PersonID'])) {
             <label class="formLabel">Postcode*</label>
             <div>
                 <div class="formName">
-                    <input id="checkout" type="text" name="PostcodeNummers" value="" placeholder="1111" required
+                    <input id="checkout" type="text" name="PostcodeNummers" value="<?php echo isset($firstName) ? htmlspecialchars($PostCodeCijfers):""; ?>" placeholder="1111" required
                            pattern="^[0-9]{4}+$" style="width:80px" minlength="4" maxlength="4">
                 </div>
                 <div class="formName">
-                    <input id="checkout" type="text" name="PostcodeLetters" value="" placeholder="AA" required
+                    <input id="checkout" type="text" name="PostcodeLetters" value="<?php echo isset($firstName) ? htmlspecialchars($PostCodeLetters):""; ?>" placeholder="AA" required
                            pattern="^[A-Z]{2}+$" style="width:65px" minlength="2" maxlength="2">
                 </div>
             </div>
             <div>
                 <div class="formName">
                     <label class="formLabel">Straat*</label>
-                    <input id="checkout" type="text" name="Straat" value="<?php echo isset($firstName) ? htmlspecialchars($Straat):""; ?>" placeholder="Zonnebloemlaan" required
+                    <input id="checkout" type="text" name="Straat" value="<?php echo isset($firstName) ? htmlspecialchars($straatnaam):""; ?>" placeholder="Zonnebloemlaan" required
                            pattern="^[a-zA-Z]+$" style="width:405px" maxlength="200">
                 </div>
                 <div class="formName">
                     <label class="formLabel">Huisnummer*</label>
-                    <input id="checkout" type="text" name="Huisnummer" value="" placeholder="112a" required
+                    <input id="checkout" type="text" name="Huisnummer" value="<?php echo isset($firstName) ? htmlspecialchars($huisnummer):""; ?>" placeholder="112a" required
                            pattern="^[0-9]{1,5}[a-zA-Z]{0,1}$" style="width:100px" maxlength="6">
                 </div>
             </div>
