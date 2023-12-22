@@ -20,7 +20,7 @@ $userData = getUserData($userId);
     <title>Jou Profiel</title>
 </head>
 <body>
-<h2 style="text-align: center;">Jou Profiel</h2>
+<h2 style="text-align: center;">Jouw Profiel</h2>
 <h3 style="text-align: center;">Gebruikersnaam: <?php echo isset($userData['PreferredName']) ? ucwords($userData['PreferredName']) : ''; ?></h3>
 <h3 style="text-align: center;">Email: <?php echo isset($userData['EmailAddress']) ? $userData['EmailAddress'] : ''; ?></h3>
 <h4 style="text-align: center;">Uitloggen klik <a href="uitloggen.php" onclick="return confirm('Weet u zeker dat u wilt uitloggen?');">hier</a></h4>

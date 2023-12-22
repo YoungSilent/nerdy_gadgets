@@ -92,7 +92,7 @@ function getStockItemImage($id, $databaseConnection) {
     mysqli_stmt_execute($Statement);
     $R = mysqli_stmt_get_result($Statement);
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
+    
     return $R;
 }
 
