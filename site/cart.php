@@ -114,7 +114,7 @@ if(empty($cart) == FALSE ){
 
                 <?php
                 //Conversiemaatregel Lucas//
-                $isGebruikt = TRUE;
+                $isGebruikt = FALSE;
                 $submittedCoupon = "";
                 if(isset($_POST["kortingsCodeInput"])) {
                     $submittedCoupon = $_POST["kortingsCodeInput"];
@@ -129,7 +129,7 @@ if(empty($cart) == FALSE ){
                         $row = $Result->fetch_assoc();
                         if($row["uses"] > 0) {
                             if($row["validUntil"] >= date("Y-m-d")) {
-                                if($isGebruikt) {
+                                if($isGebruikt == FALSE) {
                                     $newUses = $row["uses"] - 1;
                                     $Query = "UPDATE globalCoupons
                                       SET uses = '$newUses'
@@ -137,7 +137,7 @@ if(empty($cart) == FALSE ){
                                     $Statement = mysqli_prepare($databaseConnection, $Query);
                                     mysqli_stmt_execute($Statement);
                                     $Result = mysqli_stmt_get_result($Statement);
-                                    $isGebruikt = FALSE;
+                                    $isGebruikt = TRUE;
                                     $totaalPrijsFinal = $totaalPrijsFinal * ((100 - $row["kortingsPercentage"]) / 100);
                                     print("<div class='kortingVerwerking'>Uw korting is verwerkt!\n</div>");
                                     print("</div><div id='tekstKorting'>Totaalprijs met toegepaste korting (Incl. BTW): <br>");

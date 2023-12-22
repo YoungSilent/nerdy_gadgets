@@ -212,4 +212,4 @@ function getStockItemForOrderLines($id, $databaseConnection) {
         $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
     }
 
-    return $Result;
+    return $Result;}
