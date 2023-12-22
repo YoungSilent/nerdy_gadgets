@@ -189,3 +189,28 @@ if ($aanbevelingsCategorie != '' and $aanbevelingsCategorie != null){
 }
     Return $allResults;
 }
+
+function getStockItemForOrderLines($id, $databaseConnection) {
+    $Result = null;
+
+    $Query = " 
+           SELECT 
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+            SearchDetails, OuterPackageID, UnitPrice, TaxRate
+            FROM stockitems SI 
+            JOIN stockitemholdings SIH USING(stockitemid)
+            JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
+            JOIN stockgroups USING(StockGroupID)
+            WHERE SI.stockitemid = ?
+            GROUP BY SI.StockItemID";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $id);
+    mysqli_stmt_execute($Statement);
+    $ReturnableResult = mysqli_stmt_get_result($Statement);
+    if ($ReturnableResult && mysqli_num_rows($ReturnableResult) == 1) {
+        $Result = mysqli_fetch_all($ReturnableResult, MYSQLI_ASSOC)[0];
+    }
+
+    return $Result;
+}
