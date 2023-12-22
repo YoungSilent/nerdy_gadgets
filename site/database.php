@@ -214,3 +214,30 @@ function getStockItemForOrderLines($id, $databaseConnection) {
 
     return $Result;
 }
+
+function isChillerStock($id) {
+    $databaseConnection = connectToDatabase();
+    $Query = "SELECT ischillerstock
+    FROM stockitems 
+    WHERE stockitemid = ".$id."";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    if($Result[0]['ischillerstock'] == 1) {
+        return '1';
+    }else{
+        return '0';
+    }
+}
+
+function getTemperature() {
+    $databaseConnection = connectToDatabase();
+    $Query = "SELECT temperature
+    FROM coldroomtemperatures";
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_execute($Statement);
+    $Result = mysqli_stmt_get_result($Statement);
+    $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+    return ($Result[0]['temperature']);
+    }

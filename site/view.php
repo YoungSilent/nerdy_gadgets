@@ -156,6 +156,19 @@ if (isset($_GET["id"])) {
                         </td>
                     </tr>
                 <?php } ?>
+                    <tr>
+                    <td>
+                        <?php  if(isChillerStock($StockItem["StockItemID"]) ==1){
+                            print "Temperature";
+                        }?>
+                    </td>
+                        <td>
+                            <?php  if(isChillerStock($StockItem["StockItemID"]) ==1){
+                            print_r (getTemperature());
+                            }?>
+                        </td>
+
+                    </tr>
                 </table>
             <?php }
             else { ?>
