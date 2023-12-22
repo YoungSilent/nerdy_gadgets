@@ -22,7 +22,9 @@ if ($lastSlashPos !== false) {
     $trimmedUrl = $url;
 }
 
-
+if(isset($_SESSION['totaalPrijsFinal']) && $_SESSION['totaalPrijsFinal'] != "") {
+    $totalValue = $_SESSION['totaalPrijsFinal'];
+}
 $_SESSION['customerID'] = 10;
 $customerID = $_SESSION['customerID'];
 $orderID = createOrder($customerID);
@@ -35,7 +37,7 @@ $method = $mollie->methods->get(\Mollie\Api\Types\PaymentMethod::IDEAL, ["includ
 $payment = $mollie->payments->create([
     "amount" => [
         "currency" => "EUR",
-        "value" => $_SESSION['totaalPrijsFinal']
+        "value" => $totalValue
     ],
     "description" => "My first API payment",
     "redirectUrl" => $trimmedUrl . "/orderstatus.php?order=" . $orderID,
