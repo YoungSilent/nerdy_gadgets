@@ -24,6 +24,7 @@ foreach(getCart() as $key => $value){
 
 
 
+
 $cart = getCart();
 $totaalPrijs = NULL;
 //print_r($cart);
@@ -32,8 +33,6 @@ $totaalPrijs = NULL;
 //totaal prijs berekenen
 //mooi weergeven in html
 //etc.
-
-
 
 if(empty($cart) == FALSE ){
     $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, RecommendedRetailPrice, QuantityOnHand    
@@ -99,11 +98,8 @@ if(empty($cart) == FALSE ){
                                             $verzendkosten = 10.00;
                                             print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }?></p></span>
-                <?php
-                $totaalPrijsFinal = number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "");
-                ?>
                     <div style="box-shadow: 0 -1px 0 #FFFFFF;">
-                        Totaalprijs (Incl. BTW): <span style="float: right;">€<?php print($totaalPrijsFinal);?></span>
+                        Totaal prijs (Incl. BTW): <span style="float: right;">€<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?></span>
                     </div>
                     <div style="font-size:12px;">Zonder evt. toegepaste korting</div>
             <div id="KortingsCode">
@@ -157,18 +153,16 @@ if(empty($cart) == FALSE ){
                     print("");
                 }
                 ?>
+            <a href="checkout.php">
+            <div id="NaarAfrekenen">
+            <form method="post" action="checkout.php">
+            <input type="hidden" name="totaalprijs" value="<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?>">
+            <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
+            </form>
+            <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
             </div>
-                <a href="checkout.php">
-                    <div id="NaarAfrekenen">
-                        <form method="post" action="checkout.php">
-                            <input type="hidden" name="totaalprijs" value=<?php print($totaalPrijsFinal);?>>
-                            <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
-                        </form>
-                        <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
-                    </div>
-                </a>
+            </a>
             </div>
-
             <?php
             
         }else{
