@@ -164,7 +164,7 @@ if (isset($_GET["id"])) {
                     </td>
                         <td>
                             <?php  if(isChillerStock($StockItem["StockItemID"]) ==1){
-                            print_r (getTemperature());
+                            print (number_format((float)getTemperature(), 1, ".", "") . "°C");
                             }?>
                         </td>
 
