@@ -621,7 +621,7 @@ ul#ul-class-price li {
     padding: 1000000px;
     margin-bottom: 1%;
     text-align: left;
-
+    min-height: 4em;
 
 }
 #AanbevelingenOpmaak td{

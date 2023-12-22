@@ -168,6 +168,7 @@ if (isset($_GET["id"])) {
 
 
 <H3>Zie ook deze producten!</H3>
+
         <table id="AanbevelingenOpmaak">
 <?php /*Luukie's code uu*/
 
@@ -197,16 +198,21 @@ if (isset($_GET["id"])) {
                     <td style="position: relative;">
                         <?php
                         // Maakt de output van de array net wat mooier
-                        print($allAanbevelingen[$i]['StockItemName'] . '<br>');
-                        print("ID: " . $allAanbevelingen[$i]['StockItemID'] . "<br>");
-                        print("€ " . number_format($allAanbevelingen[$i]['SellPrice'], 2) . "<br>");
+                        $itemName = $allAanbevelingen[$i]['StockItemName'];
+                        $itemID = $allAanbevelingen[$i]['StockItemID'];
+                        $sellPrice = number_format($allAanbevelingen[$i]['SellPrice'], 2);
 
-                        $StockItemImage = getStockItemImage($allAanbevelingen[$i]['StockItemID'], $databaseConnection);
+                        // Wrap the item name in an <a> tag with a href attribute
+                        print('<a href="view.php?id=' . $itemID . '">' . $itemName . '</a><br><br>');
+                        print("ID: " . $itemID . "<br>");
+                        print("€ " . $sellPrice . "<br>");
+
+                        $StockItemImage = getStockItemImage($itemID, $databaseConnection);
                         if (empty($StockItemImage)) {
-                            $StockItemImage = getBackupStockItemImage($allAanbevelingen[$i]['StockItemID'], $databaseConnection);
+                            $StockItemImage = getBackupStockItemImage($itemID, $databaseConnection);
                             $backupImage = true;
                         }
-                        if (isset($StockItemImage) && count($StockItemImage) == 1) {
+                        if (isset($StockItemImage)) {
                             ?>
                             <div id="AanbevelingImageFrame"
                                  style="background-image: url('Public/<?php
@@ -223,8 +229,8 @@ if (isset($_GET["id"])) {
                                      print("75px");
                                  } ?>;
                                          background-repeat: no-repeat;
-                                         background-position: right top; /* Adjust the value as needed */
-                                         height: 75px; position: absolute; top: 32px; right: 35px;"></div>
+                                         background-position: right top; 0px;
+                                         height: 75px; position: absolute; bottom: 5px; right: 25px;"></div>
                             <?php
                         }
                         ?>
