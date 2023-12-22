@@ -201,7 +201,7 @@ if (isset($_GET["id"])) {
                     <form method="get" action="view.php?">
                         <input type="hidden" name="id" value="<?php print($StockItemID) ?>">
                         <input type="hidden" name="groep" value="<?php print(($huidigeGroep - 1 + $totalAantalGroepen) % $totalAantalGroepen); ?>">
-                        <input type="submit" value="<- Effetjes terug" id="AanbevelingenKnop">
+                        <input type="submit" value="<- Vorige arikelen" id="AanbevelingenKnop">
                     </form>
                 </td>
 
