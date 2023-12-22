@@ -213,3 +213,4 @@ function getStockItemForOrderLines($id, $databaseConnection) {
     }
 
     return $Result;
+}
