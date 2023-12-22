@@ -79,8 +79,8 @@ function getCartPrice(){
     return $cartPrice;
 }
 
-function getCartTotalPrice($verzendkosten){
-    return getCartPrice() + $verzendkosten;
+function getCartTotalPrice(){
+    return getCartPrice() + getVerzendkosten();
 }
 
 function getArtikelPrice($stockItemID){
@@ -118,4 +118,53 @@ function getCartPriceZonderBTW(){
         $cartPrice = number_format((float)$cartPrice, 2, ".", "");
     }
     return $cartPrice;
+}
+
+function getVerzendkosten(){
+    $databaseConnection = connectToDatabase();
+    $cart = getCart();
+    $shipping_costs = 0;
+    $totaleVerzendKosten = 0;
+    
+    foreach ($cart as $stockItemID => $quantity ) {
+        $Query = "SELECT StockItemID, UnitPackageID
+        FROM stockitems 
+        WHERE StockItemID = ?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "i", $stockItemID);
+        mysqli_stmt_execute($Statement);
+        $Result = mysqli_stmt_get_result($Statement);
+        $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
+
+        $unitPackageID = $Result[0]['UnitPackageID'];
+        
+        switch($unitPackageID) {
+            case 1:
+                $base_cost = 6.95;
+                $unit_threshold = 50;
+                break;
+            case 7:
+                $base_cost = 6.95;
+                $unit_threshold = 15;
+                break;
+            case 9:
+                $base_cost= 6.95; // fixed price
+                $unit_threshold = 1;
+                break;
+            case 10:
+                $base_cost = 6.95;
+                $unit_threshold = 100;
+                break;
+            default:
+                $base_cost = 0;
+                $unit_threshold = PHP_INT_MAX;
+        }
+
+        $extra_units = max(0, $quantity - $unit_threshold);
+        $extra_costs = (int)($extra_units / $unit_threshold) * $base_cost;
+        $shipping_costs += $base_cost + $extra_costs;
+    }
+    //return $Result;
+    return $shipping_costs;
+
 }

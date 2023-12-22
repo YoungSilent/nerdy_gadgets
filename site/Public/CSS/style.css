@@ -489,6 +489,7 @@ ul#ul-class-price li {
     margin-right: 250px;
     padding:10px;
     width:auto;
+    min-height:440px;
 }
 #aantal {
     width:80px;
@@ -504,11 +505,11 @@ ul#ul-class-price li {
     /*display:inline-block;*/
     float:right;
     background-color:#787eff;
-    margin-top:30px;
+    margin-top:10px;
     margin-right:30px;
     padding:10px;
     border-radius:20px;
-    width: 300px;
+    width: 325px;
     height: auto;
 }
 
@@ -533,6 +534,29 @@ ul#ul-class-price li {
 
 .formName {
     display:inline-block;
+}
+
+#KortingsCode {
+    background-color:#8c92ff;
+    margin-top:10px;
+    padding:5px;
+    border:solid 1px #FFFFFF;
+    border-radius:5px;
+
+}
+
+.kortingVerwerking {
+    font-size: 13px;
+}
+
+#tekstKorting {
+    box-shadow: 0 -1px 0 #FFFFFF;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+#prijsKorting {
+    font-size: 20px;
 }
 
 #slideshow {
@@ -643,4 +667,8 @@ padding: 10px 20px;
     height: 75px;
     background-color: rgb(36, 41, 143);
     float: right;
+}
+
+#checkoutMetKorting {
+    float:right;
 }
