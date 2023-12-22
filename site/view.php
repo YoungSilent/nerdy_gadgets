@@ -207,6 +207,7 @@ if (isset($_GET["id"])) {
                         print("ID: " . $itemID . "<br>");
                         print("€ " . $sellPrice . "<br>");
 
+                        $backupImage = false; //Reset de variabele
                         $StockItemImage = getStockItemImage($itemID, $databaseConnection);
                         if (empty($StockItemImage)) {
                             $StockItemImage = getBackupStockItemImage($itemID, $databaseConnection);
