@@ -71,7 +71,7 @@ include __DIR__ . "/cartfuncties.php";
                 <label for="aantal"></label>Aantal:
                 <input type="number" id="aantal" style="text-align: right" name="aantal<?php print($stockItemID);?>" min="1" value="<?php print($cart[$stockItemID]);?>"  max="<?php echo str_replace("Voorraad: ","",$ResultValue['QuantityOnHand'] ) ?>">
             </form>
-            Totaal artikelprijs (Incl. BTW): <span style="float:right; box-shadow: 0 -1px 0 #FFFFFF;">€ <?php print(number_format((float)$cart[$stockItemID] * number_format((float)$ResultValue['SellPrice'], 2, ".", "" . "<br>"), 2, ".", "" . "<br>")); ?></span>
+            Totaal artikelprijs (Incl. BTW): <span style="float:right; width:auto; box-shadow: 0 -1px 0 #FFFFFF;">€ <?php print(number_format((float)$cart[$stockItemID] * number_format((float)$ResultValue['SellPrice'], 2, ".", ""), 2, ".", "")); ?></span>
 
             <br>
             <form method="post" action="cart.php">
@@ -99,7 +99,7 @@ include __DIR__ . "/cartfuncties.php";
         $totaalPrijsFinal = number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "");
         ?>
         <div style="box-shadow: 0 -1px 0 #FFFFFF;">
-            Totaalprijs (Incl. BTW): <span style="float: right;">€<?php print($totaalPrijsFinal);?></span>
+            Totaalprijs (Incl. BTW): <span style="float: right;">€<?php print(" ".$totaalPrijsFinal);?></span>
         </div>
         <div style="font-size:12px;">Zonder evt. toegepaste korting</div>
         <div id="KortingsCode">
