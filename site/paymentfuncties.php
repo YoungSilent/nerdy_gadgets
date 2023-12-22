@@ -33,12 +33,17 @@ function createOrder($customerID){
 }
 
 function createOrderLines($orderID){
+    $cart = getCart();
     $databaseConnection = connectToDatabase();
-    $Query = "INSERT INTO orderlines (OrderID, StockItemID, Description, PackageTypeID, Quantity, UnitPrice, TaxRate, PickedQuantity, LastEditedBy, LastEditedWhen)
-    VALUES (?, ?, ?, ?, ?, 1, 1, ?)";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "iisss", $OrderID, $ContactPersonID, $currentDate, $deliverydate, $currentDateTime);
-    mysqli_stmt_execute($Statement);
+    foreach($cart as $stockItemID => $quantity){
+        $stockItem = getStockItemForOrderLines($stockItemID, $databaseConnection);
+        $Query = "INSERT INTO orderlines (OrderID, StockItemID, Description, PackageTypeID, Quantity, UnitPrice, TaxRate, PickedQuantity, LastEditedBy, LastEditedWhen)
+        VALUES (?, ?, ?, ?, ?, ?, ?, 0, 1, CURDATE())";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "iisiidd", $orderID, $stockItemID, $stockItem['SearchDetails'], $stockItem['OuterPackageID'], $quantity, $stockItem['UnitPrice'], $stockItem['TaxRate']);
+        mysqli_stmt_execute($Statement);
+    }
+    removeCartFromStock();
 }
 
 function getRandomContactID(){
@@ -49,7 +54,16 @@ function getRandomContactID(){
 }
 
 function removeCartFromStock(){
-
+    $cart = getCart();
+    $databaseConnection = connectToDatabase();
+    foreach($cart as $key => $value){
+        $Query = "UPDATE stockitemholdings 
+        SET QuantityOnHand = QuantityOnHand - ?
+        WHERE StockItemID = ?";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "ii", $value, $key);
+        mysqli_stmt_execute($Statement);
+    }
 }
 
 function checkIfOrderLinesExist($orderID){
