@@ -33,6 +33,8 @@ $totaalPrijs = NULL;
 //mooi weergeven in html
 //etc.
 
+
+
 if(empty($cart) == FALSE ){
     $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, RecommendedRetailPrice    
     FROM stockitems SI 
@@ -96,36 +98,74 @@ if(empty($cart) == FALSE ){
                                             $verzendkosten = 10.00;
                                             print(number_format((float)$verzendkosten, 2, ".", ""));
                                         }?></p></span>
+                <?php
+                $totaalPrijsFinal = number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "");
+                ?>
                     <div style="box-shadow: 0 -1px 0 #FFFFFF;">
-                        Totaal prijs (Incl. BTW): <span style="float: right;">€<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", ""));?></span>
+                        Totaalprijs (Incl. BTW): <span style="float: right;">€<?php print($totaalPrijsFinal);?></span>
                     </div>
-            <a href="checkout.php">
-            <div id="NaarAfrekenen">
-            <form method="post" action="checkout.php">
-            <input type="hidden" name="totaalprijs" value="<?php print(number_format((float)getCartPrice(), 2, ".", "")); ?>">
-            <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
-            </form>
-            <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
-            </div>
-            </a>
-            <?php
-                $Query = "SELECT *
-                          FROM globalCoupons;";
+                    <div style="font-size:12px;">Zonder evt. toegepaste korting</div>
+            <div id="KortingsCode">
+                <label style="font-size:14.5px">Voer hier uw kortingscode in. (Niet verplicht*)</label>
+                <form method="post" action="cart.php">
+                    <input type="text" name="kortingsCodeInput" value="" style="width:175px; height:25px; font-size:14.5px;">
+                </form>
+
+                <?php
+                //Conversiemaatregel Lucas//
+                $isGebruikt = TRUE;
+                $submittedCoupon = "";
+                if(isset($_POST["kortingsCodeInput"])) {
+                    $submittedCoupon = $_POST["kortingsCodeInput"];
+
+                $Query = "SELECT kortingsPercentage, uses, validUntil
+                          FROM globalCoupons
+                          WHERE globalCouponCode = '$submittedCoupon';";
                 $Statement = mysqli_prepare($databaseConnection, $Query);
                 mysqli_stmt_execute($Statement);
                 $Result = mysqli_stmt_get_result($Statement);
-                $Result = mysqli_fetch_all($Result, MYSQLI_ASSOC);
-            ?>
+                    if($Result->num_rows > 0) {
+                        $row = $Result->fetch_assoc();
+                        if($row["uses"] > 0) {
+                            if($row["validUntil"] >= date("Y-m-d")) {
+                                if($isGebruikt) {
+                                    $newUses = $row["uses"] - 1;
+                                    $Query = "UPDATE globalCoupons
+                                      SET uses = '$newUses'
+                                      WHERE globalCouponCode = '$submittedCoupon';";
+                                    $Statement = mysqli_prepare($databaseConnection, $Query);
+                                    mysqli_stmt_execute($Statement);
+                                    $Result = mysqli_stmt_get_result($Statement);
+                                    $isGebruikt = FALSE;
+                                    $totaalPrijsFinal = $totaalPrijsFinal * ((100 - $row["kortingsPercentage"]) / 100);
+                                    print("<div class='kortingVerwerking'>Uw korting is verwerkt!\n</div>");
+                                    print("</div><div id='tekstKorting'>Totaalprijs met toegepaste korting (Incl. BTW): <br>");
+                                    ?><div id='prijsKorting'>€<?php print("$totaalPrijsFinal</div>");
+                                }else{
+                                    print("U kunt één korting per bestelling gebruiken");
+                                }
+                            }else{
+                                print("<div class='kortingVerwerking'>Deze korting is verlopen.</div>");
+                            }
 
-            <div id="KortingsCode">
-                <label style="font-size:14.5px">Voer hier uw kortingscode in. (Niet verplicht*)</label>
-                <form method="post" action="cart.php" id="kortingsCodeInput" name="kortingsCodeInput">
-                    <input type="text" name="Voornaam" value="" style="width:175px; height:25px; font-size:14.5px;">
-                </form>
-                <?php
-                foreach($Result as $ResultKey => $ResultValue)
+                        }
+                    }else{
+                        print("<div class='kortingVerwerking'>Deze korting bestaat niet.</div>");
+                    }
+                }else{
+                    print("");
+                }
                 ?>
             </div>
+                <a href="checkout.php">
+                    <div id="NaarAfrekenen">
+                        <form method="post" action="checkout.php">
+                            <input type="hidden" name="totaalprijs" value=<?php print($totaalPrijsFinal);?>>
+                            <input style="width:auto; border:none; border-radius:10px;" type="submit" name="" value="Afrekenen">
+                        </form>
+                        <img src="Public\ProductIMGHighRes\afrekenen.png" alt="Afreken Icoontje" id="AfrekenIcon">
+                    </div>
+                </a>
             </div>
 
             <?php

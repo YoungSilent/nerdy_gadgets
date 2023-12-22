@@ -488,7 +488,7 @@ ul#ul-class-price li {
     margin-right: 250px;
     padding:10px;
     width:auto;
-    min-height:350px;
+    min-height:440px;
 }
 #aantal {
     width:80px;
@@ -516,7 +516,7 @@ ul#ul-class-price li {
     background-color:#8c92ff;
     margin-top:10px;
     padding:5px;
-    border:solid 1px #000000;
+    border:solid 1px #FFFFFF;
     border-radius:5px;
 
 }
@@ -542,4 +542,18 @@ ul#ul-class-price li {
 
 .formName {
     display:inline-block;
+}
+
+.kortingVerwerking {
+    font-size: 13px;
+}
+
+#tekstKorting {
+    box-shadow: 0 -1px 0 #FFFFFF;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+#prijsKorting {
+    font-size: 20px;
 }
