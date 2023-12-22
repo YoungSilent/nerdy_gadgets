@@ -107,25 +107,27 @@ include __DIR__ . "/cartfuncties.php";
             <form method="post" action="cart.php">
                 <input type="text" name="kortingsCodeInput" value="" style="width:175px; height:25px; font-size:14.5px;">
             </form>
-
+            <!--Conversiemaatregel Lucas-->
             <?php
-            //Conversiemaatregel Lucas//
             $isGebruikt = TRUE;
             $submittedCoupon = "";
             if(isset($_POST["kortingsCodeInput"])) {
             $submittedCoupon = $_POST["kortingsCodeInput"];
 
+            //Query voor de benodigde gegevens.
             $Query = "SELECT kortingsPercentage, uses, validUntil
                           FROM globalCoupons
                           WHERE globalCouponCode = '$submittedCoupon';";
             $Statement = mysqli_prepare($databaseConnection, $Query);
             mysqli_stmt_execute($Statement);
             $Result = mysqli_stmt_get_result($Statement);
+            //Reeks aan voorwaarden waar de input aan moet voldoen.
             if($Result->num_rows > 0) {
             $row = $Result->fetch_assoc();
             if($row["uses"] > 0) {
             if($row["validUntil"] >= date("Y-m-d")) {
             if($isGebruikt) {
+            //Verwerking van gegevens en korting zodra een correcte code is ingevuld.    
             $newUses = $row["uses"] - 1;
             $Query = "UPDATE globalCoupons
                                       SET uses = '$newUses'
