@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 <input type="text" name="FullName" style="width: 500px; margin-left: 500px;"><br>
 <label class="formLabel" style="margin-left: 500px">Wachtwoord:</label>
 <input id="password" type="password" name="HashedPassword" style="width: 500px; margin-left: 500px;"><br>
-<input name="submit" type="submit" value="Inloggen" style="width: 125px; margin-left: 675px; margin-top: 10px">
+<input name="submit" type="submit" value="Inloggen" style="width: 150px; margin-left: 675px; margin-top: 10px; font-size: 20px">
 <h5 style="text-align: center;">Nog geen account klik <a href="register.php">hier</a></h5>
 </form>
 </body>
