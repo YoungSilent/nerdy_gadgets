@@ -138,7 +138,8 @@ include __DIR__ . "/cartfuncties.php";
             mysqli_stmt_execute($Statement);
             $Result = mysqli_stmt_get_result($Statement);
             $isGebruikt = FALSE;
-            $totaalPrijsFinal = $totaalPrijsFinal * ((100 - $row["kortingsPercentage"]) / 100);
+            $totaalPrijsFinal = number_format((float)($totaalPrijsFinal * ((100 - $row["kortingsPercentage"]) / 100)), 2, ".", "");
+            $_SESSION['totaalPrijsFinal'] = $totaalPrijsFinal;
             print("<div class='kortingVerwerking'>Uw korting is verwerkt!\n</div>");
             print("</div><div id='tekstKorting'>Totaalprijs met toegepaste korting (Incl. BTW): <br>");
             ?><div id='prijsKorting'>€<?php print("$totaalPrijsFinal</div>");
@@ -147,14 +148,17 @@ include __DIR__ . "/cartfuncties.php";
                 }
                 }else{
                     print("<div class='kortingVerwerking'>Deze korting is verlopen.</div>");
+                    $_SESSION['totaalPrijsFinal'] = "";
                 }
 
                 }
                 }else{
                     print("<div class='kortingVerwerking'>Deze korting bestaat niet.</div>");
+                    $_SESSION['totaalPrijsFinal'] = "";
                 }
                 }else{
                     print("");
+                    $_SESSION['totaalPrijsFinal'] = "";
                 }
                 ?>
             </div>

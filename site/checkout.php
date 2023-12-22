@@ -10,7 +10,6 @@ if (getCartPrice() > 100) {
     $verzendkosten = 10.00;
 }
 
-
 if (isset($_SESSION['PersonID'])) {
     $userData = getUserData($_SESSION['PersonID']);
     $streetData = getStreetData($_SESSION['PersonID']);
@@ -138,7 +137,14 @@ if (isset($_SESSION['PersonID'])) {
             <div id="totaalPrijs">
                 <br>
                 Totaal prijs (Incl. BTW): <span
-                        style="float: right;">€<?php print(number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "")); ?></span>
+                        style="float: right;">€<?php print(" ".number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "")); ?></span>
+                <?php if (isset($_SESSION['totaalPrijsFinal']) && $_SESSION['totaalPrijsFinal'] != "") {
+                    $totaalPrijsFinal = $_SESSION['totaalPrijsFinal'];
+                print("
+                <br>
+                Totaal prijs met korting (Incl. BTW): <span
+                    id = 'checkoutMetKorting'>€ $totaalPrijsFinal</span>");
+                }?>
             </div>
         </div>
         <!--        doorgaan knop om naar de ideal pagina te gaan-->

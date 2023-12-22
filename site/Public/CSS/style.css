@@ -668,3 +668,7 @@ padding: 10px 20px;
     background-color: rgb(36, 41, 143);
     float: right;
 }
+
+#checkoutMetKorting {
+    float:right;
+}
