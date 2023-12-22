@@ -138,7 +138,7 @@ function getPopularItems() {
     FROM orderlines AS OLS
     JOIN orders AS ORD ON ORD.OrderID = OLS.OrderID
     JOIN stockitemholdings SIH USING(stockitemid)
-    WHERE orderdate > DATE_SUB(CURDATE(), INTERVAL 8 YEAR)
+    WHERE orderdate > DATE_SUB(CURDATE(), INTERVAL 2 WEEK)
     AND QuantityOnHand > 1
     GROUP BY StockItemID
     ORDER BY count(*) DESC, QuantityOnHand DESC, StockItemID ASC
