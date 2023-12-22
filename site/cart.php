@@ -87,18 +87,14 @@ include __DIR__ . "/cartfuncties.php";
         <br>
         <p><a href='categories.php' style="color:white; text-decoration:underline;">Terug naar artikelen</a></p>
     </div>
+    <?php $verzendkosten = number_format((float)getVerzendkosten(), 2, ".", "") ;
+          $_SESSION['verzendkosten'] = $verzendkosten;  ?>
     <div id="CartSummary">
         <p> Aantal producten: <?php print(array_sum($cart));?>
             <br>Subtotaal (Excl. BTW): <span style="float: right;">€ <?php print(number_format((float)getCartPriceZonderBTW(), 2, ".", "")); ?> </span>
             <br>BTW: <span style="float: right;">€ <?php print(number_format((float)number_format((float)getCartPrice(), 2, ".", "") - number_format((float)getCartPriceZonderBTW(), 2, ".", ""), 2, ".", "")); ?> </span>
             <br>Verzendkosten: <span style="float: right;">€ <?php
-            if(getCartPrice()>100) {
-                $verzendkosten = 0.00;
-                print(number_format((float)$verzendkosten, 2, ".", ""));
-            }else{
-                $verzendkosten = 10.00;
-                print(number_format((float)$verzendkosten, 2, ".", ""));
-            }?></p></span>
+            print($verzendkosten)?></p></span>
         <?php
         $totaalPrijsFinal = number_format((float)getCartTotalPrice($verzendkosten), 2, ".", "");
         ?>

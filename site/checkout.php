@@ -121,19 +121,14 @@ if (isset($_SESSION['PersonID'])) {
             ?>
             <!--        laat de totaal prijs zien van het winkelmandje-->
         </div>
+        <?php $verzendkosten = $_SESSION['verzendkosten'];?>
         <div id="prijs">
             Subtotaal (Excl. BTW): <span
                     style="float: right;">€ <?php print(number_format((float)getCartPriceZonderBTW(), 2, ".", "")); ?> </span>
             <br>BTW: <span
                     style="float: right;">€ <?php print(number_format((float)number_format((float)getCartPrice(), 2, ".", "") - number_format((float)getCartPriceZonderBTW(), 2, ".", ""), 2, ".", "")); ?> </span>
             <br>Verzendkosten: <span style="float: right;">€ <?php
-                if (getCartPrice() > 100) {
-                    $verzendkosten = 0.00;
-                    print(number_format((float)$verzendkosten, 2, ".", ""));
-                } else {
-                    $verzendkosten = 10.00;
-                    print(number_format((float)$verzendkosten, 2, ".", ""));
-                } ?></p></span>
+                print($verzendkosten) ?></p></span>
             <div id="totaalPrijs">
                 <br>
                 Totaal prijs (Incl. BTW): <span

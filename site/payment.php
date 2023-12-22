@@ -35,7 +35,7 @@ $method = $mollie->methods->get(\Mollie\Api\Types\PaymentMethod::IDEAL, ["includ
 $payment = $mollie->payments->create([
     "amount" => [
         "currency" => "EUR",
-        "value" => $totalValue
+        "value" => $_SESSION['totaalPrijsFinal']
     ],
     "description" => "My first API payment",
     "redirectUrl" => $trimmedUrl . "/orderstatus.php?order=" . $orderID,
