@@ -47,11 +47,11 @@ if (isset($_POST['submit'])) {
     $postcodeNumbers = $_POST['PostcodeNummers'];
     $postcodeLetters = $_POST['PostcodeLetters'];
     $postcode = $postcodeNumbers . " " . $postcodeLetters;
-    $land = $_POST['Land'];
+    $land = $_POST['PostalAddressLine2'];
 
     // Insert data into customers table
-    $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`, `PrimaryContactPersonID`, `DeliveryMethodID`, `DeliveryCityID`, `PostalCityID`, `AccountOpenedDate`, `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, `PaymentDays`, `PhoneNumber`, `FaxNumber`, `WebsiteURL`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, `DeliveryPostalCode`, `PostalAddressLine1`, `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`) 
-                 VALUES ($lastPersonId, '$preferredName', '1', '1', '1', '1', '1', '1', '$AccountOpenedDate', '1', '1', '1', '1', '$PhoneNumber', '1', 'http://www.tailspintoys.com/Avenal', '$street', '$houseNumber', '$postcode', '$volledigAdres', '$postcodeNumbers $postcodeLetters', '1', '$ValidFrom', '$ValidTo')";
+    $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `CustomerName`, `BillToCustomerID`, `CustomerCategoryID`, `PrimaryContactPersonID`, `DeliveryMethodID`, `DeliveryCityID`, `PostalCityID`, `AccountOpenedDate`, `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, `PaymentDays`, `PhoneNumber`, `FaxNumber`, `WebsiteURL`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, `DeliveryPostalCode`, `PostalAddressLine2`, `PostalAddressLine1`, `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`) 
+                 VALUES ($lastPersonId, '$preferredName', '1', '1', '1', '1', '1', '1', '$AccountOpenedDate', '1', '1', '1', '1', '$PhoneNumber', '1', 'http://www.tailspintoys.com/Avenal', '$street', '$houseNumber', '$postcode', '$land', '$volledigAdres', '$postcodeNumbers $postcodeLetters', '1', '$ValidFrom', '$ValidTo')";
 
     // Execute the query
     $conn->query($sqlCustomers);

@@ -43,14 +43,14 @@ if (isset($_POST['submit'])) {
     $lastPersonId = $conn->insert_id;
 
     // Get address values from the form
-    $street = $_POST['Straat'];
+    $street = $_POST['street'];
     $houseNumber = $_POST['Huisnummer'];
     $postcodeNumbers = $_POST['PostcodeNummers'];
     $postcodeLetters = $_POST['PostcodeLetters'];
-    $land = $_POST['Land'];
+    $land = $_POST['PostalAddressLine2'];
 
     // Insert data into customers table
-    $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `PersonID`, `Street`, `HouseNumber`, `PostcodeNumbers`, `PostcodeLetters`, `Land`, `DeliveryAddressLine2`) 
+    $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `PersonID`, `Street`, `HouseNumber`, `PostcodeNumbers`, `PostcodeLetters`, `PostalAddressLine2`, `DeliveryAddressLine2`) 
                      VALUES (NULL, '$lastPersonId', '$street', '$houseNumber', '$postcodeNumbers', '$postcodeLetters', '$land', '')";
 
     // Execute the query
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
     </div>
 </div>
 <label class="formLabel">Land*</label>
-<input id="checkout" type="text" name="Land" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$"
+<input id="checkout" type="text" name="PostalAddressLine2" value="" placeholder="Nederland" required pattern="[a-zA-Z]+$"
        style="width:510px" maxlength="200">
 <label class="formLabel">Telefoonnummer</label>
 <input id="checkout" type="tel" name="PhoneNumber" value="" placeholder="0612345678" pattern="^[0-9]+$" minlength="7"

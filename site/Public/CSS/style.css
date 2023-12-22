@@ -216,6 +216,7 @@ ul#ul-class-navigation li {
     padding: 10px;
     margin-left: 1%;
     margin-top:10px;
+    margin-bottom: 1%;
     border: 1px solid;
     font-family: pt-sans, sans-serif;
     font-size: 20px;
@@ -611,3 +612,35 @@ ul#ul-class-price li {
     background-color: #ddd;
 }
 
+#AanbevelingenOpmaak {
+    background-color: rgba(35, 40, 47, 0.8);
+    width: 99%;
+    border: 1px solid;
+    font-family: pt-sans, sans-serif;
+    font-size: 15px;
+    padding: 1000000px;
+    margin-bottom: 1%;
+    text-align: left;
+    min-height: 4em;
+
+}
+#AanbevelingenOpmaak td{
+padding: 10px 20px;
+}
+
+#AanbevelingenKnop{
+    font-size:14px;
+    background-color:rgba(103,110,255, 1);
+    border:0px;
+    width: auto;
+    margin-bottom:4px;
+    border-radius:10px;
+    color:white;
+    font-weight:bold;
+}
+#AanbevelingImageFrame{
+    width: 75px;
+    height: 75px;
+    background-color: rgb(36, 41, 143);
+    float: right;
+}
