@@ -81,7 +81,7 @@ $populair = getPopularItems();
     }, 5000);
 </script>
 <br><br>
-<h1 style="text-align:center; color: white"><a href="/cock.php" style="color:white">Zie ook onze andere producten</a></h1>
+<h1 style="text-align:center; color: white"><a href="./categories.php" style="color:white">Zie ook onze andere producten</a></h1>
 <div class="IndexStyle">
     <div class="col-11">
         <div class="TextPrice">
