@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-01-31T09:43:41.472Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="nkIbz5EQKo-WBOimUWbp" version="23.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-01-31T12:30:22.863Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="T5a-YEr-rlZ1m4B2ycL7" version="23.0.2" type="github">
   <diagram name="Page-1" id="_MTYcoZ_pEvMErZoWSPA">
-    <mxGraphModel dx="2189" dy="597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2191" dy="533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -17,7 +17,7 @@
             <mxPoint x="370.0000000000002" y="352.5000000000001" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="_5T-766lr0Drp5LMri0m-9" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Meer producten vinden]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="_5T-766lr0Drp5LMri0m-9" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Meer producten vinden]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="990" y="240" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_5T-766lr0Drp5LMri0m-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="_5T-766lr0Drp5LMri0m-9" target="_5T-766lr0Drp5LMri0m-9" edge="1">
@@ -29,33 +29,33 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-12" target="GLb_ZV9gbdRmgJeu4g5t-145">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-12" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Ga naar winkelmandje&lt;/font&gt;" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-12" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Ga naar winkelmandje&lt;/b&gt;&lt;/font&gt;" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="1010" y="359" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-14" value="Je kan op elk moment naar het winkelmandje" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-14" value="&lt;b&gt;Je kan op elk moment naar het winkelmandje&lt;/b&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="1050" y="422" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-21" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Bekijk populaire producten]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-21" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Bekijk populaire producten]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="10" y="327.5" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-22" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Producten zoeken]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="102.5" y="277.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-22" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Producten zoeken]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="102.5" y="270" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-23">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="450" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-23" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;Ga naar je account&lt;br&gt;&lt;/span&gt;" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-23" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;Ga naar je account&lt;/b&gt;&lt;br&gt;&lt;/span&gt;" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=20;notch2=0;align=center;verticalAlign=middle;fontSize=14;fontStyle=0;fillColor=#FFFFFF;flipH=0;spacingRight=0;spacingLeft=14;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="220" y="535" width="180" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-24" value="Je kan op elk moment naar je account" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-24" value="&lt;b&gt;Je kan op elk moment naar je account&lt;/b&gt;" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;" vertex="1" parent="1">
           <mxGeometry x="250" y="610" width="120" height="80" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-26" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="220" y="280" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-27" value="Bekijk populaire producten" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-27" value="&lt;b&gt;Bekijk populaire producten&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="35" y="399" width="105" height="40" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-26" target="GLb_ZV9gbdRmgJeu4g5t-48">
@@ -85,8 +85,8 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-36" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="450" y="359" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-40" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Product gevonden]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="470" y="379" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-40" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Product gevonden]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="389" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-43" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.045;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-26" target="GLb_ZV9gbdRmgJeu4g5t-50">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -97,16 +97,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-46" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Zoeken]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-46" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Zoeken]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="170" y="327.5" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-47" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Browse]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="170" y="227.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-47" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Browse]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="170" y="248.5" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-48" value="Browse producten" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-48" value="&lt;b&gt;Browse producten&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="280" y="197" width="110" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-50" value="Zoek producten" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-50" value="&lt;b&gt;Zoek producten&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="280" y="357.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-52">
@@ -123,14 +123,14 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-54" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="450" y="280" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-55" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Product gevonden]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="480" y="200" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-55" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Product gevonden]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="480" y="190" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-61" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Product niet gevonden]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="400" y="238.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-61" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Product niet gevonden]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="243.5" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-62" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Product niet gevonden]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="400" y="337.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-62" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Product niet gevonden]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="332.5" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-61" target="GLb_ZV9gbdRmgJeu4g5t-61">
           <mxGeometry relative="1" as="geometry" />
@@ -158,7 +158,7 @@
             <mxPoint x="760" y="298.9999999999999" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-72" value="Bekijken product" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-72" value="&lt;b&gt;Bekijken product&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="620" y="277.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-74">
@@ -180,16 +180,16 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-76" target="GLb_ZV9gbdRmgJeu4g5t-54">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-76" value="A" style="ellipse;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-76" value="&lt;b&gt;A&lt;/b&gt;" style="ellipse;html=1;" vertex="1" parent="1">
           <mxGeometry x="505" y="285" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-78" value="A" style="ellipse;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-78" value="&lt;b&gt;A&lt;/b&gt;" style="ellipse;html=1;" vertex="1" parent="1">
           <mxGeometry x="700" y="175" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-81" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Aanbeveling bekijken]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="750" y="317.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-81" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Aanbeveling bekijken]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="321.5" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-82" value="Aanbeveling bekijken" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-82" value="&lt;b&gt;Aanbeveling bekijken&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="760" y="379" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-86" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-82" target="GLb_ZV9gbdRmgJeu4g5t-72">
@@ -201,13 +201,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-88" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Andere producten zoeken]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="730" y="257.5" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-88" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Andere producten zoeken]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="254" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-91" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Product toevoegen]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-91" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Product toevoegen]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="830" y="297.5" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-92" value="Plaats in winkelmandje" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-92" value="&lt;b&gt;Plaats in winkelmandje&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="920" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-93" target="GLb_ZV9gbdRmgJeu4g5t-78">
@@ -219,8 +219,8 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-99" target="GLb_ZV9gbdRmgJeu4g5t-107">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-102" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Naar winkelmandje]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1090" y="297.5" width="90" height="30" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-102" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Naar winkelmandje]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="302.5" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-105" target="GLb_ZV9gbdRmgJeu4g5t-112">
           <mxGeometry relative="1" as="geometry">
@@ -230,7 +230,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-105" value="Bekijk winkelmandje" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-105" value="&lt;b&gt;Bekijk winkelmandje&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1270" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-110" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-107" target="GLb_ZV9gbdRmgJeu4g5t-93">
@@ -252,11 +252,11 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-112" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1440" y="280" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-115" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Meer producten vinden]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-115" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Meer producten vinden]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1360" y="249" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-117" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Klaar met shoppen]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1460" y="297.5" width="90" height="30" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-117" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Klaar met shoppen]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="302.5" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-121" target="GLb_ZV9gbdRmgJeu4g5t-127">
           <mxGeometry relative="1" as="geometry" />
@@ -276,7 +276,7 @@
             <mxPoint x="1720" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-124" value="Toevoegen kortingscode" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-124" value="&lt;b&gt;Toevoegen kortingscode&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1600" y="188.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-127" target="GLb_ZV9gbdRmgJeu4g5t-132">
@@ -285,22 +285,22 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-127" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1730" y="280" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-129" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Kortingscode gebruiken]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1480" y="238.5" width="90" height="30" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-129" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Kortingscode gebruiken]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="238.5" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-130" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;[Geen kortingscode gebruiken]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1560" y="297.5" width="90" height="30" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-130" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Geen kortingscode gebruiken]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="311.5" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-136" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-132" target="GLb_ZV9gbdRmgJeu4g5t-134">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-132" value="Plaatsen bestelling" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-132" value="&lt;b&gt;Plaatsen bestelling&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1800" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-180" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-134" target="GLb_ZV9gbdRmgJeu4g5t-179">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-134" value="Afrekenen bestelling" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-134" value="&lt;b&gt;Afrekenen bestelling&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1980" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-137" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=0;entryDx=90;entryDy=30;entryPerimeter=0;exitX=0;exitY=0;exitDx=47.5;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-14" target="GLb_ZV9gbdRmgJeu4g5t-12">
@@ -349,14 +349,14 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-173" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-153" target="GLb_ZV9gbdRmgJeu4g5t-170">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-153" value="Uitloggen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-153" value="Uitloggen" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="630" y="459" width="110" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-156" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Al ingelogd]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-156" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Al ingelogd]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="385" y="490" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-157" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Niet ingelogd]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="390" y="595" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-157" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Niet ingelogd]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="595" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-158" target="GLb_ZV9gbdRmgJeu4g5t-160">
           <mxGeometry relative="1" as="geometry" />
@@ -374,20 +374,20 @@
             <mxPoint x="680" y="600" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-160" value="Registreren" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-160" value="&lt;b&gt;Registreren&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="495" y="530" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-172" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-163" target="GLb_ZV9gbdRmgJeu4g5t-170">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-163" value="Inloggen" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-163" value="&lt;b&gt;Inloggen&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="730" y="613.5" width="110" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-164" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Heeft geen &lt;br&gt;account]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-164" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;[Heeft geen &lt;br&gt;account]&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="480" y="590" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-165" value="&lt;span style=&quot;font-size: 8px;&quot;&gt;[Heeft&amp;nbsp;account]&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="550" y="640" width="80" height="20" as="geometry" />
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-165" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b&gt;[Heeft&amp;nbsp;account]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="640" width="80" height="20" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-167" target="GLb_ZV9gbdRmgJeu4g5t-163">
           <mxGeometry relative="1" as="geometry" />
@@ -403,13 +403,13 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-170" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="850" y="535" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-175" value="B" style="ellipse;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-175" value="&lt;b&gt;B&lt;/b&gt;" style="ellipse;html=1;" vertex="1" parent="1">
           <mxGeometry x="920" y="540" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-177" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-176" target="u_5VnhJYnHBc0XyjNgrF-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-176" value="B" style="ellipse;html=1;" vertex="1" parent="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-176" value="&lt;b&gt;B&lt;/b&gt;" style="ellipse;html=1;" vertex="1" parent="1">
           <mxGeometry x="72.5" y="188.5" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-178" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;entryX=0;entryY=0;entryDx=90;entryDy=30;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-24" target="GLb_ZV9gbdRmgJeu4g5t-23">
