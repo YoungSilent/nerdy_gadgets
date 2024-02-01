@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-01T11:58:04.361Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="Zi_dtdfI3pTb1_2-JsIb" version="23.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-01T13:52:02.254Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="jQsRj72IAVizkJAvy_r6" version="23.0.2" type="github">
   <diagram name="Page-1" id="_MTYcoZ_pEvMErZoWSPA">
-    <mxGraphModel dx="2302" dy="622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2051" dy="514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -174,7 +174,7 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-81" value="&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[Aanbeveling bekijken]&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="730" y="321.5" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-82" value="&lt;b&gt;Aanbeveling bekijken&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-82" value="&lt;b&gt;Bekijk aanbeveling&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="760" y="379" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-86" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-82" target="GLb_ZV9gbdRmgJeu4g5t-72" edge="1">
@@ -207,14 +207,6 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-102" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Naar winkelmandje]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1090" y="302.5" width="90" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-105" target="GLb_ZV9gbdRmgJeu4g5t-112" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1360" y="300.4999999999998" as="targetPoint" />
-            <Array as="points">
-              <mxPoint x="1360" y="301" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-105" value="&lt;b&gt;Bekijk winkelmandje&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1270" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
@@ -224,24 +216,10 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-107" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1070" y="170" width="30" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-112" target="GLb_ZV9gbdRmgJeu4g5t-121" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-112" target="GLb_ZV9gbdRmgJeu4g5t-107" edge="1">
+        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="GLb_ZV9gbdRmgJeu4g5t-121" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1455" y="190" />
-            </Array>
+            <mxPoint x="1470" y="300" as="sourcePoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-112" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1440" y="280" width="30" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-115" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Meer producten vinden]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1360" y="249" width="90" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-117" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;&lt;b style=&quot;&quot;&gt;[Klaar met shoppen]&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="1450" y="302.5" width="90" height="30" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-121" target="GLb_ZV9gbdRmgJeu4g5t-127" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -264,7 +242,7 @@
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-124" value="&lt;b&gt;Toevoegen kortingscode&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="1600" y="188.5" width="110" height="43" as="geometry" />
         </mxCell>
-        <mxCell id="GLb_ZV9gbdRmgJeu4g5t-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-127" target="GLb_ZV9gbdRmgJeu4g5t-132" edge="1">
+        <mxCell id="_lq__YOWD5dabWG5jpDD-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-127" target="_lq__YOWD5dabWG5jpDD-35">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-127" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -280,13 +258,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-132" value="&lt;b&gt;Plaatsen bestelling&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1800" y="278.5" width="110" height="43" as="geometry" />
+          <mxGeometry x="1950" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="_lq__YOWD5dabWG5jpDD-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-134" target="_lq__YOWD5dabWG5jpDD-31">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-134" value="&lt;b&gt;Afrekenen bestelling&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1980" y="278.5" width="110" height="43" as="geometry" />
+          <mxGeometry x="2110" y="278.5" width="110" height="43" as="geometry" />
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-139" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="GLb_ZV9gbdRmgJeu4g5t-92" target="GLb_ZV9gbdRmgJeu4g5t-99" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -398,7 +376,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GLb_ZV9gbdRmgJeu4g5t-179" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" parent="1" vertex="1">
-          <mxGeometry x="2340" y="276" width="50" height="48" as="geometry" />
+          <mxGeometry x="2410" y="276.5" width="50" height="48" as="geometry" />
         </mxCell>
         <mxCell id="_lq__YOWD5dabWG5jpDD-15" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Winkelmandje icoon&lt;/font&gt;" style="html=1;shape=mxgraph.infographic.ribbonSimple;notch1=0;notch2=20;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fillColor=#FFFFFF;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="930" y="370" width="150" height="30.5" as="geometry" />
@@ -422,7 +400,16 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="_lq__YOWD5dabWG5jpDD-31" value="&lt;b&gt;Inzien factuur&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2160" y="279" width="110" height="43" as="geometry" />
+          <mxGeometry x="2260" y="279" width="110" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="_lq__YOWD5dabWG5jpDD-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="_lq__YOWD5dabWG5jpDD-35" target="GLb_ZV9gbdRmgJeu4g5t-132">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_lq__YOWD5dabWG5jpDD-35" value="&lt;b&gt;Invullen gegevens&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1800" y="277.5" width="110" height="43" as="geometry" />
+        </mxCell>
+        <mxCell id="_lq__YOWD5dabWG5jpDD-38" value="&lt;b&gt;D&lt;/b&gt;" style="ellipse;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="285.5" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
