@@ -50,8 +50,19 @@ if (isset($_POST['submit'])) {
     $land = $_POST['PostalAddressLine2'];
 
     // Insert data into customers table
-    $sqlCustomers = "INSERT INTO `customers`(`CustomerID`, `PersonID`, `Street`, `HouseNumber`, `PostcodeNumbers`, `PostcodeLetters`, `PostalAddressLine2`, `DeliveryAddressLine2`) 
-                     VALUES (NULL, '$lastPersonId', '$street', '$houseNumber', '$postcodeNumbers', '$postcodeLetters', '$land', '')";
+    $sqlCustomers = "INSERT INTO `customers`(
+    `CustomerName`, `CustomerID`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, 
+    `DeliveryPostalCode`, `PostalAddressLine2`, `BillToCustomerID`, `CustomerCategoryID`, 
+    `PrimaryContactPersonID`, `DeliveryMethodID`, `DeliveryCityID`, `PostalCityID`,
+    `AccountOpenedDate`, `StandardDiscountPercentage`, `IsStatementSent`, `IsOnCreditHold`, 
+    `PaymentDays`, `PhoneNumber`, `FaxNumber`, `WebsiteURL`, `PostalAddressLine1`, 
+    `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`
+) 
+VALUES (
+    '$fullName', $lastPersonId, '$street', '$houseNumber', '8265ze', '$land', '1', '1', '1', 
+    1, 1, 1, '2024/01/05', 0, 0, 0, 0, 0, 0, 0, 0, 0, '1', '2024/01/05', '2025/01/01'
+);
+";
 
     // Execute the query
     $conn->query($sqlCustomers);
