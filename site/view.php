@@ -3,6 +3,7 @@
 
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
+include __DIR__ . "/reviews.php";
 
 $backupImage= FALSE;
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
