@@ -52,6 +52,8 @@ if ($stmt !== null) {
 <h1>Add Review</h1>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="StockItemID" value="1">
+    <label>Naam:</label>
+    <label> <?php echo $review['PreferredName'] ?> </label><br>
     <label for="rating">Rating:</label>
     <input type="number" name="rating" id="rating" min="1" max="5" required><br>
     <label for="beschrijving">Description:</label><br>
