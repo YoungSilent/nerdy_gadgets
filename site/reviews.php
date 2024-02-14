@@ -17,9 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $StockItemID = $_POST['StockItemID'];
     $rating = $_POST['rating'];
     $beschrijving = $_POST['beschrijving'];
-    $time = date("H:i:s"); // Current time
-    $date = date("Y-m-d"); // Current date
-    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $stmt);
+    $time = date("H:i:s");
+    $date = date("Y-m-d");
+    $personID = $_SESSION['PersonID'];
+    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $stmt);
 }
 
 // Display reviews for StockItemID
@@ -28,6 +29,7 @@ $reviews = displayReviews($huidigItem, $stmt);
 
 // Output the reviews
 foreach ($reviews as $review) {
+    echo "Name: " . $review['PreferredName'] . "<br>";
     echo "Rating: " . $review['rating'] . "<br>";
     echo "Description: " . $review['beschrijving'] . "<br>";
     echo "Time: " . $review['time'] . "<br>";
