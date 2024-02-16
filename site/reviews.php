@@ -40,7 +40,6 @@ if ($stmt !== null) {
     $stmt->close();
 }
 ?>
-<!--Display the review form-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,8 +49,8 @@ if ($stmt !== null) {
 </head>
 <body>
 <h1>Add Review</h1>
-<form method="POST" action="view.php?id=">
-    <input type="hidden" name="StockItemID" value="<?php echo $StockItemID ?>">
+<form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
+    <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
     <label>Naam:</label>
     <label for="rating">Rating:</label>
     <input type="number" name="rating" id="rating" min="1" max="5" required><br>
