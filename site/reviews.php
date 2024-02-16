@@ -46,12 +46,35 @@ if ($stmt !== null) {
     <title>Add Review</title>
 </head>
 <body>
+<style>
+    .stars input[type="radio"] {
+        display: none;
+    }
+    .stars label {
+        font-size: 30px;
+        cursor: pointer;
+        color: #ccc;
+    }
+    .stars label:hover,
+    .stars label:hover {
+        color: #ffcc00;
+    }
+    .stars input[type="radio"]:checked {
+        color: #ffcc00;
+    }
+</style>
 <h1>Add Review</h1>
 <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
     <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
     <label>Naam: <?php echo $_SESSION['PreferredName'] ?> </label><br>
-    <label for="rating">Rating:</label>
-    <input type="number" name="rating" id="rating" min="1" max="5" required><br>
+    <label for="rating">Beoordeling:</label>
+    <div class="stars">
+        <?php
+        for ($i = 1; $i <= 10; $i++) {
+            echo '<input type="radio" id="rating'.$i.'" name="rating" value="'.$i.'"><label for="rating'.$i.'">&#9733;</label>';
+        }
+        ?>
+    </div>
     <label for="beschrijving">Description:</label><br>
     <textarea name="beschrijving" id="beschrijving" rows="4" cols="50" required></textarea><br>
     <input type="submit" value="Submit Review">
