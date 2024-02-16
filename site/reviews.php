@@ -19,21 +19,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $time = date("H:i:s");
     $date = date("Y-m-d");
     $personID = $_SESSION['PersonID'];
-    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $stmt);
+    $anoniem = $_POST['anoniem'];
+    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
 }
 
-// Display reviews for StockItemID
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
-// Output the reviews
+// Laat elke review zien
 foreach ($reviews as $review) {
+    if($review['Anoniem'] == 1){
+        $review['PreferredName'] = "anoniem";
+    }
     echo "Name: " . $review['PreferredName'] . "<br>";
     echo "Rating: " . $review['rating'] . "<br>";
     echo "Description: " . $review['beschrijving'] . "<br>";
     echo "Time: " . $review['time'] . "<br>";
     echo "Date: " . $review['date'] . "<br><br>";
 }
-// Close $stmt if it's not null
 if ($stmt !== null) {
     $stmt->close();
 }
@@ -62,6 +64,10 @@ if ($stmt !== null) {
     .stars label:hover ~ label,
     .stars input[type="radio"]:checked ~ label {
         color: #ffcc00;
+    }
+    .anoniem{
+        height: 25px;
+        width: 25px;
     }
 </style>
 <h1>Add Review</h1>
@@ -93,6 +99,9 @@ if ($stmt !== null) {
     </div>
     <label for="beschrijving">Description:</label><br>
     <textarea name="beschrijving" id="beschrijving" rows="4" cols="50" required></textarea><br>
+    <input class="anoniem" type="hidden" name="anoniem" value="0">
+    <input class="anoniem" type="checkbox" name="anoniem" value="1">
+    <label for="anoniem">Anoniem plaatsen</label>
     <input type="submit" value="Submit Review">
 </form>
 </body>

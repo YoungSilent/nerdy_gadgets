@@ -1,7 +1,7 @@
 <?php
 function displayReviews($StockItemID, $stmt) {
     $StockItemID = $_GET['id'];
-    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, p.PersonID, p.PreferredName
+    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, r.Anoniem, p.PersonID, p.PreferredName
                     FROM reviews r
                     JOIN people p ON r.PersonID = p.PersonID
                     WHERE r.StockItemID = ?";
@@ -19,7 +19,7 @@ function displayReviews($StockItemID, $stmt) {
 
 
 
-function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $conn) {
+function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $conn) {
 
     if (!isset($StockItemID) || empty($StockItemID)) {
         echo "Error: StockItemID is missing or empty.";
@@ -27,7 +27,7 @@ function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $perso
     }
 
 
-    $stmt = $conn->prepare("INSERT INTO reviews (StockItemID, rating, beschrijving, time, date, PersonID) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO reviews (StockItemID, rating, beschrijving, time, date, PersonID, Anoniem) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
 
     if ($stmt === false) {
@@ -36,7 +36,7 @@ function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $perso
     }
 
 
-    $stmt->bind_param("iisssi", $StockItemID, $rating, $beschrijving, $time, $date, $personID);
+    $stmt->bind_param("iisssii", $StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem);
 
 
     if ($stmt->execute()) {
