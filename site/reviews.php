@@ -47,6 +47,9 @@ if ($stmt !== null) {
 </head>
 <body>
 <style>
+    .stars{
+        direction: rtl;
+    }
     .stars input[type="radio"] {
         display: none;
     }
@@ -56,10 +59,8 @@ if ($stmt !== null) {
         color: #ccc;
     }
     .stars label:hover,
-    .stars label:hover {
-        color: #ffcc00;
-    }
-    .stars input[type="radio"]:checked {
+    .stars label:hover ~ label,
+    .stars input[type="radio"]:checked ~ label {
         color: #ffcc00;
     }
 </style>
@@ -67,13 +68,28 @@ if ($stmt !== null) {
 <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
     <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
     <label>Naam: <?php echo $_SESSION['PreferredName'] ?> </label><br>
-    <label for="rating">Beoordeling:</label>
+    <label for="rating">Beoordeling:</label><br>
     <div class="stars">
-        <?php
-        for ($i = 1; $i <= 10; $i++) {
-            echo '<input type="radio" id="rating'.$i.'" name="rating" value="'.$i.'"><label for="rating'.$i.'">&#9733;</label>';
-        }
-        ?>
+        <input type="radio" id="rating10" name="rating" value="10">
+        <label for="rating10">&#9733;</label>
+        <input type="radio" id="rating9" name="rating" value="9">
+        <label for="rating9">&#9733;</label>
+        <input type="radio" id="rating8" name="rating" value="8">
+        <label for="rating8">&#9733;</label>
+        <input type="radio" id="rating7" name="rating" value="7">
+        <label for="rating7">&#9733;</label>
+        <input type="radio" id="rating6" name="rating" value="6">
+        <label for="rating6">&#9733;</label>
+        <input type="radio" id="rating5" name="rating" value="5">
+        <label for="rating5">&#9733;</label>
+        <input type="radio" id="rating4" name="rating" value="4">
+        <label for="rating4">&#9733;</label>
+        <input type="radio" id="rating3" name="rating" value="3">
+        <label for="rating3">&#9733;</label>
+        <input type="radio" id="rating2" name="rating" value="2">
+        <label for="rating2">&#9733;</label>
+        <input type="radio" id="rating1" name="rating" value="1">
+        <label for="rating1">&#9733;</label>
     </div>
     <label for="beschrijving">Description:</label><br>
     <textarea name="beschrijving" id="beschrijving" rows="4" cols="50" required></textarea><br>
