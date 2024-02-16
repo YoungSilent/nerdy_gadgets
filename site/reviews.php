@@ -2,16 +2,15 @@
 // Include database connection file
 require_once 'database.php';
 require_once 'review_functions.php';
-
 // Check if the user is logged in
 if (!isset($_SESSION['PersonID'])) {
     echo "Please log in to make a review.";
     exit;
+
 }
 
 // Initialize $stmt
 $stmt = connectToDatabase();
-
 // Handle form submission to add a review
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $StockItemID = $_POST['StockItemID'];
@@ -26,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Display reviews for StockItemID
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
-
 // Output the reviews
 foreach ($reviews as $review) {
     echo "Name: " . $review['PreferredName'] . "<br>";
@@ -51,7 +49,7 @@ if ($stmt !== null) {
 <h1>Add Review</h1>
 <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
     <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
-    <label>Naam:</label>
+    <label>Naam: <?php echo $_SESSION['PreferredName'] ?> </label><br>
     <label for="rating">Rating:</label>
     <input type="number" name="rating" id="rating" min="1" max="5" required><br>
     <label for="beschrijving">Description:</label><br>

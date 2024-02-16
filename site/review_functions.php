@@ -1,15 +1,18 @@
 <?php
 function displayReviews($StockItemID, $stmt) {
-    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, p.PersonID, p.PreferredName
+    $StockItemID = $_GET['id'];
+    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, p.PersonID, p.PreferredName
                     FROM reviews r
                     JOIN people p ON r.PersonID = p.PersonID
-                    WHERE r.StockItemID = ?;";
+                    WHERE r.StockItemID = ?";
     $statement = $stmt->prepare($query);
     $statement->bind_param("i", $StockItemID);
     $statement->execute();
     $result = $statement->get_result();
     $reviews = $result->fetch_all(MYSQLI_ASSOC);
     $statement->close();
+//    var_dump($reviews);
+//    var_dump($query);
     return $reviews;
 }
 
