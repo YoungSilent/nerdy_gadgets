@@ -40,6 +40,7 @@ if (isset($_POST['submit'])) {
         // You can store user information in the session if needed
         $_SESSION['PersonID'] = $row['PersonID'];
         $_SESSION['FullName'] = $row['FullName'];
+        $_SESSION['PreferredName'] = $row['PreferredName'];
         $_SESSION['EmailAddress'] = $row['EmailAddress'];
         $_SESSION['PhoneNumber'] = $row['PhoneNumber'];
         $_SESSION['PostalAddressLine2'] = $row['PostalAddressLine2'];
