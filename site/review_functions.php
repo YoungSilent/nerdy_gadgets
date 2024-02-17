@@ -1,7 +1,7 @@
 <?php
 function displayReviews($StockItemID, $stmt) {
     $StockItemID = $_GET['id'];
-    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, r.Anoniem, p.PersonID, p.PreferredName
+    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, p.PersonID, p.PreferredName
                     FROM reviews r
                     JOIN people p ON r.PersonID = p.PersonID
                     WHERE r.StockItemID = ?";

@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['PreferredName'] = $row['PreferredName'];
         $_SESSION['EmailAddress'] = $row['EmailAddress'];
         $_SESSION['PhoneNumber'] = $row['PhoneNumber'];
-        $_SESSION['PostalAddressLine2'] = $row['PostalAddressLine2'];
+//        $_SESSION['PostalAddressLine2'] = $row['PostalAddressLine2']; BROKEN
 
         // Redirect to a logged-in page
         header("Location: ingelogd.php");
