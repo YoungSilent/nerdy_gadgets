@@ -47,7 +47,7 @@ function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $perso
 
 
     if ($stmt->execute()) {
-        echo "Review added successfully." . "<br>";
+        echo "Review succesvol toegevoegd" . "<br>";
     } else {
         echo "Error adding review: " . $stmt->error;
     }
