@@ -34,7 +34,6 @@ include __DIR__ . "/cartfuncties.php";
     //etc.
 
 
-
     if(empty($cart) == FALSE ){
     $Query = "SELECT StockItemID, StockItemName, (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, RecommendedRetailPrice, QuantityOnHand    
     FROM stockitems SI

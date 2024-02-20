@@ -6,7 +6,17 @@ require_once 'review_functions.php';
 if (!isset($_SESSION['PersonID'])) {
     echo "Please log in to make a review.";
     exit;
+} else {
+    $customer_id = $_SESSION['PersonID'];
 
+    // Get the product ID from the URL
+    $product_id = $_GET['id']; // Assuming product_id is passed in the URL
+    $conn = connectToDatabase();
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
+    $conn->close();
 }
 
 // Initialize $stmt
@@ -27,7 +37,7 @@ $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
 // Laat elke review zien
 foreach ($reviews as $review) {
-    if($review['Anoniem'] == 1){
+    if ($review['Anoniem'] == 1) {
         $review['PreferredName'] = "anoniem";
     }
     echo "Name: " . $review['PreferredName'] . "<br>";
@@ -49,27 +59,32 @@ if ($stmt !== null) {
 </head>
 <body>
 <style>
-    .stars{
+    .stars {
         direction: rtl;
     }
+
     .stars input[type="radio"] {
         display: none;
     }
+
     .stars label {
         font-size: 30px;
         cursor: pointer;
         color: #ccc;
     }
+
     .stars label:hover,
     .stars label:hover ~ label,
     .stars input[type="radio"]:checked ~ label {
         color: #ffcc00;
     }
-    .anoniem{
+
+    .anoniem {
         height: 25px;
         width: 25px;
     }
 </style>
+<?php if ($can_leave_review): ?>
 <h1>Add Review</h1>
 <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
     <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
@@ -103,6 +118,7 @@ if ($stmt !== null) {
     <input class="anoniem" type="checkbox" name="anoniem" value="1">
     <label for="anoniem">Anoniem plaatsen</label>
     <input type="submit" value="Submit Review">
+    <?php endif ?>
 </form>
 </body>
 </html>

@@ -17,6 +17,15 @@ function displayReviews($StockItemID, $stmt) {
 }
 
 
+function can_leave_review($conn, $customer_id, $product_id) {
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE CustomerID = ? AND StockItemID = ?");
+    $stmt->bind_param("ii", $customer_id, $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $orders = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return count($orders) > 0;
+}
 
 
 function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $conn) {
@@ -25,8 +34,6 @@ function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $perso
         echo "Error: StockItemID is missing or empty.";
         return;
     }
-
-
     $stmt = $conn->prepare("INSERT INTO reviews (StockItemID, rating, beschrijving, time, date, PersonID, Anoniem) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
 

@@ -15,20 +15,24 @@ function getOrderSummary($orderID){
     return $Result;
 }
 
-function createOrder($customerID){
+function createOrder(){
+    $customerID = $_SESSION['PersonID'];
     $databaseConnection = connectToDatabase();
     $currentDate = date("Y-m-d");
     $currentDateTime = date("Y-m-d H:i:s");
     $deliverydate = date("Y-m-d", strtotime("tomorrow"));
     $ContactPersonID = getRandomContactID();
-
-    $Query = "INSERT INTO orders (CustomerID, SalespersonPersonID, ContactPersonID, OrderDate, ExpectedDeliveryDate, IsUndersupplyBackordered, LastEditedBy, LastEditedWhen)
-    VALUES (?, 1, ?, ?, ?, 1, 1, ?)";
-    $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "iisss", $customerID, $ContactPersonID, $currentDate, $deliverydate, $currentDateTime);
-    mysqli_stmt_execute($Statement);
-
-    $id = mysqli_insert_id($databaseConnection);
+    $cart = getCart();
+    $stockItemIDs = array_keys($cart);
+    foreach ($stockItemIDs as $stockItemID) {
+        $items = $stockItemID;
+        $Query = "INSERT INTO orders (CustomerID, SalespersonPersonID, ContactPersonID, OrderDate, ExpectedDeliveryDate, IsUndersupplyBackordered, LastEditedBy, LastEditedWhen, StockItemID)
+            VALUES (?, 1, ?, ?, ?, 1, 1, ?, ?)";
+        $Statement = mysqli_prepare($databaseConnection, $Query);
+        mysqli_stmt_bind_param($Statement, "iisssi", $customerID, $ContactPersonID, $currentDate, $deliverydate, $currentDateTime, $items);
+        mysqli_stmt_execute($Statement);
+        $id = mysqli_insert_id($databaseConnection);
+    }
     return $id;
 }
 
