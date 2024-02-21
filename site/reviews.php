@@ -8,9 +8,8 @@ if (!isset($_SESSION['PersonID'])) {
     exit;
 } else {
     $customer_id = $_SESSION['PersonID'];
-
-    // Get the product ID from the URL
-    $product_id = $_GET['id']; // Assuming product_id is passed in the URL
+    // haal het product id op uit de url
+    $product_id = $_GET['id'];
     $conn = connectToDatabase();
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -28,11 +27,11 @@ if(isset($_POST['sort'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if filter options are set
+    // Check of de filter staat ingesteld
     if (isset($_POST['filter_rating'])) {
         $filterRating = $_POST['filter_rating'];
 
-        // Save the selected filter rating in a session variable
+        // sla de filter voor het aantal sterren op in een sessie
         $_SESSION['filter_rating'] = $filterRating;
     }
 }
@@ -73,17 +72,10 @@ $reviews = displayReviews($huidigItem, $stmt);
 <form id="sortFormRating" method="post" action="">
     <label for="filter_rating">Filter Het Aantal Sterren</label>
     <select name="filter_rating" id="filter_rating" onchange="submitFormRating()">
-        <option value="all" <?php if($sessionFilterRating == 'all') echo 'selected'; ?>>All Ratings</option>
-        <option value="1" <?php if($sessionFilterRating == '1') echo 'selected'; ?>>1</option>
-        <option value="2" <?php if($sessionFilterRating == '2') echo 'selected'; ?>>2</option>
-        <option value="3" <?php if($sessionFilterRating == '3') echo 'selected'; ?>>3</option>
-        <option value="4" <?php if($sessionFilterRating == '4') echo 'selected'; ?>>4</option>
-        <option value="5" <?php if($sessionFilterRating == '5') echo 'selected'; ?>>5</option>
-        <option value="6" <?php if($sessionFilterRating == '6') echo 'selected'; ?>>6</option>
-        <option value="7" <?php if($sessionFilterRating == '7') echo 'selected'; ?>>7</option>
-        <option value="8" <?php if($sessionFilterRating == '8') echo 'selected'; ?>>8</option>
-        <option value="9" <?php if($sessionFilterRating == '9') echo 'selected'; ?>>9</option>
-        <option value="10" <?php if($sessionFilterRating == '10') echo 'selected'; ?>>10</option>
+        <option value="all" <?php if ($sessionFilterRating == 'all') echo 'selected'; ?>>All Ratings</option>
+        <?php for ($i = 1; $i <= 10; $i++): ?>
+            <option value="<?php echo $i ?>" <?php if ($sessionFilterRating == $i) echo 'selected'; ?>><?php echo $i ?></option>
+        <?php endfor; ?>
     </select>
 </form>
 <!--kort script voor het aanpassen van de data in het label zonder een knop-->
@@ -145,39 +137,23 @@ foreach ($reviews as $review) {
     <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
     <label>Naam: <?php echo $_SESSION['PreferredName'] ?> </label><br>
     <label for="rating">Beoordeling:</label><br>
-<!--    elke knop als een ster-->
     <div class="stars">
-        <input type="radio" id="rating10" name="rating" value="10">
-        <label for="rating10">&#9733;</label>
-        <input type="radio" id="rating9" name="rating" value="9">
-        <label for="rating9">&#9733;</label>
-        <input type="radio" id="rating8" name="rating" value="8">
-        <label for="rating8">&#9733;</label>
-        <input type="radio" id="rating7" name="rating" value="7">
-        <label for="rating7">&#9733;</label>
-        <input type="radio" id="rating6" name="rating" value="6">
-        <label for="rating6">&#9733;</label>
-        <input type="radio" id="rating5" name="rating" value="5">
-        <label for="rating5">&#9733;</label>
-        <input type="radio" id="rating4" name="rating" value="4">
-        <label for="rating4">&#9733;</label>
-        <input type="radio" id="rating3" name="rating" value="3">
-        <label for="rating3">&#9733;</label>
-        <input type="radio" id="rating2" name="rating" value="2">
-        <label for="rating2">&#9733;</label>
-        <input type="radio" id="rating1" name="rating" value="1">
-        <label for="rating1">&#9733;</label>
+        <!-- Sterren voor de beoordeling -->
+        <?php for ($i = 10; $i >= 1; $i--): ?>
+            <input type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
+            <label for="rating<?php echo $i ?>">&#9733;</label>
+        <?php endfor; ?>
     </div>
     <label for="beschrijving">Description:</label><br>
-<!--    hier kan de gebruiker commentaar toevoegen-->
+    <!-- plek voor commentaar -->
     <textarea name="beschrijving" id="beschrijving" rows="4" cols="50" required></textarea><br>
-<!--    checkbox voor het anoniem versturen van de review-->
+    <!-- Checkbox voor het plaatsen van een anonieme review -->
     <input class="anoniem" type="hidden" name="anoniem" value="0">
     <input class="anoniem" type="checkbox" name="anoniem" value="1">
     <label for="anoniem">Anoniem plaatsen</label>
-<!--    knop voor het opslaan en versturen van de review-->
+    <!-- Review Plaatsen Knop -->
     <input type="submit" value="Review Plaatsen">
-    <?php endif ?>
 </form>
 </body>
 </html>
+<?php endif ?>
