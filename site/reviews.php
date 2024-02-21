@@ -17,7 +17,7 @@ if (!isset($_SESSION['PersonID'])) {
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
     $conn->close();
 }
-$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'asc';
+$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
 if(isset($_POST['sort'])) {
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
+
 ?>
 <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
 <form id="sortFormDate" method="post" action="">
@@ -84,10 +85,12 @@ $sortOrder = $_SESSION['sort'];
 if (isset($_POST['sort'])) {
     $sortOrder = $_POST['sort'];
 }
+
 // Sorteer de reviews op datum oud of nieuw
 usort($reviews, function($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
 });
+
 if ($sessionFilterRating == 'all') {
     // Display all reviews
     $filteredReviews = $reviews;
