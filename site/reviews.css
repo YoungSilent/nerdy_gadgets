@@ -22,3 +22,23 @@
     height: 25px;
     width: 25px;
 }
+#sortFormDate,
+#sortFormRating {
+    display: inline-block;
+    margin-right: 10px; /* Adjust as needed */
+}
+#ReviewDiv{
+    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; background: grey
+}
+#ReviewNaam{
+    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; float: left; margin-right: 10px;
+}
+#ReviewSterren{
+    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; float: right;
+}
+#ReviewDatum{
+    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; text-align: center; margin: 0 auto;
+}
+#ReviewBeschrijving{
+    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; clear: both;
+}
