@@ -105,10 +105,9 @@ foreach ($reviews as $review) {
         $review['PreferredName'] = "anoniem";
     }
     echo "Name: " . $review['PreferredName'] . "<br>";
+    echo "Date: " . $review['date'] . "<br>";
     echo "Aantal Sterren " . generateStarRating($review['rating']) . "<br>" ;
-    echo "Description: " . $review['beschrijving'] . "<br>";
-    echo "Time: " . $review['time'] . "<br>";
-    echo "Date: " . $review['date'] . "<br><br>";
+    echo "Description: " . $review['beschrijving'] . "<br><br>";
 }
 ?>
 <!--Hier onder de complete code voor het maken van de review-->
