@@ -105,7 +105,7 @@ foreach ($reviews as $review) {
         $review['PreferredName'] = "anoniem";
     }
     echo "Name: " . $review['PreferredName'] . "<br>";
-    echo "Rating: " . $review['rating'] . "<br>";
+    echo "Aantal Sterren " . generateStarRating($review['rating']) . "<br>" ;
     echo "Description: " . $review['beschrijving'] . "<br>";
     echo "Time: " . $review['time'] . "<br>";
     echo "Date: " . $review['date'] . "<br><br>";
@@ -130,7 +130,7 @@ foreach ($reviews as $review) {
     <div class="stars">
         <!-- Sterren voor de beoordeling -->
         <?php for ($i = 10; $i >= 1; $i--): ?>
-            <input type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
+            <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
             <label for="rating<?php echo $i ?>">&#9733;</label>
         <?php endfor; ?>
     </div>

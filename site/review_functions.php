@@ -15,7 +15,15 @@ function displayReviews($StockItemID, $stmt) {
 //    var_dump($query);
     return $reviews;
 }
-
+function generateStarRating($rating) {
+    $html = '';
+    // Loop through each rating point
+    for ($i = 1; $i <= 10; $i++) {
+        // If the current rating point is less than or equal to the given rating, display a filled star, otherwise display an empty star
+        $html .= ($i <= $rating) ? '&#9733;' : '&#9734;';
+    }
+    return $html;
+}
 
 function can_leave_review($conn, $customer_id, $product_id) {
     $stmt = $conn->prepare("SELECT * FROM orders WHERE CustomerID = ? AND StockItemID = ?");
