@@ -16,8 +16,11 @@ if (!isset($_SESSION['PersonID'])) {
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
     $conn->close();
 }
-if(isset($_SESSION['sort'])) {
-    $sort = 'desc';
+$sortOrderRating = 'asc'; // Default sort order for ratings
+$sort = 'asc';
+if(isset($_POST['sort_rating'])) {
+    $_SESSION['sort_rating'] = $_POST['sort_rating'];
+    $sortOrderRating = $_SESSION['sort_rating'];
 }
 if(isset($_POST['sort'])) {
     $_SESSION['sort'] = $_POST['sort'];
@@ -46,14 +49,24 @@ $reviews = displayReviews($huidigItem, $stmt);
         <option value="asc" <?php if($sort == 'asc') echo 'selected'; ?>>Oudste</option>
     </select>
 </form>
+<form id="sortFormRating" method="post" action="">
+    <label for="sortFormRating">Sorteren op datum:</label>
+    <select name="sortFormRating" id="sortFormRating" onchange="submitFormRating()">
+        <option value="desc" <?php if($sortOrderRating == 'desc') echo 'selected'; ?>>Nieuwste</option>
+        <option value="asc" <?php if($sortOrderRating == 'asc') echo 'selected'; ?>>Oudste</option>
+    </select>
+</form>
 
 <script>
     function submitForm() {
         document.getElementById("sortForm").submit();
     }
+    function submitFormRating() {
+        document.getElementById("sortFormRating").submit();
+    }
+
 </script>
 <?php
-// Laat elke review zien
 $sortOrder = 'desc';
 if (isset($_POST['sort'])) {
     $sortOrder = $_POST['sort'];
@@ -63,7 +76,18 @@ if (isset($_POST['sort'])) {
 usort($reviews, function($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
 });
+$sortOrderRating = 'desc';
+if (isset($_POST['sort_rating'])) {
+    $sortOrderRating = $_POST['sort_rating'];
+}
 
+// Sort the reviews array by rating
+usort($reviews, function($a, $b) use ($sortOrderRating) {
+    if ($a['rating'] == $b['rating']) {
+        return 0;
+    }
+    return ($sortOrderRating == 'asc') ? ($a['rating'] < $b['rating'] ? -1 : 1) : ($a['rating'] > $b['rating'] ? -1 : 1);
+});
 // Display sorted reviews
 foreach ($reviews as $review) {
     if ($review['Anoniem'] == 1) {
@@ -84,32 +108,7 @@ foreach ($reviews as $review) {
     <title>Add Review</title>
 </head>
 <body>
-<style>
-    .stars {
-        direction: rtl;
-    }
-
-    .stars input[type="radio"] {
-        display: none;
-    }
-
-    .stars label {
-        font-size: 30px;
-        cursor: pointer;
-        color: #ccc;
-    }
-
-    .stars label:hover,
-    .stars label:hover ~ label,
-    .stars input[type="radio"]:checked ~ label {
-        color: #ffcc00;
-    }
-
-    .anoniem {
-        height: 25px;
-        width: 25px;
-    }
-</style>
+<link rel="stylesheet" href="reviews.css" type="text/css">
 <?php if ($can_leave_review): ?>
 <h1>Add Review</h1>
 <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
