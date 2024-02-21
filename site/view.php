@@ -3,7 +3,6 @@
 
 include __DIR__ . "/header.php";
 include __DIR__ . "/cartfuncties.php";
-include __DIR__ . "/reviews.php";
 
 $backupImage= FALSE;
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
@@ -267,7 +266,11 @@ if (isset($_GET["id"])) {
 
     else {
         ?><h2 id="ProductNotFound">Het opgevraagde product is niet gevonden.</h2><?php
-    } ?>
+    }
+    echo '<div id="reviews">';
+    include 'reviews.php';
+    echo '</div>';
+    ?>
 </div>
 
 </body>

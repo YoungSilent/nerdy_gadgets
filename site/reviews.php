@@ -2,9 +2,7 @@
 // Include database connection file
 require_once 'database.php';
 require_once 'review_functions.php';
-// Check if the user is logged in
 if (!isset($_SESSION['PersonID'])) {
-    echo "Please log in to make a review.";
     exit;
 } else {
     $customer_id = $_SESSION['PersonID'];
@@ -18,24 +16,55 @@ if (!isset($_SESSION['PersonID'])) {
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
     $conn->close();
 }
-
-// Initialize $stmt
+if(isset($_SESSION['sort'])) {
+    $sort = 'desc';
+}
+if(isset($_POST['sort'])) {
+    $_SESSION['sort'] = $_POST['sort'];
+    $sort = $_SESSION['sort'];
+}
 $stmt = connectToDatabase();
-// Handle form submission to add a review
+//invoegen van formulier review
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $StockItemID = $_POST['StockItemID'];
-    $rating = $_POST['rating'];
-    $beschrijving = $_POST['beschrijving'];
-    $time = date("H:i:s");
-    $date = date("Y-m-d");
-    $personID = $_SESSION['PersonID'];
-    $anoniem = $_POST['anoniem'];
-    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
+        $StockItemID = $_POST['StockItemID'];
+        $rating = $_POST['rating'];
+        $beschrijving = $_POST['beschrijving'];
+        $time = date("H:i:s");
+        $date = date("Y-m-d");
+        $personID = $_SESSION['PersonID'];
+        $anoniem = $_POST['anoniem'];
+        insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
 }
 
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
+?>
+<form id="sortForm" method="post" action="">
+    <label for="sort">Sorteren op datum:</label>
+    <select name="sort" id="sort" onchange="submitForm()">
+        <option value="desc" <?php if($sort == 'desc') echo 'selected'; ?>>Nieuwste</option>
+        <option value="asc" <?php if($sort == 'asc') echo 'selected'; ?>>Oudste</option>
+    </select>
+</form>
+
+<script>
+    function submitForm() {
+        document.getElementById("sortForm").submit();
+    }
+</script>
+<?php
 // Laat elke review zien
+$sortOrder = 'desc';
+if (isset($_POST['sort'])) {
+    $sortOrder = $_POST['sort'];
+}
+
+// Sort the reviews array by date
+usort($reviews, function($a, $b) use ($sortOrder) {
+    return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
+});
+
+// Display sorted reviews
 foreach ($reviews as $review) {
     if ($review['Anoniem'] == 1) {
         $review['PreferredName'] = "anoniem";
@@ -45,9 +74,6 @@ foreach ($reviews as $review) {
     echo "Description: " . $review['beschrijving'] . "<br>";
     echo "Time: " . $review['time'] . "<br>";
     echo "Date: " . $review['date'] . "<br><br>";
-}
-if ($stmt !== null) {
-    $stmt->close();
 }
 ?>
 <!DOCTYPE html>
@@ -117,7 +143,7 @@ if ($stmt !== null) {
     <input class="anoniem" type="hidden" name="anoniem" value="0">
     <input class="anoniem" type="checkbox" name="anoniem" value="1">
     <label for="anoniem">Anoniem plaatsen</label>
-    <input type="submit" value="Submit Review">
+    <input type="submit" value="Review Plaatsen">
     <?php endif ?>
 </form>
 </body>
