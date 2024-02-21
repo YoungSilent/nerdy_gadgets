@@ -17,15 +17,11 @@ if (!isset($_SESSION['PersonID'])) {
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
     $conn->close();
 }
-//maak de sort in de sessie aan
-if(isset($_SESSION['sort'])) {
-    $sort = 'desc';
-}
+$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'asc';
 if(isset($_POST['sort'])) {
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check of de filter staat ingesteld
     if (isset($_POST['filter_rating'])) {
@@ -36,14 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 $sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
-if(isset($_SESSION['filter_rating'])) {
-    $sessionFilterRating = 'all';
-}
 if(isset($_POST['filter_rating'])) {
     $_SESSION['filter_rating'] = $_POST['filter_rating'];
     $sessionFilterRating = $_SESSION['filter_rating'];
 }
-
 $stmt = connectToDatabase();
 //invoegen van formulier review
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -60,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
 ?>
-
 <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
 <form id="sortFormDate" method="post" action="">
     <label for="sort">Sorteren op datum:</label>
@@ -89,7 +80,7 @@ $reviews = displayReviews($huidigItem, $stmt);
 </script>
 <?php
 //check of de sessie al sorteer data bevat zo ja zet hem op de standaard descending
-$sortOrder = 'desc';
+//$sortOrder = 'desc';
 if (isset($_POST['sort'])) {
     $sortOrder = $_POST['sort'];
 }
@@ -119,9 +110,7 @@ foreach ($reviews as $review) {
     echo "Date: " . $review['date'] . "<br><br>";
 }
 ?>
-
 <!--Hier onder de complete code voor het maken van de review-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

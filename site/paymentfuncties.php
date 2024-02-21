@@ -16,7 +16,11 @@ function getOrderSummary($orderID){
 }
 
 function createOrder(){
-    $customerID = $_SESSION['PersonID'];
+    if(!isset($_SESSION['PersonID'])){
+        $customerID = 1;
+    }else{
+        $customerID = $_SESSION['PersonID'];
+    }
     $databaseConnection = connectToDatabase();
     $currentDate = date("Y-m-d");
     $currentDateTime = date("Y-m-d H:i:s");
