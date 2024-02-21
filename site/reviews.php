@@ -80,12 +80,10 @@ $reviews = displayReviews($huidigItem, $stmt);
 </script>
 <?php
 //check of de sessie al sorteer data bevat zo ja zet hem op de standaard descending
-//$sortOrder = 'desc';
+$sortOrder = $_SESSION['sort'];
 if (isset($_POST['sort'])) {
     $sortOrder = $_POST['sort'];
 }
-
-
 // Sorteer de reviews op datum oud of nieuw
 usort($reviews, function($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
