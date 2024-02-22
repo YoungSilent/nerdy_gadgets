@@ -61,5 +61,13 @@ function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $perso
 
     $stmt->close();
 }
+?>
+<script>
+function submitFormDate() {
+    document.getElementById("sortFormDate").submit();
+}
 
-
+function submitFormRating() {
+    document.getElementById("sortFormRating").submit();
+}
+</script>

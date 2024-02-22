@@ -45,19 +45,41 @@
     margin-right: 10px; /* Adjust as needed */
 }
 #ReviewDiv{
-    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; background: grey
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+    color: white;
+    background: grey
 }
 #ReviewNaam{
-    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; float: left; margin-right: 10px;
+    border: 1px solid rgb(170, 170, 170);
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px;
+    color: white;
+    float: left;
+    margin-right: 10px;
 }
 #ReviewSterren{
-    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; float: right;
+    border: 1px solid rgb(170, 170, 170);
+    border-top-right-radius: 5px;
+    padding: 10px;
+    color: white;
+    float: right;
 }
 #ReviewDatum{
-    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; text-align: center; margin: 0 auto;
+    border: 1px solid rgb(170, 170, 170);
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    float: right;
 }
 #ReviewBeschrijving{
-    border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; clear: both;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    clear: both;
 }
 .form-container {
     display: flex;

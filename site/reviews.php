@@ -3,7 +3,6 @@
 require_once 'database.php';
 require_once 'review_functions.php';
 
-
 if (!isset($_SESSION['PersonID'])) {
     exit;
 } else {
@@ -53,7 +52,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
-
 ?>
     <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
     <form id="sortFormDate" method="post" action="">
@@ -72,16 +70,6 @@ $reviews = displayReviews($huidigItem, $stmt);
             <?php endfor; ?>
         </select>
     </form>
-    <!--kort script voor het aanpassen van de data in het label zonder een knop-->
-    <script>
-        function submitFormDate() {
-            document.getElementById("sortFormDate").submit();
-        }
-
-        function submitFormRating() {
-            document.getElementById("sortFormRating").submit();
-        }
-    </script>
     <!--Hier onder de complete code voor het maken van de review-->
     <!DOCTYPE html>
     <html lang="en">
@@ -148,9 +136,8 @@ foreach ($reviews as $review) {
     } ?>
     <br>
     <div id="ReviewDiv">
-        <div style="overflow: auto;">
+        <div>
             <p id="ReviewNaam"><?php echo "Naam: " . $review['PreferredName']; ?></p>
-<!--            <p id="ReviewNaam">--><?php //echo "tijd: " . $review['time']; ?><!--</p>-->
             <p id="ReviewSterren"><?php echo "Aantal Sterren " . generateStarRating($review['rating']); ?></p>
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
         </div>
@@ -158,5 +145,4 @@ foreach ($reviews as $review) {
     </div>
     <?php
 }
-?>
-<?php endif ?>
+endif ?>
