@@ -6,7 +6,8 @@
     transform: translateY(-50%);
     display: flex;
     border: 1px solid black; /* Border style */
-    border-radius: 5px; /* Rounded corners */
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 
 }
 
@@ -38,6 +39,7 @@
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;
+    resize: none;
 }
 #sortFormDate,
 #sortFormRating {
