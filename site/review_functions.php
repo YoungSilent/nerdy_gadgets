@@ -11,8 +11,6 @@ function displayReviews($StockItemID, $stmt) {
     $result = $statement->get_result();
     $reviews = $result->fetch_all(MYSQLI_ASSOC);
     $statement->close();
-//    var_dump($reviews);
-//    var_dump($query);
     return $reviews;
 }
 function generateStarRating($rating) {

@@ -89,29 +89,30 @@ $reviews = displayReviews($huidigItem, $stmt);
         <title>Review Plaatsen</title>
     </head>
     <body>
+    <div class="form-container clearfix">
     <link rel="stylesheet" href="reviews.css" type="text/css">
     <?php if ($can_leave_review): ?>
     <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
         <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
-        <label>Naam: <?php echo $_SESSION['PreferredName'] ?> </label><br>
-        <label for="rating">Beoordeling:</label><br>
-        <div class="stars">
-            <!-- Sterren voor de beoordeling -->
-            <?php for ($i = 10; $i >= 1; $i--): ?>
-                <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
-                <label for="rating<?php echo $i ?>">&#9733;</label>
-            <?php endfor; ?>
+        <!-- Container for input field and stars -->
+        <div class="input-container">
+            <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
+            <div class="stars">
+                <!-- Sterren voor de beoordeling -->
+                <?php for ($i = 10; $i >= 1; $i--): ?>
+                    <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
+                    <label for="rating<?php echo $i ?>">&#9733;</label>
+                <?php endfor; ?>
+            </div>
         </div>
-        <label for="beschrijving">Beschrijving:</label><br>
-        <!-- plek voor commentaar -->
-        <textarea name="beschrijving" id="beschrijving" rows="4" cols="50" required></textarea><br>
-        <!-- Checkbox voor het plaatsen van een anonieme review -->
-        <input class="anoniem" type="hidden" name="anoniem" value="0">
-        <input class="anoniem" type="checkbox" name="anoniem" value="1">
-        <label for="anoniem">Anoniem plaatsen</label>
+        <!-- Checkbox for anonymous review -->
+        <input id="AnoniemReviewPlaatsen" class="anoniem" type="hidden" name="anoniem" value="0">
+        <input id="AnoniemReviewPlaatsen" class="anoniem" type="checkbox" name="anoniem" value="1">
+        <label id="AnoniemReviewPlaatsen" for="anoniem">Anoniem Plaatsen</label>
         <!-- Review Plaatsen Knop -->
-        <input type="submit" value="Review Plaatsen">
+        <input id="ReviewPlaatsenSubmit" type="submit" value="Review Plaatsen">
     </form>
+    </div>
     </body>
     </html>
 <?php
@@ -126,14 +127,16 @@ usort($reviews, function ($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
 });
 
-if ($sessionFilterRating == 'all') {
+    if ($sessionFilterRating == 'all') {
     // Display all reviews
     $filteredReviews = $reviews;
-} else {
+
+    } else {
     $reviews = array_filter($reviews, function ($review) use ($sessionFilterRating) {
         return $review['rating'] == $sessionFilterRating;
     });
 }
+
 // laat de gesorteerde reviews zien
 ?>
 <?php
@@ -145,6 +148,7 @@ foreach ($reviews as $review) {
     <div id="ReviewDiv">
         <div style="overflow: auto;">
             <p id="ReviewNaam"><?php echo "Naam: " . $review['PreferredName']; ?></p>
+<!--            <p id="ReviewNaam">--><?php //echo "tijd: " . $review['time']; ?><!--</p>-->
             <p id="ReviewSterren"><?php echo "Aantal Sterren " . generateStarRating($review['rating']); ?></p>
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
         </div>

@@ -1,15 +1,26 @@
 .stars {
     direction: rtl;
+    position: absolute;
+    top: 14%;
+    right: 0px;
+    transform: translateY(-50%);
+    display: flex;
+    border: 1px solid black; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+
 }
 
 .stars input[type="radio"] {
     display: none;
 }
-
+.input-container {
+    position: relative;
+}
 .stars label {
     font-size: 30px;
     cursor: pointer;
     color: #ccc;
+    margin-left: 5px;
 }
 
 .stars label:hover,
@@ -21,6 +32,12 @@
 .anoniem {
     height: 25px;
     width: 25px;
+}
+#beschrijving {
+    width: 1340px;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 #sortFormDate,
 #sortFormRating {
@@ -41,4 +58,27 @@
 }
 #ReviewBeschrijving{
     border: 1px solid rgb(170, 170, 170); border-radius: 5px; padding: 10px; color: white; clear: both;
+}
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#AnoniemReviewPlaatsen {
+    margin-right: 10px;
+    float: left;
+}
+#filter_rating,
+#filter_date{
+    border-radius: 5px;
+}
+
+.input-container {
+    flex-grow: 1; /* Allow this container to grow and occupy available space */
+}
+#ReviewPlaatsenSubmit{
+    height: auto;
+    float: inline-end;
+    width: auto;
 }
