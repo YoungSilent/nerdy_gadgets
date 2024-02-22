@@ -39,16 +39,18 @@ if (isset($_POST['filter_rating'])) {
 $stmt = connectToDatabase();
 //invoegen van formulier review
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $StockItemID = $_POST['StockItemID'];
-    $rating = $_POST['rating'];
-    $beschrijving = $_POST['beschrijving'];
-    $time = date("H:i:s");
-    $date = date("Y-m-d");
-    $personID = $_SESSION['PersonID'];
-    $anoniem = $_POST['anoniem'];
-    insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
+    $StockItemID = $_GET['id'];
+    // check of alle gegevens aanwezig zijn dit om error codes te voorkomen tijdens het filteren
+    if(isset($_POST['rating'], $_POST['beschrijving'], $_POST['anoniem'])) {
+        $rating = $_POST['rating'];
+        $beschrijving = $_POST['beschrijving'];
+        $anoniem = $_POST['anoniem'];
+        $time = date("H:i:s");
+        $date = date("Y-m-d");
+        $personID = $_SESSION['PersonID'];
+        insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
+    }
 }
-
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
 
