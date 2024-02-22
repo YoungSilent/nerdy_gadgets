@@ -64,7 +64,7 @@ $reviews = displayReviews($huidigItem, $stmt);
     <form id="sortFormRating" method="post" action="">
         <label for="filter_rating">Filter Het Aantal Sterren</label>
         <select name="filter_rating" id="filter_rating" onchange="submitFormRating()">
-            <option value="all" <?php if ($sessionFilterRating == 'all') echo 'selected'; ?>>All Ratings</option>
+            <option value="all" <?php if ($sessionFilterRating == 'all') echo 'selected'; ?>>Alle Sterren</option>
             <?php for ($i = 1; $i <= 10; $i++): ?>
                 <option value="<?php echo $i ?>" <?php if ($sessionFilterRating == $i) echo 'selected'; ?>><?php echo $i ?></option>
             <?php endfor; ?>
