@@ -14,7 +14,7 @@ if (!isset($_SESSION['PersonID'])) {
         die("Connection failed: " . $conn->connect_error);
     }
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
-    $conn->close();
+    $hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
 }
 $sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
 if (isset($_POST['sort'])) {
@@ -25,7 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check of de filter staat ingesteld
     if (isset($_POST['filter_rating'])) {
         $filterRating = $_POST['filter_rating'];
-
         // sla de filter voor het aantal sterren op in een sessie
         $_SESSION['filter_rating'] = $filterRating;
     }
@@ -36,20 +35,6 @@ if (isset($_POST['filter_rating'])) {
     $sessionFilterRating = $_SESSION['filter_rating'];
 }
 $stmt = connectToDatabase();
-//invoegen van formulier review
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $StockItemID = $_GET['id'];
-    // check of alle gegevens aanwezig zijn dit om error codes te voorkomen tijdens het filteren
-    if(isset($_POST['rating'], $_POST['beschrijving'], $_POST['anoniem'])) {
-        $rating = $_POST['rating'];
-        $beschrijving = $_POST['beschrijving'];
-        $anoniem = $_POST['anoniem'];
-        $time = date("H:i:s");
-        $date = date("Y-m-d");
-        $personID = $_SESSION['PersonID'];
-        insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $stmt);
-    }
-}
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
 ?>
@@ -81,12 +66,14 @@ $reviews = displayReviews($huidigItem, $stmt);
     <body>
     <div class="form-container clearfix">
     <link rel="stylesheet" href="reviews.css" type="text/css">
-    <?php if ($can_leave_review): ?>
-    <form method="POST" action="view.php?id=<?php echo $_GET['id'] ?>">
+    <?php if ($can_leave_review && !$hasUserReviewedProduct): ?>
+    <form method="POST" action="review_geplaatst.php">
         <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
         <!-- Container for input field and stars -->
         <div class="input-container">
-            <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
+            <label for="beschrijving">
+                <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
+            </label>
             <div class="stars">
                 <!-- Sterren voor de beoordeling -->
                 <?php for ($i = 10; $i >= 1; $i--): ?>
@@ -101,6 +88,7 @@ $reviews = displayReviews($huidigItem, $stmt);
         <label id="AnoniemReviewPlaatsen" for="anoniem">Anoniem Plaatsen</label>
         <!-- Review Plaatsen Knop -->
         <input id="ReviewPlaatsenSubmit" type="submit" value="Review Plaatsen">
+        <?php endif; ?>
     </form>
     </div>
     </body>
@@ -111,38 +99,63 @@ $sortOrder = $_SESSION['sort'];
 if (isset($_POST['sort'])) {
     $sortOrder = $_POST['sort'];
 }
-
 // Sorteer de reviews op datum oud of nieuw
 usort($reviews, function ($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
 });
-
     if ($sessionFilterRating == 'all') {
     // Display all reviews
     $filteredReviews = $reviews;
-
     } else {
     $reviews = array_filter($reviews, function ($review) use ($sessionFilterRating) {
         return $review['rating'] == $sessionFilterRating;
     });
 }
-
 // laat de gesorteerde reviews zien
 ?>
 <?php
 foreach ($reviews as $review) {
     if ($review['Anoniem'] == 1) {
         $review['PreferredName'] = "anoniem";
-    } ?>
-    <br>
+    }
+    ?>
     <div id="ReviewDiv">
         <div>
             <p id="ReviewNaam"><?php echo "Naam: " . $review['PreferredName']; ?></p>
             <p id="ReviewSterren"><?php echo "Aantal Sterren " . generateStarRating($review['rating']); ?></p>
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
+
         </div>
         <p id="ReviewBeschrijving"><?php echo "Beschrijving: " . $review['beschrijving']; ?></p>
+        <?php $MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn); if ($MijnReview): ?>
+            <button id="BijwerkenKnop" class="edit-review-btn">Bijwerken</button>
+<!--           Aanpassen van de review-->
+            <form class="edit-review-form" method="post" action="review_bijwerken.php" style="display: none;">
+                <input type="hidden" name="review_id" value="<?php echo $review['id']; ?>">
+                <input type="hidden" name="StockItemID" value="<?php echo $_GET['id']; ?>">
+                <label for="beschrijving">
+                    <textarea type="text" name="beschrijving" id="beschrijving" required><?php echo $review['beschrijving']; ?></textarea>
+                </label>
+                <br>
+                <div class="stars">
+                    <!-- Sterren voor de beoordeling -->
+                    <?php for ($i = 10; $i >= 1; $i--): ?>
+                        <?php $checked = ($i == $review['rating']) ? 'checked' : ''; ?>
+                        <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>" <?php echo $checked ?>>
+                        <label for="rating<?php echo $i ?>">&#9733;</label>
+                    <?php endfor; ?>
+                </div>
+                <input type="submit" value="Bijwerken">
+            </form>
+            <form method="post" action="review_verwijderen.php">
+                <input type="hidden" name="review_id" value="<?php echo $review['id']; ?>">
+                <input type="hidden" name="StockItemID" value="<?php echo $_GET['id']; ?>">
+                <button id="VerwijderenKnop" type="submit">Verwijderen</button>
+            </form>
+        <?php endif; ?>
     </div>
-    <?php
+    <br>
+<?php
 }
-endif ?>
+$conn->close();
+?>

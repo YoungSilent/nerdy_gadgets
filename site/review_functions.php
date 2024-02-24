@@ -1,7 +1,7 @@
 <?php
 function displayReviews($StockItemID, $stmt) {
     $StockItemID = $_GET['id'];
-    $query = "SELECT r.rating, r.beschrijving, r.time, r.date, r.PersonID, r.Anoniem, p.PersonID, p.PreferredName
+    $query = "SELECT r.id, r.rating, r.beschrijving, r.time, r.date, r.PersonID, r.Anoniem, p.PersonID, p.PreferredName
                     FROM reviews r
                     JOIN people p ON r.PersonID = p.PersonID
                     WHERE r.StockItemID = ?";
@@ -32,8 +32,45 @@ function can_leave_review($conn, $customer_id, $product_id) {
     $stmt->close();
     return count($orders) > 0;
 }
+function hasUserReviewedProduct($customer_id, $product_id, $conn) {
+    // Query to check if the user has already posted a review for the product
+    $query = "SELECT * FROM reviews WHERE PersonID = $customer_id AND StockItemID = $product_id";
+    $result = mysqli_query($conn, $query);
+    // Check if any rows are returned (indicating the user has already reviewed the product)
+    if (mysqli_num_rows($result) > 0) {
+        return true; // User has already reviewed the product
+    } else {
+        return false; // User has not reviewed the product
+    }
+}
+function isMyReview($reviewID, $userID, $connection) {
+    $query = "SELECT * FROM reviews WHERE id = $reviewID AND PersonID = $userID";
 
+    // Execute the query
+    $result = mysqli_query($connection, $query);
 
+    // Check if the query was successful
+    if ($result === false) {
+        return false; // Query failed
+    }
+    if (mysqli_num_rows($result) > 0) {
+        return true; // Review belongs to the logged-in customer
+    } else {
+        return false; // Review does not belong to the logged-in customer
+    }
+}
+function updateReview($review_id, $rating, $beschrijving, $conn) {
+    $review_id = mysqli_real_escape_string($conn, $review_id);
+    $rating = mysqli_real_escape_string($conn, $rating);
+    $beschrijving = mysqli_real_escape_string($conn, $beschrijving);
+    $sql = "UPDATE reviews SET rating = '$rating', beschrijving = '$beschrijving' WHERE id = '$review_id'";
+    if (mysqli_query($conn, $sql)) {
+        return true;
+    } else {
+        echo "Error updating review: " . mysqli_error($conn);
+        return false;
+    }
+}
 function insertReview($StockItemID, $rating, $beschrijving, $time, $date, $personID, $anoniem, $conn) {
 
     if (!isset($StockItemID) || empty($StockItemID)) {
@@ -70,4 +107,25 @@ function submitFormDate() {
 function submitFormRating() {
     document.getElementById("sortFormRating").submit();
 }
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all edit review buttons
+    var editReviewBtns = document.querySelectorAll('.edit-review-btn');
+
+    // Add click event listener to each button
+    editReviewBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            // Toggle visibility of the associated edit review form
+            var editForm = this.nextElementSibling;
+            var additionalDiv = editForm.nextElementSibling;
+            if (editForm.style.display === 'none' || editForm.style.display === '') {
+                editForm.style.display = 'block';
+                additionalDiv.style.display = 'block'
+                // Hide the edit button when the form is displayed
+                this.style.display = 'none';
+            } else {
+                editForm.style.display = 'none';
+            }
+        });
+    });
+});
 </script>

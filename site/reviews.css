@@ -1,7 +1,7 @@
 .stars {
     direction: rtl;
     position: absolute;
-    top: 14%;
+    top: 13%;
     right: 0px;
     transform: translateY(-50%);
     display: flex;
@@ -10,7 +10,17 @@
     border-bottom-left-radius: 5px;
 
 }
-
+.edit-review-form {
+    position: absolute;
+}
+textarea {
+    width: calc(100% - 40px); /* Adjust as needed */
+    height: 200px; /* Keep the same */
+    border-radius: 5px;
+    border: 1px solid black;
+    resize: none;
+    padding-right: 40px; /* Adjust as needed */
+}
 .stars input[type="radio"] {
     display: none;
 }
@@ -86,9 +96,7 @@
 .form-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
-
 #AnoniemReviewPlaatsen {
     margin-right: 10px;
     float: left;
@@ -97,12 +105,15 @@
 #filter_date{
     border-radius: 5px;
 }
-
 .input-container {
-    flex-grow: 1; /* Allow this container to grow and occupy available space */
+    flex-grow: 1;
 }
-#ReviewPlaatsenSubmit{
+#ReviewPlaatsenSubmit {
     height: auto;
     float: inline-end;
     width: auto;
+}
+#BijwerkenKnop,
+#VerwijderenKnop{
+    float: right;
 }
