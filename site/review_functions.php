@@ -15,9 +15,7 @@ function displayReviews($StockItemID, $stmt) {
 }
 function generateStarRating($rating) {
     $html = '';
-    // Loop through each rating point
     for ($i = 1; $i <= 10; $i++) {
-        // If the current rating point is less than or equal to the given rating, display a filled star, otherwise display an empty star
         $html .= ($i <= $rating) ? '&#9733;' : '&#9734;';
     }
     return $html;
@@ -33,30 +31,33 @@ function can_leave_review($conn, $customer_id, $product_id) {
     return count($orders) > 0;
 }
 function hasUserReviewedProduct($customer_id, $product_id, $conn) {
-    // Query to check if the user has already posted a review for the product
     $query = "SELECT * FROM reviews WHERE PersonID = $customer_id AND StockItemID = $product_id";
     $result = mysqli_query($conn, $query);
-    // Check if any rows are returned (indicating the user has already reviewed the product)
     if (mysqli_num_rows($result) > 0) {
-        return true; // User has already reviewed the product
+        return true;
     } else {
-        return false; // User has not reviewed the product
+        return false;
+    }
+}
+function reviewAanwezig($product_id, $conn) {
+    $query = "SELECT * FROM reviews WHERE StockItemID = $product_id";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) > 0) {
+        return true;
+    } else {
+        return false;
     }
 }
 function isMyReview($reviewID, $userID, $connection) {
     $query = "SELECT * FROM reviews WHERE id = $reviewID AND PersonID = $userID";
-
-    // Execute the query
     $result = mysqli_query($connection, $query);
-
-    // Check if the query was successful
     if ($result === false) {
-        return false; // Query failed
+        return false;
     }
     if (mysqli_num_rows($result) > 0) {
-        return true; // Review belongs to the logged-in customer
+        return true;
     } else {
-        return false; // Review does not belong to the logged-in customer
+        return false;
     }
 }
 function updateReview($review_id, $rating, $beschrijving, $conn) {
@@ -128,4 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+function verwijderReview(event){
+    if (!confirm('Weet je zeker dat je review wilt verwijderen?')) {
+        event.preventDefault();
+    }
+}
 </script>

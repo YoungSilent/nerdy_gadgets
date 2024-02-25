@@ -5,8 +5,8 @@
     right: 0px;
     transform: translateY(-50%);
     display: flex;
-    border: 1px solid black;
-    border-top-right-radius: 5px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
     border-bottom-left-radius: 5px;
 
 }
