@@ -26,6 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['filter_rating'])) {
     $_SESSION['filter_rating'] = $filterRating;
     $sessionFilterRating = $filterRating;
 }
+$can_leave_review = can_leave_review($conn, $customer_id, $product_id);
+$hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
+$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
+$sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
 $reviewAanwezig = reviewAanwezig($product_id, $conn);
 $stmt = connectToDatabase();
 $huidigItem = getStockItem($_GET['id'], $stmt);
