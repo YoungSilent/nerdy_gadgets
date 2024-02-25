@@ -137,10 +137,10 @@ VALUES (
        maxlength="15" style="width:auto">
 <br>
 
-<label class="formLabel">Wachtwoord</label>
+<label class="formLabel">Wachtwoord*</label>
 <input id="password" type="password" name="HashedPassword" value="" required style="width:510px"
        minlength="8">
-<label class="formLabel">Bevestig Wachtwoord</label>
+<label class="formLabel">Bevestig Wachtwoord*</label>
 <input id="confirm_password" type="password" name="HashedPassword" value="" required style="width:510px"
        minlength="8">
 
