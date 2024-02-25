@@ -3,42 +3,30 @@
 require_once 'database.php';
 require_once 'review_functions.php';
 
+$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
+$sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
+
 if (!isset($_SESSION['PersonID'])) {
     $product_id = $_GET['id'];
     $conn = connectToDatabase();
-    $sort = 'desc';
-    $sessionFilterRating = 'all';
 } else {
     $customer_id = $_SESSION['PersonID'];
-    // haal het product id op uit de url
     $product_id = $_GET['id'];
     $conn = connectToDatabase();
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
-    $hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
-    $sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
-    $sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
 }
-$reviewAanwezig = reviewAanwezig($product_id, $conn);
-if (isset($_POST['sort'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['sort'])) {
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check of de filter staat ingesteld
-    if (isset($_POST['filter_rating'])) {
-        $filterRating = $_POST['filter_rating'];
-        // sla de filter voor het aantal sterren op in een sessie
-        $_SESSION['filter_rating'] = $filterRating;
-    }
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['filter_rating'])) {
+    $filterRating = $_POST['filter_rating'];
+    $_SESSION['filter_rating'] = $filterRating;
+    $sessionFilterRating = $filterRating;
 }
-//$sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
-if (isset($_POST['filter_rating'])) {
-    $_SESSION['filter_rating'] = $_POST['filter_rating'];
-    $sessionFilterRating = $_SESSION['filter_rating'];
-}
+$reviewAanwezig = reviewAanwezig($product_id, $conn);
 $stmt = connectToDatabase();
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
@@ -122,7 +110,7 @@ if ($sessionFilterRating == 'all') {
 foreach ($reviews as $review) {
     $MijnReview = false;
     if ($review['Anoniem'] == 1) {
-        $review['PreferredName'] = "anoniem";
+        $review['PreferredName'] = "Anoniem";
     }
     ?>
     <div id="ReviewDiv">
