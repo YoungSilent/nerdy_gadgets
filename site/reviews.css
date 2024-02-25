@@ -34,10 +34,9 @@
 
 .stars-edit {
     direction: rtl;
-    position: absolute;
+    position: relative;
     top: 13%;
     right: 0px;
-    transform: translateY(-50%);
     display: flex;
     border: 1px solid black;
     border-top-right-radius: 5px;
@@ -67,13 +66,23 @@
     width: 25px;
 }
 #beschrijving {
-    width: 100%;
+    width: 300%;
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;
     resize: none;
     box-sizing: border-box;
 }
+
+#edit-beschrijving {
+    width: 65%;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+    resize: none;
+    box-sizing: border-box;
+}
+
 #sortFormDate,
 #sortFormRating {
     display: inline-block;
