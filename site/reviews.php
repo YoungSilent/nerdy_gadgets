@@ -120,6 +120,7 @@ if ($sessionFilterRating == 'all') {
 ?>
 <?php
 foreach ($reviews as $review) {
+    $MijnReview = false;
     if ($review['Anoniem'] == 1) {
         $review['PreferredName'] = "anoniem";
     }
@@ -131,8 +132,7 @@ foreach ($reviews as $review) {
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
         </div>
         <p id="ReviewBeschrijving"><?php echo "Beschrijving: " . $review['beschrijving']; ?></p>
-        <?php if(isset($_SESSION['PersonID'])) {$MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);}
-        if ($MijnReview):?>
+        <?php if(isset($_SESSION['PersonID'])) {$MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);} if ($MijnReview):?>
             <button id="BijwerkenKnop" class="edit-review-btn">Bijwerken</button>
             <!--           Aanpassen van de review-->
             <form class="form-container clearfix" method="post" action="review_bijwerken.php" style="display: none;">

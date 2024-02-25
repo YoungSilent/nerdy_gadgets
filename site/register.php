@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
     `PostalPostalCode`, `LastEditedBy`, `ValidFrom`, `ValidTo`
 ) 
 VALUES (
-    '$fullName', $lastPersonId, '$street', '$houseNumber', '8265ze', '$land', '1', '1', '1', 
+    '$fullName', $lastPersonId, '$street', '$houseNumber', '$postcodeNumbers', '$land', '1', '1', '1', 
     1, 1, 1, '2024/01/05', 0, 0, 0, 0, 0, 0, 0, 0, 0, '1', '2024/01/05', '2025/01/01'
 );
 ";
