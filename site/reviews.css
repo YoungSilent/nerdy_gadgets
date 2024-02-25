@@ -5,7 +5,7 @@
     right: 0px;
     transform: translateY(-50%);
     display: flex;
-    border: 1px solid black; /* Border style */
+    border: 1px solid black
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
 
@@ -67,7 +67,7 @@
     width: 25px;
 }
 #beschrijving {
-    width: 100%; /* Set width to 100% */
+    width: 100%;
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;

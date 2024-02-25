@@ -65,31 +65,31 @@ $reviews = displayReviews($huidigItem, $stmt);
     </head>
     <body>
     <div class="form-container clearfix">
-    <link rel="stylesheet" href="reviews.css" type="text/css">
-    <?php if ($can_leave_review && !$hasUserReviewedProduct): ?>
-    <form method="POST" action="review_geplaatst.php">
-        <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
-        <!-- Container for input field and stars -->
-        <div class="input-container">
-            <label for="beschrijving">
-                <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
-            </label>
-            <div class="stars">
-                <!-- Sterren voor de beoordeling -->
-                <?php for ($i = 10; $i >= 1; $i--): ?>
-                    <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
-                    <label for="rating<?php echo $i ?>">&#9733;</label>
-                <?php endfor; ?>
+        <link rel="stylesheet" href="reviews.css" type="text/css">
+        <?php if ($can_leave_review && !$hasUserReviewedProduct): ?>
+        <form method="POST" action="review_geplaatst.php">
+            <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
+            <!-- Container for input field and stars -->
+            <div class="input-container">
+                <label for="beschrijving">
+                    <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
+                </label>
+                <div class="stars">
+                    <!-- Sterren voor de beoordeling -->
+                    <?php for ($i = 10; $i >= 1; $i--): ?>
+                        <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>">
+                        <label for="rating<?php echo $i ?>">&#9733;</label>
+                    <?php endfor; ?>
+                </div>
             </div>
-        </div>
-        <!-- Checkbox for anonymous review -->
-        <input id="AnoniemReviewPlaatsen" class="anoniem" type="hidden" name="anoniem" value="0">
-        <input id="AnoniemReviewPlaatsen" class="anoniem" type="checkbox" name="anoniem" value="1">
-        <label id="AnoniemReviewPlaatsen" for="anoniem">Anoniem Plaatsen</label>
-        <!-- Review Plaatsen Knop -->
-        <input id="ReviewPlaatsenSubmit" type="submit" value="Review Plaatsen">
-        <?php endif; ?>
-    </form>
+            <!-- Checkbox for anonymous review -->
+            <input id="AnoniemReviewPlaatsen" class="anoniem" type="hidden" name="anoniem" value="0">
+            <input id="AnoniemReviewPlaatsen" class="anoniem" type="checkbox" name="anoniem" value="1">
+            <label id="AnoniemReviewPlaatsen" for="anoniem">Anoniem Plaatsen</label>
+            <!-- Review Plaatsen Knop -->
+            <input id="ReviewPlaatsenSubmit" type="submit" value="Review Plaatsen">
+            <?php endif; ?>
+        </form>
     </div>
     </body>
     </html>
@@ -103,10 +103,10 @@ if (isset($_POST['sort'])) {
 usort($reviews, function ($a, $b) use ($sortOrder) {
     return ($sortOrder == 'asc') ? strtotime($a['date']) - strtotime($b['date']) : strtotime($b['date']) - strtotime($a['date']);
 });
-    if ($sessionFilterRating == 'all') {
+if ($sessionFilterRating == 'all') {
     // Display all reviews
     $filteredReviews = $reviews;
-    } else {
+} else {
     $reviews = array_filter($reviews, function ($review) use ($sessionFilterRating) {
         return $review['rating'] == $sessionFilterRating;
     });
@@ -127,9 +127,10 @@ foreach ($reviews as $review) {
 
         </div>
         <p id="ReviewBeschrijving"><?php echo "Beschrijving: " . $review['beschrijving']; ?></p>
-        <?php $MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn); if ($MijnReview): ?>
+        <?php $MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);
+        if ($MijnReview): ?>
             <button id="BijwerkenKnop" class="edit-review-btn">Bijwerken</button>
-<!--           Aanpassen van de review-->
+            <!--           Aanpassen van de review-->
             <form class="edit-review-form" method="post" action="review_bijwerken.php" style="display: none;">
                 <div class="form-container clearfix"> <!-- Add a container div -->
                     <input type="hidden" name="review_id" value="<?php echo $review['id']; ?>">
@@ -137,12 +138,14 @@ foreach ($reviews as $review) {
                     <!-- Move the label inside the form -->
                     <label for="beschrijving">Beschrijving:</label>
                     <div class="textarea-container"> <!-- Add a container for textarea and stars -->
-                        <textarea type="text" name="beschrijving" id="beschrijving" required><?php echo $review['beschrijving']; ?></textarea>
+                        <textarea type="text" name="beschrijving" id="beschrijving"
+                                  required><?php echo $review['beschrijving']; ?></textarea>
                         <div class="stars-edit"> <!-- Stars container -->
                             <!-- Sterren voor de beoordeling -->
                             <?php for ($i = 10; $i >= 1; $i--): ?>
                                 <?php $checked = ($i == $review['rating']) ? 'checked' : ''; ?>
-                                <input required type="radio" id="rating<?php echo $i ?>" name="rating" value="<?php echo $i ?>" <?php echo $checked ?>>
+                                <input required type="radio" id="rating<?php echo $i ?>" name="rating"
+                                       value="<?php echo $i ?>" <?php echo $checked ?>>
                                 <label for="rating<?php echo $i ?>">&#9733;</label>
                             <?php endfor; ?>
                         </div>
@@ -158,7 +161,7 @@ foreach ($reviews as $review) {
         <?php endif; ?>
     </div>
     <br>
-<?php
+    <?php
 }
 $conn->close();
 ?>
