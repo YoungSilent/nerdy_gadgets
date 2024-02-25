@@ -4,7 +4,10 @@ require_once 'database.php';
 require_once 'review_functions.php';
 
 if (!isset($_SESSION['PersonID'])) {
-    exit;
+    $product_id = $_GET['id'];
+    $conn = connectToDatabase();
+    $sort = 'desc';
+    $sessionFilterRating = 'all';
 } else {
     $customer_id = $_SESSION['PersonID'];
     // haal het product id op uit de url
@@ -15,9 +18,10 @@ if (!isset($_SESSION['PersonID'])) {
     }
     $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
     $hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
-    $reviewAanwezig = reviewAanwezig($product_id, $conn);
+    $sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
+    $sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
 }
-$sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
+$reviewAanwezig = reviewAanwezig($product_id, $conn);
 if (isset($_POST['sort'])) {
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
@@ -30,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['filter_rating'] = $filterRating;
     }
 }
-$sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
+//$sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
 if (isset($_POST['filter_rating'])) {
     $_SESSION['filter_rating'] = $_POST['filter_rating'];
     $sessionFilterRating = $_SESSION['filter_rating'];
@@ -38,6 +42,7 @@ if (isset($_POST['filter_rating'])) {
 $stmt = connectToDatabase();
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
+
 ?>
     <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
 <?php if ($reviewAanwezig): ?>
@@ -68,7 +73,7 @@ $reviews = displayReviews($huidigItem, $stmt);
     </head>
     <body>
     <link rel="stylesheet" href="reviews.css" type="text/css">
-    <?php if ($can_leave_review && !$hasUserReviewedProduct): ?>
+    <?php if(isset($_SESSION['PersonID']))if($can_leave_review && !$hasUserReviewedProduct): ?>
     <div class="form-container clearfix">
         <form method="POST" action="review_geplaatst.php">
             <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
@@ -127,7 +132,7 @@ foreach ($reviews as $review) {
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
         </div>
         <p id="ReviewBeschrijving"><?php echo "Beschrijving: " . $review['beschrijving']; ?></p>
-        <?php $MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);
+        <?php if(isset($_SESSION['PersonID'])) {$MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);}else{exit;}
         if ($MijnReview): ?>
             <button id="BijwerkenKnop" class="edit-review-btn">Bijwerken</button>
             <!--           Aanpassen van de review-->
