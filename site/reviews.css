@@ -5,21 +5,13 @@
     right: 0px;
     transform: translateY(-50%);
     display: flex;
-    border: 1px solid black; /* Border style */
+    border: 1px solid black;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
 
 }
 .edit-review-form {
     position: absolute;
-}
-textarea {
-    width: calc(100% - 40px); /* Adjust as needed */
-    height: 200px; /* Keep the same */
-    border-radius: 5px;
-    border: 1px solid black;
-    resize: none;
-    padding-right: 40px; /* Adjust as needed */
 }
 .stars input[type="radio"] {
     display: none;
@@ -40,27 +32,67 @@ textarea {
     color: #ffcc00;
 }
 
+.stars-edit {
+    direction: rtl;
+    position: relative;
+    top: 13%;
+    right: 0px;
+    display: flex;
+    border: 1px solid black;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.stars-edit label {
+    font-size: 30px;
+    cursor: pointer;
+    color: #ccc;
+    margin-left: 5px;
+}
+
+.stars-edit label:hover,
+.stars-edit label:hover ~ label,
+.stars-edit input[type="radio"]:checked ~ label {
+    color: #ffcc00;
+}
+
+.stars-edit input[type="radio"] {
+    display: none;
+}
+
+
 .anoniem {
     height: 25px;
     width: 25px;
 }
 #beschrijving {
-    width: 1000px;
+    width: 100%;
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;
     resize: none;
+    box-sizing: border-box;
 }
+
+#edit-beschrijving {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    border: 1px solid black;
+    resize: none;
+    box-sizing: border-box;
+}
+
 #sortFormDate,
 #sortFormRating {
     display: inline-block;
-    margin-right: 10px; /* Adjust as needed */
+    margin-right: 10px;
 }
 #ReviewDiv{
     border: 1px solid rgb(170, 170, 170);
     border-radius: 5px;
     color: white;
-    background: grey
+    background: grey;
 }
 #ReviewNaam{
     border: 1px solid rgb(170, 170, 170);
@@ -94,8 +126,11 @@ textarea {
     clear: both;
 }
 .form-container {
-    display: flex;
-    justify-content: space-between;
+    border-radius: 5px;
+    color: white;
+    background: grey;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 #AnoniemReviewPlaatsen {
     margin-right: 10px;
