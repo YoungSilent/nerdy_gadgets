@@ -42,7 +42,6 @@ if (isset($_POST['filter_rating'])) {
 $stmt = connectToDatabase();
 $huidigItem = getStockItem($_GET['id'], $stmt);
 $reviews = displayReviews($huidigItem, $stmt);
-
 ?>
     <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
 <?php if ($reviewAanwezig): ?>
@@ -132,8 +131,8 @@ foreach ($reviews as $review) {
             <p id="ReviewDatum"><?php echo "Datum: " . $review['date']; ?></p>
         </div>
         <p id="ReviewBeschrijving"><?php echo "Beschrijving: " . $review['beschrijving']; ?></p>
-        <?php if(isset($_SESSION['PersonID'])) {$MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);}else{exit;}
-        if ($MijnReview): ?>
+        <?php if(isset($_SESSION['PersonID'])) {$MijnReview = isMyReview($review['id'], $_SESSION['PersonID'], $conn);}
+        if ($MijnReview):?>
             <button id="BijwerkenKnop" class="edit-review-btn">Bijwerken</button>
             <!--           Aanpassen van de review-->
             <form class="form-container clearfix" method="post" action="review_bijwerken.php" style="display: none;">
@@ -160,7 +159,7 @@ foreach ($reviews as $review) {
                 <input type="hidden" name="StockItemID" value="<?php echo $_GET['id']; ?>">
                 <button onclick="verwijderReview(event)" id="VerwijderenKnop" type="submit">Verwijderen</button>
             </form>
-        <?php endif; ?>
+        <?php endif;?>
     </div>
     <br>
     <?php
