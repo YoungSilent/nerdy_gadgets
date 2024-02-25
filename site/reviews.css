@@ -5,7 +5,7 @@
     right: 0px;
     transform: translateY(-50%);
     display: flex;
-    border: 1px solid black
+    border: 1px solid black;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
 
@@ -123,7 +123,6 @@
     background: grey;
     padding: 10px;
     margin-bottom: 10px;
-    width: 1345px;
 }
 #AnoniemReviewPlaatsen {
     margin-right: 10px;
