@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     $achternaam = $_POST["achternaam"];
     $fullName = ucwords($voornaam) .' '. $tussenvoegsel .' '. ucwords($achternaam);
     $preferredName = ucwords($_POST['preferredName']);
-    $HashedPassword = $_POST['HashedPassword'];
+    $HashedPassword = password_hash($_POST['HashedPassword'], PASSWORD_DEFAULT);
     $PhoneNumber = $_POST['PhoneNumber'];
     $EmailAddress = $_POST['EmailAddress'];
     $ValidFrom = date('Y-m-d h:i:s', time());
