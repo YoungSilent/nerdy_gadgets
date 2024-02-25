@@ -57,16 +57,18 @@ if (isset($_POST['submit'])) {
     <title>Login Pagina</title>
 </head>
 <body>
-<h2 style="margin-left: 500px">Login Pagina</h2>
+<div style="text-align:center;">
+<h2>Login Pagina</h2>
 <form method="post" action="ingelogd.php" onSubmit="return validate();"
 "">
-<label class="formLabel" style="margin-left: 500px">Email:</label>
-<input type="text" name="FullName" style="width: 500px; margin-left: 500px;"><br>
-<label class="formLabel" style="margin-left: 500px">Wachtwoord:</label>
-<input id="password" type="password" name="HashedPassword" style="width: 500px; margin-left: 500px;"><br>
-<input name="submit" type="submit" value="Inloggen" style="width: 150px; margin-left: 675px; margin-top: 10px; font-size: 20px">
-<h5 style="text-align: center;">Nog geen account klik <a href="register.php">hier</a></h5>
+<label class="formLabel">Email:</label>
+<input type="text" name="FullName" style="width: 500px;"><br>
+<label class="formLabel">Wachtwoord:</label>
+<input id="password" type="password" name="HashedPassword" style="width: 500px;"><br>
+<input name="submit" type="submit" value="Inloggen" style="width: 150px; margin-top: 20px; font-size: 20px">
+<h5 style="margin-top:10px">Nog geen account klik <a href="register.php">hier</a></h5>
 </form>
+</div>
 </body>
 </html>
 
