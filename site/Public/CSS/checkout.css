@@ -1,20 +1,76 @@
+#wrapper{
+    border: 100px;
+}
 #checkout{
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline;
+    /*display: inline;*/
     border: 1px solid #ccc;
     border-radius: 20px;
     box-sizing: border-box;
     position: relative;
 }
 #form{
+    margin-left: 125px;
+    display: inline-block;
+    border: 1px solid rgb(170, 170, 170);
     border-radius: 5px;
-    /*display: flex;*/
-    padding-left: 125px;
+    padding: 10px;
+}
+#divPrijsEnBetaalKnop{
+    float: right;
+    display: inline-block;
+    width:360px;
+    height: auto;
+    border: 1px;
+    margin-right: 155px;
+    background-color: #5C6EFF;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 5px;
+    /*overflow: scroll; height: 400px;*/
+}
+#artikelen{
+    margin-left: 10px;
+    overflow: scroll; height: 400px;
+
+}
+#prijs{
+    
+    box-shadow: 0 -1px 0 #FFFFFF;
+}
+#naam{
+    float: left;
     width: 50%;
-    /*background-color: #f2f2f2;*/
-    /*padding: 20px;*/
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline;*/
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+#achternaam{
+    float: right;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    /*display: inline;*/
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 #submit{
     border-radius: 20px;
+    width: 360px;
+    float: bottom;
+}
+
+.formLabel {
+    display:block;
+}
+
+.formName {
+    display:inline-block;
 }
