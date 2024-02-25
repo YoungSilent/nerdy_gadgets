@@ -2,10 +2,8 @@
 // Include database connection file
 require_once 'database.php';
 require_once 'review_functions.php';
-
 $sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
 $sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
-
 if (!isset($_SESSION['PersonID'])) {
     $product_id = $_GET['id'];
     $conn = connectToDatabase();
