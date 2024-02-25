@@ -23,18 +23,30 @@ if (isset($_POST['submit'])) {
     $PreferredName = $_POST['FullName'];
     $passwordInput = $_POST['HashedPassword'];
 
+    $Query = "  SELECT HashedPassword
+                FROM people 
+                WHERE FullName = ? OR EmailAddress = ?";
+
+    $Statement = mysqli_prepare($conn, $Query);
+    mysqli_stmt_bind_param($Statement, "ss", $FullName, $PreferredName);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+    
     // SQL query to check if the username or email and hashed password match
-    $sql = "SELECT * FROM people WHERE (FullName = ? OR EmailAddress = ?) AND HashedPassword = ?";
+    $sql = "SELECT * FROM people WHERE FullName = ? OR EmailAddress = ?";
 
     $statement = mysqli_prepare($conn, $sql);
 
     // Assuming $username and $passwordInput are the values you want to check
-    mysqli_stmt_bind_param($statement, "sss", $FullName, $PreferredName, $passwordInput);
+    mysqli_stmt_bind_param($statement, "ss", $FullName, $PreferredName);
 
     mysqli_stmt_execute($statement);
     $result = mysqli_stmt_get_result($statement);
 
     // Check if there is a match
+    if(isset($R[0]['HashedPassword'])) if(password_verify($passwordInput, $R[0]['HashedPassword'])){
+
     if ($row = mysqli_fetch_assoc($result)) {
         // Match found, user is logged in
         // You can store user information in the session if needed
@@ -52,6 +64,10 @@ if (isset($_POST['submit'])) {
         // No match found, handle the error or redirect to a login page
         echo "Invalid username or password";
     }
+} else {
+        // No match found, handle the error or redirect to a login page
+        echo "Invalid username or password";
+    } 
 
     // Close the connection
     $conn->close();
