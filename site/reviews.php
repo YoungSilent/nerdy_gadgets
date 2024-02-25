@@ -69,11 +69,9 @@ $reviews = displayReviews($huidigItem, $stmt);
         <?php if ($can_leave_review && !$hasUserReviewedProduct): ?>
         <form method="POST" action="review_geplaatst.php">
             <input type="hidden" name="StockItemID" value="<?php echo $_GET['id'] ?>">
-            <!-- Container for input field and stars -->
+            <label>Beschrijving:</label>
             <div class="input-container">
-                <label for="beschrijving">
                     <textarea type="text" name="beschrijving" id="beschrijving" required></textarea>
-                </label>
                 <div class="stars">
                     <!-- Sterren voor de beoordeling -->
                     <?php for ($i = 10; $i >= 1; $i--): ?>

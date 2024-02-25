@@ -66,7 +66,7 @@
     width: 25px;
 }
 #beschrijving {
-    width: 300%;
+    width: 100%;
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;
@@ -75,7 +75,7 @@
 }
 
 #edit-beschrijving {
-    width: 65%;
+    width: 100%;
     height: 200px;
     border-radius: 5px;
     border: 1px solid black;
@@ -126,7 +126,6 @@
     clear: both;
 }
 .form-container {
-    border: 1px solid rgb(170, 170, 170);
     border-radius: 5px;
     color: white;
     background: grey;
