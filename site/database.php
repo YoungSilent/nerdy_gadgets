@@ -134,15 +134,15 @@ function isBackupImage($id, $databaseConnection) {
 
 function getPopularItems() {
     $databaseConnection = connectToDatabase();
-    $Query = "SELECT OLS.StockItemID 
-    FROM orderlines AS OLS
-    JOIN orders AS ORD ON ORD.OrderID = OLS.OrderID
-    JOIN stockitemholdings AS SIH ON OLS.StockItemID = SIH.StockItemID
-    WHERE orderdate > DATE_SUB(CURDATE(), INTERVAL 2 WEEK)
-    AND QuantityOnHand > 1
-    GROUP BY OLS.StockItemID
-    ORDER BY count(*) DESC, QuantityOnHand DESC, OLS.StockItemID ASC
-    LIMIT 5;";
+    $Query = "SELECT SIH.StockItemID 
+        FROM orderlines AS OLS
+        JOIN orders AS ORD ON ORD.OrderID = OLS.OrderID
+        JOIN stockitemholdings AS SIH ON SIH.stockitemid = OLS.stockitemid
+        WHERE ORD.orderdate > DATE_SUB(CURDATE(), INTERVAL 2 WEEK)
+        AND SIH.QuantityOnHand > 1
+        GROUP BY SIH.StockItemID
+        ORDER BY COUNT(*) DESC, SIH.QuantityOnHand DESC, SIH.StockItemID ASC
+        LIMIT 5;";
     $Statement = mysqli_prepare($databaseConnection, $Query);
     mysqli_stmt_execute($Statement);
     $Result = mysqli_stmt_get_result($Statement);
