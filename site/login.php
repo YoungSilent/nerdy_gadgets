@@ -4,9 +4,7 @@ include __DIR__ . "/register_login_functions.php";
 require_once "database.php";
 ?>
 <?php
-// Check if the form is submitted
 if (isset($_POST['submit'])) {
-    // Database connection details
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -15,16 +13,13 @@ if (isset($_POST['submit'])) {
     // Create a connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Get values from the form
     $FullName = $_POST['FullName'];
     $HashedPassword = $_POST['HashedPassword'];
 
-    // SQL query to get data from the people table
     $sql = "SELECT CASE
             WHEN FullName = ? THEN PreferredName
             WHEN FullName = ? THEN FullName
@@ -36,7 +31,6 @@ if (isset($_POST['submit'])) {
 
 
     $statement = mysqli_prepare($conn, $sql);
-    // Assuming $PreferredName, $FullName, $EmailAddress are the values you want to check
     mysqli_stmt_bind_param($statement, "ssssss", $PreferredName, $FullName, $EmailAddress, $PreferredName, $FullName, $EmailAddress);
 
     mysqli_stmt_execute($statement);
@@ -44,7 +38,6 @@ if (isset($_POST['submit'])) {
 
     print $sql;
 
-    // Close the connection
     $conn->close();
 }
 ?>

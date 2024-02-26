@@ -109,19 +109,14 @@ function submitFormRating() {
     document.getElementById("sortFormRating").submit();
 }
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all edit review buttons
     var editReviewBtns = document.querySelectorAll('.edit-review-btn');
-
-    // Add click event listener to each button
     editReviewBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            // Toggle visibility of the associated edit review form
             var editForm = this.nextElementSibling;
             var additionalDiv = editForm.nextElementSibling;
             if (editForm.style.display === 'none' || editForm.style.display === '') {
                 editForm.style.display = 'block';
                 additionalDiv.style.display = 'block'
-                // Hide the edit button when the form is displayed
                 this.style.display = 'none';
             } else {
                 editForm.style.display = 'none';

@@ -4,23 +4,18 @@ include __DIR__ . "/register_login_functions.php";
 require_once "database.php";
 ?>
 <?php
-// Check if the form is submitted
 if (isset($_POST['submit'])) {
-    // Database connection details
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "nerdygadgets";
 
-    // Create a connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Get values from the form
     $voornaam = $_POST["voornaam"];
     $tussenvoegsel = $_POST["tussenvoegsel"];
     $achternaam = $_POST["achternaam"];
@@ -36,20 +31,16 @@ if (isset($_POST['submit'])) {
     $sqlPeople = "INSERT INTO `people`(`FullName`, `PreferredName`, `SearchName`, `IsPermittedToLogon`, `IsExternalLogonProvider`, `IsSystemUser`, `IsEmployee`, `IsSalesperson`, `LastEditedBy`, `ValidFrom`, `ValidTo`, `HashedPassword`, `EmailAddress`, `PhoneNumber`) 
                   VALUES ('$fullName','$preferredName','$preferredName','1','0','0','0','0','1','$ValidFrom','$ValidTo','$HashedPassword','$EmailAddress','$PhoneNumber')";
 
-    // Execute the query
     $conn->query($sqlPeople);
 
-    // Get the ID of the newly inserted row in the people table
     $lastPersonId = $conn->insert_id;
 
-    // Get address values from the form
     $street = $_POST['street'];
     $houseNumber = $_POST['Huisnummer'];
     $postcodeNumbers = $_POST['PostcodeNummers'];
     $postcodeLetters = $_POST['PostcodeLetters'];
     $land = $_POST['PostalAddressLine2'];
 
-    // Insert data into customers table
     $sqlCustomers = "INSERT INTO `customers`(
     `CustomerName`, `CustomerID`, `DeliveryAddressLine1`, `DeliveryAddressLine2`, 
     `DeliveryPostalCode`, `PostalAddressLine2`, `BillToCustomerID`, `CustomerCategoryID`, 
@@ -64,10 +55,8 @@ VALUES (
 );
 ";
 
-    // Execute the query
     $conn->query($sqlCustomers);
 
-    // Close the connection
     $conn->close();
 }
 ?>

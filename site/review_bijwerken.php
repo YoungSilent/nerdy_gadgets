@@ -8,13 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $StockItemID = $_POST['StockItemID'];
     $rating = $_POST['rating'];
     $beschrijving = $_POST['beschrijving'];
-
-    // Update the review in the database
     $conn = connectToDatabase();
     if ($conn) {
         $success = updateReview($review_id, $rating, $beschrijving, $conn);
         if ($success) {
-            // Redirect back to the view page
             header("Location: view.php?id=$StockItemID");
             exit();
         } else {
