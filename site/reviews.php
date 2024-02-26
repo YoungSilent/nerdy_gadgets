@@ -36,14 +36,14 @@ $reviews = displayReviews($huidigItem, $stmt);
     <!--dit is het menu voor het selecteren van de datum op nieuw of oud-->
 <?php if ($reviewAanwezig): ?>
     <form id="sortFormDate" method="post" action="">
-        <label for="sort">Sorteren op datum:</label>
+        <label for="sort">Sorteren Op Datum:</label>
         <select name="sort" id="sort" onchange="submitFormDate()">
             <option value="desc" <?php if ($sort == 'desc') echo 'selected'; ?>>Nieuwste</option>
             <option value="asc" <?php if ($sort == 'asc') echo 'selected'; ?>>Oudste</option>
         </select>
     </form>
     <form id="sortFormRating" method="post" action="">
-        <label for="filter_rating">Filter Het Aantal Sterren</label>
+        <label for="filter_rating">Filter Het Aantal Sterren:</label>
         <select name="filter_rating" id="filter_rating" onchange="submitFormRating()">
             <option value="all" <?php if ($sessionFilterRating == 'all') echo 'selected'; ?>>Alle Sterren</option>
             <?php for ($i = 1; $i <= 10; $i++): ?>
