@@ -134,4 +134,13 @@ function verwijderReview(event){
         event.preventDefault();
     }
 }
+function checkWordCount() {
+    var textarea = document.getElementById("beschrijving");
+    var wordCount = textarea.value.trim().split(/\s+/).length;
+    if (wordCount > 500) {
+        textarea.value = textarea.value.split(/\s+/).slice(0, 500).join(" ");
+        wordCount = 500;
+    }
+    document.getElementById("wordCount").innerHTML = wordCount + " words";
+}
 </script>
