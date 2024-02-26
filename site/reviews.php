@@ -130,7 +130,7 @@ foreach ($reviews as $review) {
                 <input type="hidden" name="StockItemID" value="<?php echo $_GET['id']; ?>">
                 <label for="beschrijving">Beschrijving:</label>
                 <div class="input-container">
-                    <textarea type="text" name="beschrijving" id="edit-beschrijving" oninput="checkWordCount()"
+                    <textarea type="text" name="beschrijving" id="beschrijving" oninput="checkWordCount()"
                     ><?php echo $review['beschrijving']; ?></textarea>
                     <div class="stars">
                         <!-- Sterren voor de beoordeling -->
