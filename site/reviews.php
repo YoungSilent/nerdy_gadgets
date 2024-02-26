@@ -11,6 +11,8 @@ if (!isset($_SESSION['PersonID'])) {
     $customer_id = $_SESSION['PersonID'];
     $product_id = $_GET['id'];
     $conn = connectToDatabase();
+    $can_leave_review = can_leave_review($conn, $customer_id, $product_id);
+    $hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -24,8 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['filter_rating'])) {
     $_SESSION['filter_rating'] = $filterRating;
     $sessionFilterRating = $filterRating;
 }
-$can_leave_review = can_leave_review($conn, $customer_id, $product_id);
-$hasUserReviewedProduct = hasUserReviewedProduct($customer_id, $product_id, $conn);
 $sort = isset($_SESSION['sort']) ? $_SESSION['sort'] : 'desc';
 $sessionFilterRating = isset($_SESSION['filter_rating']) ? $_SESSION['filter_rating'] : 'all';
 $reviewAanwezig = reviewAanwezig($product_id, $conn);
